@@ -1,0 +1,9 @@
+name: cldr
+version: 0.1.0
+
+authors:
+  - Akzhan Abdulin <akzhan.abdulin@gmail.com>
+
+crystal: 0.22.0+138
+
+license: MIT
