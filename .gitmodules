@@ -1,0 +1,3 @@
+[submodule "datasource/cldr-core"]
+	path = datasource/cldr-core
+	url = https://github.com/unicode-cldr/cldr-core.git

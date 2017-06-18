@@ -1,4 +1,4 @@
-# crystal-cldr [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# crystal-cldr [![Build Status](https://travis-ci.org/akzhan/crystal-cldr.svg?branch=master)](https://travis-ci.org/akzhan/crystal-cldr) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Crystal distribution of CLDR locale data for internationalization.
 

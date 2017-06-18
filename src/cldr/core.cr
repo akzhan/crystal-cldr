@@ -4,909 +4,1942 @@
 #
 # DO NOT EDIT
 
-# :nodoc:
-module Cldr
-  module Core
-    class AvailableLocales
-      property modern : Array(String)
-      property full : Array(String)
+# Basic CLDR supplemental data.
+module Cldr::Core
+  enum LanguageAliasReason
+    Bibliographic,
+    Deprecated,
+    Legacy,
+    Macrolanguage,
+    Overlong,
+  end
 
-      def initialize
-        @modern = Array(String).new(360)
-        @modern << "af"
-        @modern << "af-NA"
-        @modern << "am"
-        @modern << "ar"
-        @modern << "ar-AE"
-        @modern << "ar-BH"
-        @modern << "ar-DJ"
-        @modern << "ar-DZ"
-        @modern << "ar-EG"
-        @modern << "ar-EH"
-        @modern << "ar-ER"
-        @modern << "ar-IL"
-        @modern << "ar-IQ"
-        @modern << "ar-JO"
-        @modern << "ar-KM"
-        @modern << "ar-KW"
-        @modern << "ar-LB"
-        @modern << "ar-LY"
-        @modern << "ar-MA"
-        @modern << "ar-MR"
-        @modern << "ar-OM"
-        @modern << "ar-PS"
-        @modern << "ar-QA"
-        @modern << "ar-SA"
-        @modern << "ar-SD"
-        @modern << "ar-SO"
-        @modern << "ar-SS"
-        @modern << "ar-SY"
-        @modern << "ar-TD"
-        @modern << "ar-TN"
-        @modern << "ar-YE"
-        @modern << "az"
-        @modern << "az-Latn"
-        @modern << "be"
-        @modern << "bg"
-        @modern << "bn"
-        @modern << "bn-IN"
-        @modern << "bs"
-        @modern << "bs-Latn"
-        @modern << "ca"
-        @modern << "ca-AD"
-        @modern << "ca-ES-VALENCIA"
-        @modern << "ca-FR"
-        @modern << "ca-IT"
-        @modern << "cs"
-        @modern << "cy"
-        @modern << "da"
-        @modern << "da-GL"
-        @modern << "de"
-        @modern << "de-AT"
-        @modern << "de-BE"
-        @modern << "de-CH"
-        @modern << "de-IT"
-        @modern << "de-LI"
-        @modern << "de-LU"
-        @modern << "el"
-        @modern << "el-CY"
-        @modern << "en"
-        @modern << "en-001"
-        @modern << "en-150"
-        @modern << "en-AG"
-        @modern << "en-AI"
-        @modern << "en-AS"
-        @modern << "en-AT"
-        @modern << "en-AU"
-        @modern << "en-BB"
-        @modern << "en-BE"
-        @modern << "en-BI"
-        @modern << "en-BM"
-        @modern << "en-BS"
-        @modern << "en-BW"
-        @modern << "en-BZ"
-        @modern << "en-CA"
-        @modern << "en-CC"
-        @modern << "en-CH"
-        @modern << "en-CK"
-        @modern << "en-CM"
-        @modern << "en-CX"
-        @modern << "en-CY"
-        @modern << "en-DE"
-        @modern << "en-DG"
-        @modern << "en-DK"
-        @modern << "en-DM"
-        @modern << "en-ER"
-        @modern << "en-FI"
-        @modern << "en-FJ"
-        @modern << "en-FK"
-        @modern << "en-FM"
-        @modern << "en-GB"
-        @modern << "en-GD"
-        @modern << "en-GG"
-        @modern << "en-GH"
-        @modern << "en-GI"
-        @modern << "en-GM"
-        @modern << "en-GU"
-        @modern << "en-GY"
-        @modern << "en-HK"
-        @modern << "en-IE"
-        @modern << "en-IL"
-        @modern << "en-IM"
-        @modern << "en-IN"
-        @modern << "en-IO"
-        @modern << "en-JE"
-        @modern << "en-JM"
-        @modern << "en-KE"
-        @modern << "en-KI"
-        @modern << "en-KN"
-        @modern << "en-KY"
-        @modern << "en-LC"
-        @modern << "en-LR"
-        @modern << "en-LS"
-        @modern << "en-MG"
-        @modern << "en-MH"
-        @modern << "en-MO"
-        @modern << "en-MP"
-        @modern << "en-MS"
-        @modern << "en-MT"
-        @modern << "en-MU"
-        @modern << "en-MW"
-        @modern << "en-MY"
-        @modern << "en-NA"
-        @modern << "en-NF"
-        @modern << "en-NG"
-        @modern << "en-NL"
-        @modern << "en-NR"
-        @modern << "en-NU"
-        @modern << "en-NZ"
-        @modern << "en-PG"
-        @modern << "en-PH"
-        @modern << "en-PK"
-        @modern << "en-PN"
-        @modern << "en-PR"
-        @modern << "en-PW"
-        @modern << "en-RW"
-        @modern << "en-SB"
-        @modern << "en-SC"
-        @modern << "en-SD"
-        @modern << "en-SE"
-        @modern << "en-SG"
-        @modern << "en-SH"
-        @modern << "en-SI"
-        @modern << "en-SL"
-        @modern << "en-SS"
-        @modern << "en-SX"
-        @modern << "en-SZ"
-        @modern << "en-TC"
-        @modern << "en-TK"
-        @modern << "en-TO"
-        @modern << "en-TT"
-        @modern << "en-TV"
-        @modern << "en-TZ"
-        @modern << "en-UG"
-        @modern << "en-UM"
-        @modern << "en-US-POSIX"
-        @modern << "en-VC"
-        @modern << "en-VG"
-        @modern << "en-VI"
-        @modern << "en-VU"
-        @modern << "en-WS"
-        @modern << "en-ZA"
-        @modern << "en-ZM"
-        @modern << "en-ZW"
-        @modern << "es"
-        @modern << "es-419"
-        @modern << "es-AR"
-        @modern << "es-BO"
-        @modern << "es-BR"
-        @modern << "es-BZ"
-        @modern << "es-CL"
-        @modern << "es-CO"
-        @modern << "es-CR"
-        @modern << "es-CU"
-        @modern << "es-DO"
-        @modern << "es-EA"
-        @modern << "es-EC"
-        @modern << "es-GQ"
-        @modern << "es-GT"
-        @modern << "es-HN"
-        @modern << "es-IC"
-        @modern << "es-MX"
-        @modern << "es-NI"
-        @modern << "es-PA"
-        @modern << "es-PE"
-        @modern << "es-PH"
-        @modern << "es-PR"
-        @modern << "es-PY"
-        @modern << "es-SV"
-        @modern << "es-US"
-        @modern << "es-UY"
-        @modern << "es-VE"
-        @modern << "et"
-        @modern << "eu"
-        @modern << "fa"
-        @modern << "fa-AF"
-        @modern << "fi"
-        @modern << "fil"
-        @modern << "fo"
-        @modern << "fo-DK"
-        @modern << "fr"
-        @modern << "fr-BE"
-        @modern << "fr-BF"
-        @modern << "fr-BI"
-        @modern << "fr-BJ"
-        @modern << "fr-BL"
-        @modern << "fr-CA"
-        @modern << "fr-CD"
-        @modern << "fr-CF"
-        @modern << "fr-CG"
-        @modern << "fr-CH"
-        @modern << "fr-CI"
-        @modern << "fr-CM"
-        @modern << "fr-DJ"
-        @modern << "fr-DZ"
-        @modern << "fr-GA"
-        @modern << "fr-GF"
-        @modern << "fr-GN"
-        @modern << "fr-GP"
-        @modern << "fr-GQ"
-        @modern << "fr-HT"
-        @modern << "fr-KM"
-        @modern << "fr-LU"
-        @modern << "fr-MA"
-        @modern << "fr-MC"
-        @modern << "fr-MF"
-        @modern << "fr-MG"
-        @modern << "fr-ML"
-        @modern << "fr-MQ"
-        @modern << "fr-MR"
-        @modern << "fr-MU"
-        @modern << "fr-NC"
-        @modern << "fr-NE"
-        @modern << "fr-PF"
-        @modern << "fr-PM"
-        @modern << "fr-RE"
-        @modern << "fr-RW"
-        @modern << "fr-SC"
-        @modern << "fr-SN"
-        @modern << "fr-SY"
-        @modern << "fr-TD"
-        @modern << "fr-TG"
-        @modern << "fr-TN"
-        @modern << "fr-VU"
-        @modern << "fr-WF"
-        @modern << "fr-YT"
-        @modern << "ga"
-        @modern << "gl"
-        @modern << "gu"
-        @modern << "he"
-        @modern << "hi"
-        @modern << "hr"
-        @modern << "hr-BA"
-        @modern << "hu"
-        @modern << "hy"
-        @modern << "id"
-        @modern << "is"
-        @modern << "it"
-        @modern << "it-CH"
-        @modern << "it-SM"
-        @modern << "it-VA"
-        @modern << "ja"
-        @modern << "ka"
-        @modern << "kk"
-        @modern << "km"
-        @modern << "kn"
-        @modern << "ko"
-        @modern << "ko-KP"
-        @modern << "ky"
-        @modern << "lo"
-        @modern << "lt"
-        @modern << "lv"
-        @modern << "mk"
-        @modern << "ml"
-        @modern << "mn"
-        @modern << "mr"
-        @modern << "ms"
-        @modern << "ms-BN"
-        @modern << "ms-SG"
-        @modern << "my"
-        @modern << "nb"
-        @modern << "nb-SJ"
-        @modern << "ne"
-        @modern << "ne-IN"
-        @modern << "nl"
-        @modern << "nl-AW"
-        @modern << "nl-BE"
-        @modern << "nl-BQ"
-        @modern << "nl-CW"
-        @modern << "nl-SR"
-        @modern << "nl-SX"
-        @modern << "pa"
-        @modern << "pa-Guru"
-        @modern << "pl"
-        @modern << "pt"
-        @modern << "pt-AO"
-        @modern << "pt-CH"
-        @modern << "pt-CV"
-        @modern << "pt-GQ"
-        @modern << "pt-GW"
-        @modern << "pt-LU"
-        @modern << "pt-MO"
-        @modern << "pt-MZ"
-        @modern << "pt-PT"
-        @modern << "pt-ST"
-        @modern << "pt-TL"
-        @modern << "ro"
-        @modern << "ro-MD"
-        @modern << "root"
-        @modern << "ru"
-        @modern << "ru-BY"
-        @modern << "ru-KG"
-        @modern << "ru-KZ"
-        @modern << "ru-MD"
-        @modern << "ru-UA"
-        @modern << "si"
-        @modern << "sk"
-        @modern << "sl"
-        @modern << "sq"
-        @modern << "sq-MK"
-        @modern << "sq-XK"
-        @modern << "sr"
-        @modern << "sr-Cyrl"
-        @modern << "sr-Cyrl-BA"
-        @modern << "sr-Cyrl-ME"
-        @modern << "sr-Cyrl-XK"
-        @modern << "sr-Latn"
-        @modern << "sr-Latn-BA"
-        @modern << "sr-Latn-ME"
-        @modern << "sr-Latn-XK"
-        @modern << "sv"
-        @modern << "sv-AX"
-        @modern << "sv-FI"
-        @modern << "sw"
-        @modern << "sw-CD"
-        @modern << "sw-KE"
-        @modern << "sw-UG"
-        @modern << "ta"
-        @modern << "ta-LK"
-        @modern << "ta-MY"
-        @modern << "ta-SG"
-        @modern << "te"
-        @modern << "th"
-        @modern << "to"
-        @modern << "tr"
-        @modern << "tr-CY"
-        @modern << "uk"
-        @modern << "ur"
-        @modern << "ur-IN"
-        @modern << "uz"
-        @modern << "uz-Latn"
-        @modern << "vi"
-        @modern << "yue"
-        @modern << "zh"
-        @modern << "zh-Hans"
-        @modern << "zh-Hans-HK"
-        @modern << "zh-Hans-MO"
-        @modern << "zh-Hans-SG"
-        @modern << "zh-Hant"
-        @modern << "zh-Hant-HK"
-        @modern << "zh-Hant-MO"
-        @modern << "zu"
-        @full = Array(String).new(516)
-        @full << "af"
-        @full << "af-NA"
-        @full << "agq"
-        @full << "ak"
-        @full << "am"
-        @full << "ar"
-        @full << "ar-AE"
-        @full << "ar-BH"
-        @full << "ar-DJ"
-        @full << "ar-DZ"
-        @full << "ar-EG"
-        @full << "ar-EH"
-        @full << "ar-ER"
-        @full << "ar-IL"
-        @full << "ar-IQ"
-        @full << "ar-JO"
-        @full << "ar-KM"
-        @full << "ar-KW"
-        @full << "ar-LB"
-        @full << "ar-LY"
-        @full << "ar-MA"
-        @full << "ar-MR"
-        @full << "ar-OM"
-        @full << "ar-PS"
-        @full << "ar-QA"
-        @full << "ar-SA"
-        @full << "ar-SD"
-        @full << "ar-SO"
-        @full << "ar-SS"
-        @full << "ar-SY"
-        @full << "ar-TD"
-        @full << "ar-TN"
-        @full << "ar-YE"
-        @full << "as"
-        @full << "asa"
-        @full << "ast"
-        @full << "az"
-        @full << "az-Cyrl"
-        @full << "az-Latn"
-        @full << "bas"
-        @full << "be"
-        @full << "bem"
-        @full << "bez"
-        @full << "bg"
-        @full << "bm"
-        @full << "bn"
-        @full << "bn-IN"
-        @full << "bo"
-        @full << "bo-IN"
-        @full << "br"
-        @full << "brx"
-        @full << "bs"
-        @full << "bs-Cyrl"
-        @full << "bs-Latn"
-        @full << "ca"
-        @full << "ca-AD"
-        @full << "ca-ES-VALENCIA"
-        @full << "ca-FR"
-        @full << "ca-IT"
-        @full << "ce"
-        @full << "cgg"
-        @full << "chr"
-        @full << "ckb"
-        @full << "ckb-IR"
-        @full << "cs"
-        @full << "cu"
-        @full << "cy"
-        @full << "da"
-        @full << "da-GL"
-        @full << "dav"
-        @full << "de"
-        @full << "de-AT"
-        @full << "de-BE"
-        @full << "de-CH"
-        @full << "de-IT"
-        @full << "de-LI"
-        @full << "de-LU"
-        @full << "dje"
-        @full << "dsb"
-        @full << "dua"
-        @full << "dyo"
-        @full << "dz"
-        @full << "ebu"
-        @full << "ee"
-        @full << "ee-TG"
-        @full << "el"
-        @full << "el-CY"
-        @full << "en"
-        @full << "en-001"
-        @full << "en-150"
-        @full << "en-AG"
-        @full << "en-AI"
-        @full << "en-AS"
-        @full << "en-AT"
-        @full << "en-AU"
-        @full << "en-BB"
-        @full << "en-BE"
-        @full << "en-BI"
-        @full << "en-BM"
-        @full << "en-BS"
-        @full << "en-BW"
-        @full << "en-BZ"
-        @full << "en-CA"
-        @full << "en-CC"
-        @full << "en-CH"
-        @full << "en-CK"
-        @full << "en-CM"
-        @full << "en-CX"
-        @full << "en-CY"
-        @full << "en-DE"
-        @full << "en-DG"
-        @full << "en-DK"
-        @full << "en-DM"
-        @full << "en-ER"
-        @full << "en-FI"
-        @full << "en-FJ"
-        @full << "en-FK"
-        @full << "en-FM"
-        @full << "en-GB"
-        @full << "en-GD"
-        @full << "en-GG"
-        @full << "en-GH"
-        @full << "en-GI"
-        @full << "en-GM"
-        @full << "en-GU"
-        @full << "en-GY"
-        @full << "en-HK"
-        @full << "en-IE"
-        @full << "en-IL"
-        @full << "en-IM"
-        @full << "en-IN"
-        @full << "en-IO"
-        @full << "en-JE"
-        @full << "en-JM"
-        @full << "en-KE"
-        @full << "en-KI"
-        @full << "en-KN"
-        @full << "en-KY"
-        @full << "en-LC"
-        @full << "en-LR"
-        @full << "en-LS"
-        @full << "en-MG"
-        @full << "en-MH"
-        @full << "en-MO"
-        @full << "en-MP"
-        @full << "en-MS"
-        @full << "en-MT"
-        @full << "en-MU"
-        @full << "en-MW"
-        @full << "en-MY"
-        @full << "en-NA"
-        @full << "en-NF"
-        @full << "en-NG"
-        @full << "en-NL"
-        @full << "en-NR"
-        @full << "en-NU"
-        @full << "en-NZ"
-        @full << "en-PG"
-        @full << "en-PH"
-        @full << "en-PK"
-        @full << "en-PN"
-        @full << "en-PR"
-        @full << "en-PW"
-        @full << "en-RW"
-        @full << "en-SB"
-        @full << "en-SC"
-        @full << "en-SD"
-        @full << "en-SE"
-        @full << "en-SG"
-        @full << "en-SH"
-        @full << "en-SI"
-        @full << "en-SL"
-        @full << "en-SS"
-        @full << "en-SX"
-        @full << "en-SZ"
-        @full << "en-TC"
-        @full << "en-TK"
-        @full << "en-TO"
-        @full << "en-TT"
-        @full << "en-TV"
-        @full << "en-TZ"
-        @full << "en-UG"
-        @full << "en-UM"
-        @full << "en-US-POSIX"
-        @full << "en-VC"
-        @full << "en-VG"
-        @full << "en-VI"
-        @full << "en-VU"
-        @full << "en-WS"
-        @full << "en-ZA"
-        @full << "en-ZM"
-        @full << "en-ZW"
-        @full << "eo"
-        @full << "es"
-        @full << "es-419"
-        @full << "es-AR"
-        @full << "es-BO"
-        @full << "es-BR"
-        @full << "es-BZ"
-        @full << "es-CL"
-        @full << "es-CO"
-        @full << "es-CR"
-        @full << "es-CU"
-        @full << "es-DO"
-        @full << "es-EA"
-        @full << "es-EC"
-        @full << "es-GQ"
-        @full << "es-GT"
-        @full << "es-HN"
-        @full << "es-IC"
-        @full << "es-MX"
-        @full << "es-NI"
-        @full << "es-PA"
-        @full << "es-PE"
-        @full << "es-PH"
-        @full << "es-PR"
-        @full << "es-PY"
-        @full << "es-SV"
-        @full << "es-US"
-        @full << "es-UY"
-        @full << "es-VE"
-        @full << "et"
-        @full << "eu"
-        @full << "ewo"
-        @full << "fa"
-        @full << "fa-AF"
-        @full << "ff"
-        @full << "ff-CM"
-        @full << "ff-GN"
-        @full << "ff-MR"
-        @full << "fi"
-        @full << "fil"
-        @full << "fo"
-        @full << "fo-DK"
-        @full << "fr"
-        @full << "fr-BE"
-        @full << "fr-BF"
-        @full << "fr-BI"
-        @full << "fr-BJ"
-        @full << "fr-BL"
-        @full << "fr-CA"
-        @full << "fr-CD"
-        @full << "fr-CF"
-        @full << "fr-CG"
-        @full << "fr-CH"
-        @full << "fr-CI"
-        @full << "fr-CM"
-        @full << "fr-DJ"
-        @full << "fr-DZ"
-        @full << "fr-GA"
-        @full << "fr-GF"
-        @full << "fr-GN"
-        @full << "fr-GP"
-        @full << "fr-GQ"
-        @full << "fr-HT"
-        @full << "fr-KM"
-        @full << "fr-LU"
-        @full << "fr-MA"
-        @full << "fr-MC"
-        @full << "fr-MF"
-        @full << "fr-MG"
-        @full << "fr-ML"
-        @full << "fr-MQ"
-        @full << "fr-MR"
-        @full << "fr-MU"
-        @full << "fr-NC"
-        @full << "fr-NE"
-        @full << "fr-PF"
-        @full << "fr-PM"
-        @full << "fr-RE"
-        @full << "fr-RW"
-        @full << "fr-SC"
-        @full << "fr-SN"
-        @full << "fr-SY"
-        @full << "fr-TD"
-        @full << "fr-TG"
-        @full << "fr-TN"
-        @full << "fr-VU"
-        @full << "fr-WF"
-        @full << "fr-YT"
-        @full << "fur"
-        @full << "fy"
-        @full << "ga"
-        @full << "gd"
-        @full << "gl"
-        @full << "gsw"
-        @full << "gsw-FR"
-        @full << "gsw-LI"
-        @full << "gu"
-        @full << "guz"
-        @full << "gv"
-        @full << "ha"
-        @full << "ha-GH"
-        @full << "ha-NE"
-        @full << "haw"
-        @full << "he"
-        @full << "hi"
-        @full << "hr"
-        @full << "hr-BA"
-        @full << "hsb"
-        @full << "hu"
-        @full << "hy"
-        @full << "id"
-        @full << "ig"
-        @full << "ii"
-        @full << "is"
-        @full << "it"
-        @full << "it-CH"
-        @full << "it-SM"
-        @full << "it-VA"
-        @full << "ja"
-        @full << "jgo"
-        @full << "jmc"
-        @full << "ka"
-        @full << "kab"
-        @full << "kam"
-        @full << "kde"
-        @full << "kea"
-        @full << "khq"
-        @full << "ki"
-        @full << "kk"
-        @full << "kkj"
-        @full << "kl"
-        @full << "kln"
-        @full << "km"
-        @full << "kn"
-        @full << "ko"
-        @full << "ko-KP"
-        @full << "kok"
-        @full << "ks"
-        @full << "ksb"
-        @full << "ksf"
-        @full << "ksh"
-        @full << "kw"
-        @full << "ky"
-        @full << "lag"
-        @full << "lb"
-        @full << "lg"
-        @full << "lkt"
-        @full << "ln"
-        @full << "ln-AO"
-        @full << "ln-CF"
-        @full << "ln-CG"
-        @full << "lo"
-        @full << "lrc"
-        @full << "lrc-IQ"
-        @full << "lt"
-        @full << "lu"
-        @full << "luo"
-        @full << "luy"
-        @full << "lv"
-        @full << "mas"
-        @full << "mas-TZ"
-        @full << "mer"
-        @full << "mfe"
-        @full << "mg"
-        @full << "mgh"
-        @full << "mgo"
-        @full << "mk"
-        @full << "ml"
-        @full << "mn"
-        @full << "mr"
-        @full << "ms"
-        @full << "ms-BN"
-        @full << "ms-SG"
-        @full << "mt"
-        @full << "mua"
-        @full << "my"
-        @full << "mzn"
-        @full << "naq"
-        @full << "nb"
-        @full << "nb-SJ"
-        @full << "nd"
-        @full << "nds"
-        @full << "nds-NL"
-        @full << "ne"
-        @full << "ne-IN"
-        @full << "nl"
-        @full << "nl-AW"
-        @full << "nl-BE"
-        @full << "nl-BQ"
-        @full << "nl-CW"
-        @full << "nl-SR"
-        @full << "nl-SX"
-        @full << "nmg"
-        @full << "nn"
-        @full << "nnh"
-        @full << "nus"
-        @full << "nyn"
-        @full << "om"
-        @full << "om-KE"
-        @full << "or"
-        @full << "os"
-        @full << "os-RU"
-        @full << "pa"
-        @full << "pa-Arab"
-        @full << "pa-Guru"
-        @full << "pl"
-        @full << "prg"
-        @full << "ps"
-        @full << "pt"
-        @full << "pt-AO"
-        @full << "pt-CH"
-        @full << "pt-CV"
-        @full << "pt-GQ"
-        @full << "pt-GW"
-        @full << "pt-LU"
-        @full << "pt-MO"
-        @full << "pt-MZ"
-        @full << "pt-PT"
-        @full << "pt-ST"
-        @full << "pt-TL"
-        @full << "qu"
-        @full << "qu-BO"
-        @full << "qu-EC"
-        @full << "rm"
-        @full << "rn"
-        @full << "ro"
-        @full << "ro-MD"
-        @full << "rof"
-        @full << "root"
-        @full << "ru"
-        @full << "ru-BY"
-        @full << "ru-KG"
-        @full << "ru-KZ"
-        @full << "ru-MD"
-        @full << "ru-UA"
-        @full << "rw"
-        @full << "rwk"
-        @full << "sah"
-        @full << "saq"
-        @full << "sbp"
-        @full << "se"
-        @full << "se-FI"
-        @full << "se-SE"
-        @full << "seh"
-        @full << "ses"
-        @full << "sg"
-        @full << "shi"
-        @full << "shi-Latn"
-        @full << "shi-Tfng"
-        @full << "si"
-        @full << "sk"
-        @full << "sl"
-        @full << "smn"
-        @full << "sn"
-        @full << "so"
-        @full << "so-DJ"
-        @full << "so-ET"
-        @full << "so-KE"
-        @full << "sq"
-        @full << "sq-MK"
-        @full << "sq-XK"
-        @full << "sr"
-        @full << "sr-Cyrl"
-        @full << "sr-Cyrl-BA"
-        @full << "sr-Cyrl-ME"
-        @full << "sr-Cyrl-XK"
-        @full << "sr-Latn"
-        @full << "sr-Latn-BA"
-        @full << "sr-Latn-ME"
-        @full << "sr-Latn-XK"
-        @full << "sv"
-        @full << "sv-AX"
-        @full << "sv-FI"
-        @full << "sw"
-        @full << "sw-CD"
-        @full << "sw-KE"
-        @full << "sw-UG"
-        @full << "ta"
-        @full << "ta-LK"
-        @full << "ta-MY"
-        @full << "ta-SG"
-        @full << "te"
-        @full << "teo"
-        @full << "teo-KE"
-        @full << "th"
-        @full << "ti"
-        @full << "ti-ER"
-        @full << "tk"
-        @full << "to"
-        @full << "tr"
-        @full << "tr-CY"
-        @full << "twq"
-        @full << "tzm"
-        @full << "ug"
-        @full << "uk"
-        @full << "ur"
-        @full << "ur-IN"
-        @full << "uz"
-        @full << "uz-Arab"
-        @full << "uz-Cyrl"
-        @full << "uz-Latn"
-        @full << "vai"
-        @full << "vai-Latn"
-        @full << "vai-Vaii"
-        @full << "vi"
-        @full << "vo"
-        @full << "vun"
-        @full << "wae"
-        @full << "xog"
-        @full << "yav"
-        @full << "yi"
-        @full << "yo"
-        @full << "yo-BJ"
-        @full << "yue"
-        @full << "zgh"
-        @full << "zh"
-        @full << "zh-Hans"
-        @full << "zh-Hans-HK"
-        @full << "zh-Hans-MO"
-        @full << "zh-Hans-SG"
-        @full << "zh-Hant"
-        @full << "zh-Hant-HK"
-        @full << "zh-Hant-MO"
-        @full << "zu"
+  record LanguageAliasInfo,
+    reason : LanguageAliasReason,
+    replacement : String
+
+  record CalendarDataEra,
+    start : String?,
+    end : String?
+
+  enum CalendarSystem
+    Lunar,
+    Lunisolar,
+    None,
+    Other,
+    Solar,
+  end
+
+  record CalendarDataEntry,
+    name : String,
+    calendar_system : CalendarSystem,
+    eras : Array(CalendarDataEra)
+
+  record CurrencyDataFraction,
+    rounding : Int32,
+    digits : Int32
+
+  enum PersonListKind
+    MaleTaints,
+    MixedNeutral,
+    Neutral,
+  end
+
+  # Available locales
+  class AvailableLocales
+    @modern : Array(String)? = nil
+    @full : Array(String)? = nil
+
+    # Sorted list of modern locales
+    def modern : Array(String)
+      @modern ||= begin
+        list = Array(String).new(360)
+        list << "af"
+        list << "af-NA"
+        list << "am"
+        list << "ar"
+        list << "ar-AE"
+        list << "ar-BH"
+        list << "ar-DJ"
+        list << "ar-DZ"
+        list << "ar-EG"
+        list << "ar-EH"
+        list << "ar-ER"
+        list << "ar-IL"
+        list << "ar-IQ"
+        list << "ar-JO"
+        list << "ar-KM"
+        list << "ar-KW"
+        list << "ar-LB"
+        list << "ar-LY"
+        list << "ar-MA"
+        list << "ar-MR"
+        list << "ar-OM"
+        list << "ar-PS"
+        list << "ar-QA"
+        list << "ar-SA"
+        list << "ar-SD"
+        list << "ar-SO"
+        list << "ar-SS"
+        list << "ar-SY"
+        list << "ar-TD"
+        list << "ar-TN"
+        list << "ar-YE"
+        list << "az"
+        list << "az-Latn"
+        list << "be"
+        list << "bg"
+        list << "bn"
+        list << "bn-IN"
+        list << "bs"
+        list << "bs-Latn"
+        list << "ca"
+        list << "ca-AD"
+        list << "ca-ES-VALENCIA"
+        list << "ca-FR"
+        list << "ca-IT"
+        list << "cs"
+        list << "cy"
+        list << "da"
+        list << "da-GL"
+        list << "de"
+        list << "de-AT"
+        list << "de-BE"
+        list << "de-CH"
+        list << "de-IT"
+        list << "de-LI"
+        list << "de-LU"
+        list << "el"
+        list << "el-CY"
+        list << "en"
+        list << "en-001"
+        list << "en-150"
+        list << "en-AG"
+        list << "en-AI"
+        list << "en-AS"
+        list << "en-AT"
+        list << "en-AU"
+        list << "en-BB"
+        list << "en-BE"
+        list << "en-BI"
+        list << "en-BM"
+        list << "en-BS"
+        list << "en-BW"
+        list << "en-BZ"
+        list << "en-CA"
+        list << "en-CC"
+        list << "en-CH"
+        list << "en-CK"
+        list << "en-CM"
+        list << "en-CX"
+        list << "en-CY"
+        list << "en-DE"
+        list << "en-DG"
+        list << "en-DK"
+        list << "en-DM"
+        list << "en-ER"
+        list << "en-FI"
+        list << "en-FJ"
+        list << "en-FK"
+        list << "en-FM"
+        list << "en-GB"
+        list << "en-GD"
+        list << "en-GG"
+        list << "en-GH"
+        list << "en-GI"
+        list << "en-GM"
+        list << "en-GU"
+        list << "en-GY"
+        list << "en-HK"
+        list << "en-IE"
+        list << "en-IL"
+        list << "en-IM"
+        list << "en-IN"
+        list << "en-IO"
+        list << "en-JE"
+        list << "en-JM"
+        list << "en-KE"
+        list << "en-KI"
+        list << "en-KN"
+        list << "en-KY"
+        list << "en-LC"
+        list << "en-LR"
+        list << "en-LS"
+        list << "en-MG"
+        list << "en-MH"
+        list << "en-MO"
+        list << "en-MP"
+        list << "en-MS"
+        list << "en-MT"
+        list << "en-MU"
+        list << "en-MW"
+        list << "en-MY"
+        list << "en-NA"
+        list << "en-NF"
+        list << "en-NG"
+        list << "en-NL"
+        list << "en-NR"
+        list << "en-NU"
+        list << "en-NZ"
+        list << "en-PG"
+        list << "en-PH"
+        list << "en-PK"
+        list << "en-PN"
+        list << "en-PR"
+        list << "en-PW"
+        list << "en-RW"
+        list << "en-SB"
+        list << "en-SC"
+        list << "en-SD"
+        list << "en-SE"
+        list << "en-SG"
+        list << "en-SH"
+        list << "en-SI"
+        list << "en-SL"
+        list << "en-SS"
+        list << "en-SX"
+        list << "en-SZ"
+        list << "en-TC"
+        list << "en-TK"
+        list << "en-TO"
+        list << "en-TT"
+        list << "en-TV"
+        list << "en-TZ"
+        list << "en-UG"
+        list << "en-UM"
+        list << "en-US-POSIX"
+        list << "en-VC"
+        list << "en-VG"
+        list << "en-VI"
+        list << "en-VU"
+        list << "en-WS"
+        list << "en-ZA"
+        list << "en-ZM"
+        list << "en-ZW"
+        list << "es"
+        list << "es-419"
+        list << "es-AR"
+        list << "es-BO"
+        list << "es-BR"
+        list << "es-BZ"
+        list << "es-CL"
+        list << "es-CO"
+        list << "es-CR"
+        list << "es-CU"
+        list << "es-DO"
+        list << "es-EA"
+        list << "es-EC"
+        list << "es-GQ"
+        list << "es-GT"
+        list << "es-HN"
+        list << "es-IC"
+        list << "es-MX"
+        list << "es-NI"
+        list << "es-PA"
+        list << "es-PE"
+        list << "es-PH"
+        list << "es-PR"
+        list << "es-PY"
+        list << "es-SV"
+        list << "es-US"
+        list << "es-UY"
+        list << "es-VE"
+        list << "et"
+        list << "eu"
+        list << "fa"
+        list << "fa-AF"
+        list << "fi"
+        list << "fil"
+        list << "fo"
+        list << "fo-DK"
+        list << "fr"
+        list << "fr-BE"
+        list << "fr-BF"
+        list << "fr-BI"
+        list << "fr-BJ"
+        list << "fr-BL"
+        list << "fr-CA"
+        list << "fr-CD"
+        list << "fr-CF"
+        list << "fr-CG"
+        list << "fr-CH"
+        list << "fr-CI"
+        list << "fr-CM"
+        list << "fr-DJ"
+        list << "fr-DZ"
+        list << "fr-GA"
+        list << "fr-GF"
+        list << "fr-GN"
+        list << "fr-GP"
+        list << "fr-GQ"
+        list << "fr-HT"
+        list << "fr-KM"
+        list << "fr-LU"
+        list << "fr-MA"
+        list << "fr-MC"
+        list << "fr-MF"
+        list << "fr-MG"
+        list << "fr-ML"
+        list << "fr-MQ"
+        list << "fr-MR"
+        list << "fr-MU"
+        list << "fr-NC"
+        list << "fr-NE"
+        list << "fr-PF"
+        list << "fr-PM"
+        list << "fr-RE"
+        list << "fr-RW"
+        list << "fr-SC"
+        list << "fr-SN"
+        list << "fr-SY"
+        list << "fr-TD"
+        list << "fr-TG"
+        list << "fr-TN"
+        list << "fr-VU"
+        list << "fr-WF"
+        list << "fr-YT"
+        list << "ga"
+        list << "gl"
+        list << "gu"
+        list << "he"
+        list << "hi"
+        list << "hr"
+        list << "hr-BA"
+        list << "hu"
+        list << "hy"
+        list << "id"
+        list << "is"
+        list << "it"
+        list << "it-CH"
+        list << "it-SM"
+        list << "it-VA"
+        list << "ja"
+        list << "ka"
+        list << "kk"
+        list << "km"
+        list << "kn"
+        list << "ko"
+        list << "ko-KP"
+        list << "ky"
+        list << "lo"
+        list << "lt"
+        list << "lv"
+        list << "mk"
+        list << "ml"
+        list << "mn"
+        list << "mr"
+        list << "ms"
+        list << "ms-BN"
+        list << "ms-SG"
+        list << "my"
+        list << "nb"
+        list << "nb-SJ"
+        list << "ne"
+        list << "ne-IN"
+        list << "nl"
+        list << "nl-AW"
+        list << "nl-BE"
+        list << "nl-BQ"
+        list << "nl-CW"
+        list << "nl-SR"
+        list << "nl-SX"
+        list << "pa"
+        list << "pa-Guru"
+        list << "pl"
+        list << "pt"
+        list << "pt-AO"
+        list << "pt-CH"
+        list << "pt-CV"
+        list << "pt-GQ"
+        list << "pt-GW"
+        list << "pt-LU"
+        list << "pt-MO"
+        list << "pt-MZ"
+        list << "pt-PT"
+        list << "pt-ST"
+        list << "pt-TL"
+        list << "ro"
+        list << "ro-MD"
+        list << "root"
+        list << "ru"
+        list << "ru-BY"
+        list << "ru-KG"
+        list << "ru-KZ"
+        list << "ru-MD"
+        list << "ru-UA"
+        list << "si"
+        list << "sk"
+        list << "sl"
+        list << "sq"
+        list << "sq-MK"
+        list << "sq-XK"
+        list << "sr"
+        list << "sr-Cyrl"
+        list << "sr-Cyrl-BA"
+        list << "sr-Cyrl-ME"
+        list << "sr-Cyrl-XK"
+        list << "sr-Latn"
+        list << "sr-Latn-BA"
+        list << "sr-Latn-ME"
+        list << "sr-Latn-XK"
+        list << "sv"
+        list << "sv-AX"
+        list << "sv-FI"
+        list << "sw"
+        list << "sw-CD"
+        list << "sw-KE"
+        list << "sw-UG"
+        list << "ta"
+        list << "ta-LK"
+        list << "ta-MY"
+        list << "ta-SG"
+        list << "te"
+        list << "th"
+        list << "to"
+        list << "tr"
+        list << "tr-CY"
+        list << "uk"
+        list << "ur"
+        list << "ur-IN"
+        list << "uz"
+        list << "uz-Latn"
+        list << "vi"
+        list << "yue"
+        list << "zh"
+        list << "zh-Hans"
+        list << "zh-Hans-HK"
+        list << "zh-Hans-MO"
+        list << "zh-Hans-SG"
+        list << "zh-Hant"
+        list << "zh-Hant-HK"
+        list << "zh-Hant-MO"
+        list << "zu"
+        list
       end
     end
 
-    def self.available_locales : AvailableLocales
-      @@available_locales ||= AvailableLocales.new
+    # Sorted list of all locales
+    def full : Array(String)
+      @full ||= begin
+        list = Array(String).new(516)
+        list << "af"
+        list << "af-NA"
+        list << "agq"
+        list << "ak"
+        list << "am"
+        list << "ar"
+        list << "ar-AE"
+        list << "ar-BH"
+        list << "ar-DJ"
+        list << "ar-DZ"
+        list << "ar-EG"
+        list << "ar-EH"
+        list << "ar-ER"
+        list << "ar-IL"
+        list << "ar-IQ"
+        list << "ar-JO"
+        list << "ar-KM"
+        list << "ar-KW"
+        list << "ar-LB"
+        list << "ar-LY"
+        list << "ar-MA"
+        list << "ar-MR"
+        list << "ar-OM"
+        list << "ar-PS"
+        list << "ar-QA"
+        list << "ar-SA"
+        list << "ar-SD"
+        list << "ar-SO"
+        list << "ar-SS"
+        list << "ar-SY"
+        list << "ar-TD"
+        list << "ar-TN"
+        list << "ar-YE"
+        list << "as"
+        list << "asa"
+        list << "ast"
+        list << "az"
+        list << "az-Cyrl"
+        list << "az-Latn"
+        list << "bas"
+        list << "be"
+        list << "bem"
+        list << "bez"
+        list << "bg"
+        list << "bm"
+        list << "bn"
+        list << "bn-IN"
+        list << "bo"
+        list << "bo-IN"
+        list << "br"
+        list << "brx"
+        list << "bs"
+        list << "bs-Cyrl"
+        list << "bs-Latn"
+        list << "ca"
+        list << "ca-AD"
+        list << "ca-ES-VALENCIA"
+        list << "ca-FR"
+        list << "ca-IT"
+        list << "ce"
+        list << "cgg"
+        list << "chr"
+        list << "ckb"
+        list << "ckb-IR"
+        list << "cs"
+        list << "cu"
+        list << "cy"
+        list << "da"
+        list << "da-GL"
+        list << "dav"
+        list << "de"
+        list << "de-AT"
+        list << "de-BE"
+        list << "de-CH"
+        list << "de-IT"
+        list << "de-LI"
+        list << "de-LU"
+        list << "dje"
+        list << "dsb"
+        list << "dua"
+        list << "dyo"
+        list << "dz"
+        list << "ebu"
+        list << "ee"
+        list << "ee-TG"
+        list << "el"
+        list << "el-CY"
+        list << "en"
+        list << "en-001"
+        list << "en-150"
+        list << "en-AG"
+        list << "en-AI"
+        list << "en-AS"
+        list << "en-AT"
+        list << "en-AU"
+        list << "en-BB"
+        list << "en-BE"
+        list << "en-BI"
+        list << "en-BM"
+        list << "en-BS"
+        list << "en-BW"
+        list << "en-BZ"
+        list << "en-CA"
+        list << "en-CC"
+        list << "en-CH"
+        list << "en-CK"
+        list << "en-CM"
+        list << "en-CX"
+        list << "en-CY"
+        list << "en-DE"
+        list << "en-DG"
+        list << "en-DK"
+        list << "en-DM"
+        list << "en-ER"
+        list << "en-FI"
+        list << "en-FJ"
+        list << "en-FK"
+        list << "en-FM"
+        list << "en-GB"
+        list << "en-GD"
+        list << "en-GG"
+        list << "en-GH"
+        list << "en-GI"
+        list << "en-GM"
+        list << "en-GU"
+        list << "en-GY"
+        list << "en-HK"
+        list << "en-IE"
+        list << "en-IL"
+        list << "en-IM"
+        list << "en-IN"
+        list << "en-IO"
+        list << "en-JE"
+        list << "en-JM"
+        list << "en-KE"
+        list << "en-KI"
+        list << "en-KN"
+        list << "en-KY"
+        list << "en-LC"
+        list << "en-LR"
+        list << "en-LS"
+        list << "en-MG"
+        list << "en-MH"
+        list << "en-MO"
+        list << "en-MP"
+        list << "en-MS"
+        list << "en-MT"
+        list << "en-MU"
+        list << "en-MW"
+        list << "en-MY"
+        list << "en-NA"
+        list << "en-NF"
+        list << "en-NG"
+        list << "en-NL"
+        list << "en-NR"
+        list << "en-NU"
+        list << "en-NZ"
+        list << "en-PG"
+        list << "en-PH"
+        list << "en-PK"
+        list << "en-PN"
+        list << "en-PR"
+        list << "en-PW"
+        list << "en-RW"
+        list << "en-SB"
+        list << "en-SC"
+        list << "en-SD"
+        list << "en-SE"
+        list << "en-SG"
+        list << "en-SH"
+        list << "en-SI"
+        list << "en-SL"
+        list << "en-SS"
+        list << "en-SX"
+        list << "en-SZ"
+        list << "en-TC"
+        list << "en-TK"
+        list << "en-TO"
+        list << "en-TT"
+        list << "en-TV"
+        list << "en-TZ"
+        list << "en-UG"
+        list << "en-UM"
+        list << "en-US-POSIX"
+        list << "en-VC"
+        list << "en-VG"
+        list << "en-VI"
+        list << "en-VU"
+        list << "en-WS"
+        list << "en-ZA"
+        list << "en-ZM"
+        list << "en-ZW"
+        list << "eo"
+        list << "es"
+        list << "es-419"
+        list << "es-AR"
+        list << "es-BO"
+        list << "es-BR"
+        list << "es-BZ"
+        list << "es-CL"
+        list << "es-CO"
+        list << "es-CR"
+        list << "es-CU"
+        list << "es-DO"
+        list << "es-EA"
+        list << "es-EC"
+        list << "es-GQ"
+        list << "es-GT"
+        list << "es-HN"
+        list << "es-IC"
+        list << "es-MX"
+        list << "es-NI"
+        list << "es-PA"
+        list << "es-PE"
+        list << "es-PH"
+        list << "es-PR"
+        list << "es-PY"
+        list << "es-SV"
+        list << "es-US"
+        list << "es-UY"
+        list << "es-VE"
+        list << "et"
+        list << "eu"
+        list << "ewo"
+        list << "fa"
+        list << "fa-AF"
+        list << "ff"
+        list << "ff-CM"
+        list << "ff-GN"
+        list << "ff-MR"
+        list << "fi"
+        list << "fil"
+        list << "fo"
+        list << "fo-DK"
+        list << "fr"
+        list << "fr-BE"
+        list << "fr-BF"
+        list << "fr-BI"
+        list << "fr-BJ"
+        list << "fr-BL"
+        list << "fr-CA"
+        list << "fr-CD"
+        list << "fr-CF"
+        list << "fr-CG"
+        list << "fr-CH"
+        list << "fr-CI"
+        list << "fr-CM"
+        list << "fr-DJ"
+        list << "fr-DZ"
+        list << "fr-GA"
+        list << "fr-GF"
+        list << "fr-GN"
+        list << "fr-GP"
+        list << "fr-GQ"
+        list << "fr-HT"
+        list << "fr-KM"
+        list << "fr-LU"
+        list << "fr-MA"
+        list << "fr-MC"
+        list << "fr-MF"
+        list << "fr-MG"
+        list << "fr-ML"
+        list << "fr-MQ"
+        list << "fr-MR"
+        list << "fr-MU"
+        list << "fr-NC"
+        list << "fr-NE"
+        list << "fr-PF"
+        list << "fr-PM"
+        list << "fr-RE"
+        list << "fr-RW"
+        list << "fr-SC"
+        list << "fr-SN"
+        list << "fr-SY"
+        list << "fr-TD"
+        list << "fr-TG"
+        list << "fr-TN"
+        list << "fr-VU"
+        list << "fr-WF"
+        list << "fr-YT"
+        list << "fur"
+        list << "fy"
+        list << "ga"
+        list << "gd"
+        list << "gl"
+        list << "gsw"
+        list << "gsw-FR"
+        list << "gsw-LI"
+        list << "gu"
+        list << "guz"
+        list << "gv"
+        list << "ha"
+        list << "ha-GH"
+        list << "ha-NE"
+        list << "haw"
+        list << "he"
+        list << "hi"
+        list << "hr"
+        list << "hr-BA"
+        list << "hsb"
+        list << "hu"
+        list << "hy"
+        list << "id"
+        list << "ig"
+        list << "ii"
+        list << "is"
+        list << "it"
+        list << "it-CH"
+        list << "it-SM"
+        list << "it-VA"
+        list << "ja"
+        list << "jgo"
+        list << "jmc"
+        list << "ka"
+        list << "kab"
+        list << "kam"
+        list << "kde"
+        list << "kea"
+        list << "khq"
+        list << "ki"
+        list << "kk"
+        list << "kkj"
+        list << "kl"
+        list << "kln"
+        list << "km"
+        list << "kn"
+        list << "ko"
+        list << "ko-KP"
+        list << "kok"
+        list << "ks"
+        list << "ksb"
+        list << "ksf"
+        list << "ksh"
+        list << "kw"
+        list << "ky"
+        list << "lag"
+        list << "lb"
+        list << "lg"
+        list << "lkt"
+        list << "ln"
+        list << "ln-AO"
+        list << "ln-CF"
+        list << "ln-CG"
+        list << "lo"
+        list << "lrc"
+        list << "lrc-IQ"
+        list << "lt"
+        list << "lu"
+        list << "luo"
+        list << "luy"
+        list << "lv"
+        list << "mas"
+        list << "mas-TZ"
+        list << "mer"
+        list << "mfe"
+        list << "mg"
+        list << "mgh"
+        list << "mgo"
+        list << "mk"
+        list << "ml"
+        list << "mn"
+        list << "mr"
+        list << "ms"
+        list << "ms-BN"
+        list << "ms-SG"
+        list << "mt"
+        list << "mua"
+        list << "my"
+        list << "mzn"
+        list << "naq"
+        list << "nb"
+        list << "nb-SJ"
+        list << "nd"
+        list << "nds"
+        list << "nds-NL"
+        list << "ne"
+        list << "ne-IN"
+        list << "nl"
+        list << "nl-AW"
+        list << "nl-BE"
+        list << "nl-BQ"
+        list << "nl-CW"
+        list << "nl-SR"
+        list << "nl-SX"
+        list << "nmg"
+        list << "nn"
+        list << "nnh"
+        list << "nus"
+        list << "nyn"
+        list << "om"
+        list << "om-KE"
+        list << "or"
+        list << "os"
+        list << "os-RU"
+        list << "pa"
+        list << "pa-Arab"
+        list << "pa-Guru"
+        list << "pl"
+        list << "prg"
+        list << "ps"
+        list << "pt"
+        list << "pt-AO"
+        list << "pt-CH"
+        list << "pt-CV"
+        list << "pt-GQ"
+        list << "pt-GW"
+        list << "pt-LU"
+        list << "pt-MO"
+        list << "pt-MZ"
+        list << "pt-PT"
+        list << "pt-ST"
+        list << "pt-TL"
+        list << "qu"
+        list << "qu-BO"
+        list << "qu-EC"
+        list << "rm"
+        list << "rn"
+        list << "ro"
+        list << "ro-MD"
+        list << "rof"
+        list << "root"
+        list << "ru"
+        list << "ru-BY"
+        list << "ru-KG"
+        list << "ru-KZ"
+        list << "ru-MD"
+        list << "ru-UA"
+        list << "rw"
+        list << "rwk"
+        list << "sah"
+        list << "saq"
+        list << "sbp"
+        list << "se"
+        list << "se-FI"
+        list << "se-SE"
+        list << "seh"
+        list << "ses"
+        list << "sg"
+        list << "shi"
+        list << "shi-Latn"
+        list << "shi-Tfng"
+        list << "si"
+        list << "sk"
+        list << "sl"
+        list << "smn"
+        list << "sn"
+        list << "so"
+        list << "so-DJ"
+        list << "so-ET"
+        list << "so-KE"
+        list << "sq"
+        list << "sq-MK"
+        list << "sq-XK"
+        list << "sr"
+        list << "sr-Cyrl"
+        list << "sr-Cyrl-BA"
+        list << "sr-Cyrl-ME"
+        list << "sr-Cyrl-XK"
+        list << "sr-Latn"
+        list << "sr-Latn-BA"
+        list << "sr-Latn-ME"
+        list << "sr-Latn-XK"
+        list << "sv"
+        list << "sv-AX"
+        list << "sv-FI"
+        list << "sw"
+        list << "sw-CD"
+        list << "sw-KE"
+        list << "sw-UG"
+        list << "ta"
+        list << "ta-LK"
+        list << "ta-MY"
+        list << "ta-SG"
+        list << "te"
+        list << "teo"
+        list << "teo-KE"
+        list << "th"
+        list << "ti"
+        list << "ti-ER"
+        list << "tk"
+        list << "to"
+        list << "tr"
+        list << "tr-CY"
+        list << "twq"
+        list << "tzm"
+        list << "ug"
+        list << "uk"
+        list << "ur"
+        list << "ur-IN"
+        list << "uz"
+        list << "uz-Arab"
+        list << "uz-Cyrl"
+        list << "uz-Latn"
+        list << "vai"
+        list << "vai-Latn"
+        list << "vai-Vaii"
+        list << "vi"
+        list << "vo"
+        list << "vun"
+        list << "wae"
+        list << "xog"
+        list << "yav"
+        list << "yi"
+        list << "yo"
+        list << "yo-BJ"
+        list << "yue"
+        list << "zgh"
+        list << "zh"
+        list << "zh-Hans"
+        list << "zh-Hans-HK"
+        list << "zh-Hans-MO"
+        list << "zh-Hans-SG"
+        list << "zh-Hant"
+        list << "zh-Hant-HK"
+        list << "zh-Hant-MO"
+        list << "zu"
+        list
+      end
     end
   end
 
-  # TODO: this is needed to avoid generating lots of allocas
-  # in LLVM, which makes LLVM really slow. The compiler should
-  # try to avoid/reuse temporary allocas.
-  # Explanation: https://github.com/crystal-lang/crystal/issues/4516#issuecomment-306226171
-  protected def self.put(array : Array, *values) : Nil
-    array << values
+  class Alias
+    @language_alias : Hash(String, LanguageAliasInfo)? = nil
+
+    # Language aliases
+    def language_alias : Hash(String, LanguageAliasInfo)
+      @language_alias ||= begin
+        la = Hash(String, LanguageAliasInfo).new(initial_capacity: 336)
+        put_language_alias la, "aa-SAAHO", LanguageAliasReason::Deprecated, "ssy"
+        put_language_alias la, "aar", LanguageAliasReason::Overlong, "aa"
+        put_language_alias la, "abk", LanguageAliasReason::Overlong, "ab"
+        put_language_alias la, "afr", LanguageAliasReason::Overlong, "af"
+        put_language_alias la, "aju", LanguageAliasReason::Macrolanguage, "jrb"
+        put_language_alias la, "aka", LanguageAliasReason::Overlong, "ak"
+        put_language_alias la, "alb", LanguageAliasReason::Bibliographic, "sq"
+        put_language_alias la, "als", LanguageAliasReason::Macrolanguage, "sq"
+        put_language_alias la, "amh", LanguageAliasReason::Overlong, "am"
+        put_language_alias la, "ara", LanguageAliasReason::Overlong, "ar"
+        put_language_alias la, "arb", LanguageAliasReason::Macrolanguage, "ar"
+        put_language_alias la, "arg", LanguageAliasReason::Overlong, "an"
+        put_language_alias la, "arm", LanguageAliasReason::Bibliographic, "hy"
+        put_language_alias la, "art-lojban", LanguageAliasReason::Deprecated, "jbo"
+        put_language_alias la, "asm", LanguageAliasReason::Overlong, "as"
+        put_language_alias la, "ava", LanguageAliasReason::Overlong, "av"
+        put_language_alias la, "ave", LanguageAliasReason::Overlong, "ae"
+        put_language_alias la, "aym", LanguageAliasReason::Overlong, "ay"
+        put_language_alias la, "ayr", LanguageAliasReason::Macrolanguage, "ay"
+        put_language_alias la, "az-AZ", LanguageAliasReason::Legacy, "az-Latn-AZ"
+        put_language_alias la, "aze", LanguageAliasReason::Overlong, "az"
+        put_language_alias la, "azj", LanguageAliasReason::Macrolanguage, "az"
+        put_language_alias la, "bak", LanguageAliasReason::Overlong, "ba"
+        put_language_alias la, "bam", LanguageAliasReason::Overlong, "bm"
+        put_language_alias la, "baq", LanguageAliasReason::Bibliographic, "eu"
+        put_language_alias la, "bcc", LanguageAliasReason::Macrolanguage, "bal"
+        put_language_alias la, "bcl", LanguageAliasReason::Macrolanguage, "bik"
+        put_language_alias la, "bel", LanguageAliasReason::Overlong, "be"
+        put_language_alias la, "ben", LanguageAliasReason::Overlong, "bn"
+        put_language_alias la, "bh", LanguageAliasReason::Macrolanguage, "bho"
+        put_language_alias la, "bih", LanguageAliasReason::Overlong, "bho"
+        put_language_alias la, "bis", LanguageAliasReason::Overlong, "bi"
+        put_language_alias la, "bod", LanguageAliasReason::Overlong, "bo"
+        put_language_alias la, "bos", LanguageAliasReason::Overlong, "bs"
+        put_language_alias la, "bre", LanguageAliasReason::Overlong, "br"
+        put_language_alias la, "bs-BA", LanguageAliasReason::Legacy, "bs-Latn-BA"
+        put_language_alias la, "bul", LanguageAliasReason::Overlong, "bg"
+        put_language_alias la, "bur", LanguageAliasReason::Bibliographic, "my"
+        put_language_alias la, "bxk", LanguageAliasReason::Macrolanguage, "luy"
+        put_language_alias la, "bxr", LanguageAliasReason::Macrolanguage, "bua"
+        put_language_alias la, "cat", LanguageAliasReason::Overlong, "ca"
+        put_language_alias la, "ces", LanguageAliasReason::Overlong, "cs"
+        put_language_alias la, "cha", LanguageAliasReason::Overlong, "ch"
+        put_language_alias la, "che", LanguageAliasReason::Overlong, "ce"
+        put_language_alias la, "chi", LanguageAliasReason::Bibliographic, "zh"
+        put_language_alias la, "chu", LanguageAliasReason::Overlong, "cu"
+        put_language_alias la, "chv", LanguageAliasReason::Overlong, "cv"
+        put_language_alias la, "cld", LanguageAliasReason::Macrolanguage, "syr"
+        put_language_alias la, "cmn", LanguageAliasReason::Macrolanguage, "zh"
+        put_language_alias la, "cor", LanguageAliasReason::Overlong, "kw"
+        put_language_alias la, "cos", LanguageAliasReason::Overlong, "co"
+        put_language_alias la, "cre", LanguageAliasReason::Overlong, "cr"
+        put_language_alias la, "cwd", LanguageAliasReason::Macrolanguage, "cr"
+        put_language_alias la, "cym", LanguageAliasReason::Overlong, "cy"
+        put_language_alias la, "cze", LanguageAliasReason::Bibliographic, "cs"
+        put_language_alias la, "dan", LanguageAliasReason::Overlong, "da"
+        put_language_alias la, "deu", LanguageAliasReason::Overlong, "de"
+        put_language_alias la, "dgo", LanguageAliasReason::Macrolanguage, "doi"
+        put_language_alias la, "dhd", LanguageAliasReason::Macrolanguage, "mwr"
+        put_language_alias la, "dik", LanguageAliasReason::Macrolanguage, "din"
+        put_language_alias la, "diq", LanguageAliasReason::Macrolanguage, "zza"
+        put_language_alias la, "div", LanguageAliasReason::Overlong, "dv"
+        put_language_alias la, "dut", LanguageAliasReason::Bibliographic, "nl"
+        put_language_alias la, "dzo", LanguageAliasReason::Overlong, "dz"
+        put_language_alias la, "ekk", LanguageAliasReason::Macrolanguage, "et"
+        put_language_alias la, "ell", LanguageAliasReason::Overlong, "el"
+        put_language_alias la, "emk", LanguageAliasReason::Macrolanguage, "man"
+        put_language_alias la, "eng", LanguageAliasReason::Overlong, "en"
+        put_language_alias la, "epo", LanguageAliasReason::Overlong, "eo"
+        put_language_alias la, "esk", LanguageAliasReason::Macrolanguage, "ik"
+        put_language_alias la, "est", LanguageAliasReason::Overlong, "et"
+        put_language_alias la, "eus", LanguageAliasReason::Overlong, "eu"
+        put_language_alias la, "ewe", LanguageAliasReason::Overlong, "ee"
+        put_language_alias la, "fao", LanguageAliasReason::Overlong, "fo"
+        put_language_alias la, "fas", LanguageAliasReason::Overlong, "fa"
+        put_language_alias la, "fat", LanguageAliasReason::Macrolanguage, "ak"
+        put_language_alias la, "fij", LanguageAliasReason::Overlong, "fj"
+        put_language_alias la, "fin", LanguageAliasReason::Overlong, "fi"
+        put_language_alias la, "fra", LanguageAliasReason::Overlong, "fr"
+        put_language_alias la, "fre", LanguageAliasReason::Bibliographic, "fr"
+        put_language_alias la, "fry", LanguageAliasReason::Overlong, "fy"
+        put_language_alias la, "fuc", LanguageAliasReason::Macrolanguage, "ff"
+        put_language_alias la, "ful", LanguageAliasReason::Overlong, "ff"
+        put_language_alias la, "gaz", LanguageAliasReason::Macrolanguage, "om"
+        put_language_alias la, "gbo", LanguageAliasReason::Macrolanguage, "grb"
+        put_language_alias la, "geo", LanguageAliasReason::Bibliographic, "ka"
+        put_language_alias la, "ger", LanguageAliasReason::Bibliographic, "de"
+        put_language_alias la, "gla", LanguageAliasReason::Overlong, "gd"
+        put_language_alias la, "gle", LanguageAliasReason::Overlong, "ga"
+        put_language_alias la, "glg", LanguageAliasReason::Overlong, "gl"
+        put_language_alias la, "glv", LanguageAliasReason::Overlong, "gv"
+        put_language_alias la, "gno", LanguageAliasReason::Macrolanguage, "gon"
+        put_language_alias la, "gre", LanguageAliasReason::Bibliographic, "el"
+        put_language_alias la, "grn", LanguageAliasReason::Overlong, "gn"
+        put_language_alias la, "gug", LanguageAliasReason::Macrolanguage, "gn"
+        put_language_alias la, "guj", LanguageAliasReason::Overlong, "gu"
+        put_language_alias la, "gya", LanguageAliasReason::Macrolanguage, "gba"
+        put_language_alias la, "ha-Latn-GH", LanguageAliasReason::Legacy, "ha-GH"
+        put_language_alias la, "ha-Latn-NE", LanguageAliasReason::Legacy, "ha-NE"
+        put_language_alias la, "ha-Latn-NG", LanguageAliasReason::Legacy, "ha-NG"
+        put_language_alias la, "hat", LanguageAliasReason::Overlong, "ht"
+        put_language_alias la, "hau", LanguageAliasReason::Overlong, "ha"
+        put_language_alias la, "hbs", LanguageAliasReason::Overlong, "sr-Latn"
+        put_language_alias la, "hdn", LanguageAliasReason::Macrolanguage, "hai"
+        put_language_alias la, "hea", LanguageAliasReason::Macrolanguage, "hmn"
+        put_language_alias la, "heb", LanguageAliasReason::Overlong, "he"
+        put_language_alias la, "her", LanguageAliasReason::Overlong, "hz"
+        put_language_alias la, "him", LanguageAliasReason::Macrolanguage, "srx"
+        put_language_alias la, "hin", LanguageAliasReason::Overlong, "hi"
+        put_language_alias la, "hmo", LanguageAliasReason::Overlong, "ho"
+        put_language_alias la, "hrv", LanguageAliasReason::Overlong, "hr"
+        put_language_alias la, "hun", LanguageAliasReason::Overlong, "hu"
+        put_language_alias la, "hye", LanguageAliasReason::Overlong, "hy"
+        put_language_alias la, "i-ami", LanguageAliasReason::Deprecated, "ami"
+        put_language_alias la, "i-bnn", LanguageAliasReason::Deprecated, "bnn"
+        put_language_alias la, "i-hak", LanguageAliasReason::Deprecated, "hak"
+        put_language_alias la, "i-klingon", LanguageAliasReason::Deprecated, "tlh"
+        put_language_alias la, "i-lux", LanguageAliasReason::Deprecated, "lb"
+        put_language_alias la, "i-navajo", LanguageAliasReason::Deprecated, "nv"
+        put_language_alias la, "i-pwn", LanguageAliasReason::Deprecated, "pwn"
+        put_language_alias la, "i-tao", LanguageAliasReason::Deprecated, "tao"
+        put_language_alias la, "i-tay", LanguageAliasReason::Deprecated, "tay"
+        put_language_alias la, "i-tsu", LanguageAliasReason::Deprecated, "tsu"
+        put_language_alias la, "ibo", LanguageAliasReason::Overlong, "ig"
+        put_language_alias la, "ice", LanguageAliasReason::Bibliographic, "is"
+        put_language_alias la, "ido", LanguageAliasReason::Overlong, "io"
+        put_language_alias la, "iii", LanguageAliasReason::Overlong, "ii"
+        put_language_alias la, "ike", LanguageAliasReason::Macrolanguage, "iu"
+        put_language_alias la, "iku", LanguageAliasReason::Overlong, "iu"
+        put_language_alias la, "ile", LanguageAliasReason::Overlong, "ie"
+        put_language_alias la, "in", LanguageAliasReason::Deprecated, "id"
+        put_language_alias la, "ina", LanguageAliasReason::Overlong, "ia"
+        put_language_alias la, "ind", LanguageAliasReason::Overlong, "id"
+        put_language_alias la, "ipk", LanguageAliasReason::Overlong, "ik"
+        put_language_alias la, "isl", LanguageAliasReason::Overlong, "is"
+        put_language_alias la, "ita", LanguageAliasReason::Overlong, "it"
+        put_language_alias la, "iw", LanguageAliasReason::Deprecated, "he"
+        put_language_alias la, "jav", LanguageAliasReason::Overlong, "jv"
+        put_language_alias la, "ji", LanguageAliasReason::Deprecated, "yi"
+        put_language_alias la, "jpn", LanguageAliasReason::Overlong, "ja"
+        put_language_alias la, "jw", LanguageAliasReason::Deprecated, "jv"
+        put_language_alias la, "kal", LanguageAliasReason::Overlong, "kl"
+        put_language_alias la, "kan", LanguageAliasReason::Overlong, "kn"
+        put_language_alias la, "kas", LanguageAliasReason::Overlong, "ks"
+        put_language_alias la, "kat", LanguageAliasReason::Overlong, "ka"
+        put_language_alias la, "kau", LanguageAliasReason::Overlong, "kr"
+        put_language_alias la, "kaz", LanguageAliasReason::Overlong, "kk"
+        put_language_alias la, "khk", LanguageAliasReason::Macrolanguage, "mn"
+        put_language_alias la, "khm", LanguageAliasReason::Overlong, "km"
+        put_language_alias la, "kik", LanguageAliasReason::Overlong, "ki"
+        put_language_alias la, "kin", LanguageAliasReason::Overlong, "rw"
+        put_language_alias la, "kir", LanguageAliasReason::Overlong, "ky"
+        put_language_alias la, "kk-Cyrl-KZ", LanguageAliasReason::Legacy, "kk-KZ"
+        put_language_alias la, "kmr", LanguageAliasReason::Macrolanguage, "ku"
+        put_language_alias la, "knc", LanguageAliasReason::Macrolanguage, "kr"
+        put_language_alias la, "kng", LanguageAliasReason::Macrolanguage, "kg"
+        put_language_alias la, "knn", LanguageAliasReason::Macrolanguage, "kok"
+        put_language_alias la, "kom", LanguageAliasReason::Overlong, "kv"
+        put_language_alias la, "kon", LanguageAliasReason::Overlong, "kg"
+        put_language_alias la, "kor", LanguageAliasReason::Overlong, "ko"
+        put_language_alias la, "kpv", LanguageAliasReason::Macrolanguage, "kv"
+        put_language_alias la, "ks-Arab-IN", LanguageAliasReason::Legacy, "ks-IN"
+        put_language_alias la, "kua", LanguageAliasReason::Overlong, "kj"
+        put_language_alias la, "kur", LanguageAliasReason::Overlong, "ku"
+        put_language_alias la, "ky-Cyrl-KG", LanguageAliasReason::Legacy, "ky-KG"
+        put_language_alias la, "lao", LanguageAliasReason::Overlong, "lo"
+        put_language_alias la, "lat", LanguageAliasReason::Overlong, "la"
+        put_language_alias la, "lav", LanguageAliasReason::Overlong, "lv"
+        put_language_alias la, "lbk", LanguageAliasReason::Macrolanguage, "bnc"
+        put_language_alias la, "lim", LanguageAliasReason::Overlong, "li"
+        put_language_alias la, "lin", LanguageAliasReason::Overlong, "ln"
+        put_language_alias la, "lit", LanguageAliasReason::Overlong, "lt"
+        put_language_alias la, "ltz", LanguageAliasReason::Overlong, "lb"
+        put_language_alias la, "lub", LanguageAliasReason::Overlong, "lu"
+        put_language_alias la, "lug", LanguageAliasReason::Overlong, "lg"
+        put_language_alias la, "lvs", LanguageAliasReason::Macrolanguage, "lv"
+        put_language_alias la, "mac", LanguageAliasReason::Bibliographic, "mk"
+        put_language_alias la, "mah", LanguageAliasReason::Overlong, "mh"
+        put_language_alias la, "mal", LanguageAliasReason::Overlong, "ml"
+        put_language_alias la, "mao", LanguageAliasReason::Bibliographic, "mi"
+        put_language_alias la, "mar", LanguageAliasReason::Overlong, "mr"
+        put_language_alias la, "may", LanguageAliasReason::Bibliographic, "ms"
+        put_language_alias la, "mhr", LanguageAliasReason::Macrolanguage, "chm"
+        put_language_alias la, "mkd", LanguageAliasReason::Overlong, "mk"
+        put_language_alias la, "mlg", LanguageAliasReason::Overlong, "mg"
+        put_language_alias la, "mlt", LanguageAliasReason::Overlong, "mt"
+        put_language_alias la, "mn-Cyrl-MN", LanguageAliasReason::Legacy, "mn-MN"
+        put_language_alias la, "mnk", LanguageAliasReason::Macrolanguage, "man"
+        put_language_alias la, "mo", LanguageAliasReason::Deprecated, "ro-MD"
+        put_language_alias la, "mol", LanguageAliasReason::Overlong, "ro-MD"
+        put_language_alias la, "mon", LanguageAliasReason::Overlong, "mn"
+        put_language_alias la, "mri", LanguageAliasReason::Overlong, "mi"
+        put_language_alias la, "ms-Latn-BN", LanguageAliasReason::Legacy, "ms-BN"
+        put_language_alias la, "ms-Latn-MY", LanguageAliasReason::Legacy, "ms-MY"
+        put_language_alias la, "ms-Latn-SG", LanguageAliasReason::Legacy, "ms-SG"
+        put_language_alias la, "msa", LanguageAliasReason::Overlong, "ms"
+        put_language_alias la, "mup", LanguageAliasReason::Macrolanguage, "raj"
+        put_language_alias la, "mya", LanguageAliasReason::Overlong, "my"
+        put_language_alias la, "nau", LanguageAliasReason::Overlong, "na"
+        put_language_alias la, "nav", LanguageAliasReason::Overlong, "nv"
+        put_language_alias la, "nbl", LanguageAliasReason::Overlong, "nr"
+        put_language_alias la, "nde", LanguageAliasReason::Overlong, "nd"
+        put_language_alias la, "ndo", LanguageAliasReason::Overlong, "ng"
+        put_language_alias la, "nep", LanguageAliasReason::Overlong, "ne"
+        put_language_alias la, "nld", LanguageAliasReason::Overlong, "nl"
+        put_language_alias la, "nno", LanguageAliasReason::Overlong, "nn"
+        put_language_alias la, "no", LanguageAliasReason::Legacy, "nb"
+        put_language_alias la, "no-bok", LanguageAliasReason::Deprecated, "nb"
+        put_language_alias la, "no-BOKMAL", LanguageAliasReason::Deprecated, "nb"
+        put_language_alias la, "no-nyn", LanguageAliasReason::Deprecated, "nn"
+        put_language_alias la, "no-NYNORSK", LanguageAliasReason::Deprecated, "nn"
+        put_language_alias la, "nob", LanguageAliasReason::Overlong, "nb"
+        put_language_alias la, "nor", LanguageAliasReason::Overlong, "nb"
+        put_language_alias la, "npi", LanguageAliasReason::Macrolanguage, "ne"
+        put_language_alias la, "nya", LanguageAliasReason::Overlong, "ny"
+        put_language_alias la, "oci", LanguageAliasReason::Overlong, "oc"
+        put_language_alias la, "ojg", LanguageAliasReason::Macrolanguage, "oj"
+        put_language_alias la, "oji", LanguageAliasReason::Overlong, "oj"
+        put_language_alias la, "ori", LanguageAliasReason::Overlong, "or"
+        put_language_alias la, "orm", LanguageAliasReason::Overlong, "om"
+        put_language_alias la, "ory", LanguageAliasReason::Macrolanguage, "or"
+        put_language_alias la, "oss", LanguageAliasReason::Overlong, "os"
+        put_language_alias la, "pa-IN", LanguageAliasReason::Legacy, "pa-Guru-IN"
+        put_language_alias la, "pa-PK", LanguageAliasReason::Legacy, "pa-Arab-PK"
+        put_language_alias la, "pan", LanguageAliasReason::Overlong, "pa"
+        put_language_alias la, "pbu", LanguageAliasReason::Macrolanguage, "ps"
+        put_language_alias la, "per", LanguageAliasReason::Bibliographic, "fa"
+        put_language_alias la, "pes", LanguageAliasReason::Macrolanguage, "fa"
+        put_language_alias la, "pli", LanguageAliasReason::Overlong, "pi"
+        put_language_alias la, "plt", LanguageAliasReason::Macrolanguage, "mg"
+        put_language_alias la, "pnb", LanguageAliasReason::Macrolanguage, "lah"
+        put_language_alias la, "pol", LanguageAliasReason::Overlong, "pl"
+        put_language_alias la, "por", LanguageAliasReason::Overlong, "pt"
+        put_language_alias la, "prs", LanguageAliasReason::Overlong, "fa-AF"
+        put_language_alias la, "pus", LanguageAliasReason::Overlong, "ps"
+        put_language_alias la, "que", LanguageAliasReason::Overlong, "qu"
+        put_language_alias la, "quz", LanguageAliasReason::Macrolanguage, "qu"
+        put_language_alias la, "rmy", LanguageAliasReason::Macrolanguage, "rom"
+        put_language_alias la, "roh", LanguageAliasReason::Overlong, "rm"
+        put_language_alias la, "ron", LanguageAliasReason::Overlong, "ro"
+        put_language_alias la, "rum", LanguageAliasReason::Bibliographic, "ro"
+        put_language_alias la, "run", LanguageAliasReason::Overlong, "rn"
+        put_language_alias la, "rus", LanguageAliasReason::Overlong, "ru"
+        put_language_alias la, "sag", LanguageAliasReason::Overlong, "sg"
+        put_language_alias la, "san", LanguageAliasReason::Overlong, "sa"
+        put_language_alias la, "scc", LanguageAliasReason::Deprecated, "sr"
+        put_language_alias la, "scr", LanguageAliasReason::Deprecated, "hr"
+        put_language_alias la, "sgn-BE-FR", LanguageAliasReason::Deprecated, "sfb"
+        put_language_alias la, "sgn-BE-NL", LanguageAliasReason::Deprecated, "vgt"
+        put_language_alias la, "sgn-CH-DE", LanguageAliasReason::Deprecated, "sgg"
+        put_language_alias la, "sh", LanguageAliasReason::Legacy, "sr-Latn"
+        put_language_alias la, "shi-MA", LanguageAliasReason::Legacy, "shi-Tfng-MA"
+        put_language_alias la, "sin", LanguageAliasReason::Overlong, "si"
+        put_language_alias la, "slk", LanguageAliasReason::Overlong, "sk"
+        put_language_alias la, "slo", LanguageAliasReason::Bibliographic, "sk"
+        put_language_alias la, "slv", LanguageAliasReason::Overlong, "sl"
+        put_language_alias la, "sme", LanguageAliasReason::Overlong, "se"
+        put_language_alias la, "smo", LanguageAliasReason::Overlong, "sm"
+        put_language_alias la, "sna", LanguageAliasReason::Overlong, "sn"
+        put_language_alias la, "snd", LanguageAliasReason::Overlong, "sd"
+        put_language_alias la, "som", LanguageAliasReason::Overlong, "so"
+        put_language_alias la, "sot", LanguageAliasReason::Overlong, "st"
+        put_language_alias la, "spa", LanguageAliasReason::Overlong, "es"
+        put_language_alias la, "spy", LanguageAliasReason::Macrolanguage, "kln"
+        put_language_alias la, "sqi", LanguageAliasReason::Overlong, "sq"
+        put_language_alias la, "sr-BA", LanguageAliasReason::Legacy, "sr-Cyrl-BA"
+        put_language_alias la, "sr-ME", LanguageAliasReason::Legacy, "sr-Latn-ME"
+        put_language_alias la, "sr-RS", LanguageAliasReason::Legacy, "sr-Cyrl-RS"
+        put_language_alias la, "sr-XK", LanguageAliasReason::Legacy, "sr-Cyrl-XK"
+        put_language_alias la, "src", LanguageAliasReason::Macrolanguage, "sc"
+        put_language_alias la, "srd", LanguageAliasReason::Overlong, "sc"
+        put_language_alias la, "srp", LanguageAliasReason::Overlong, "sr"
+        put_language_alias la, "ssw", LanguageAliasReason::Overlong, "ss"
+        put_language_alias la, "sun", LanguageAliasReason::Overlong, "su"
+        put_language_alias la, "swa", LanguageAliasReason::Overlong, "sw"
+        put_language_alias la, "swc", LanguageAliasReason::Overlong, "sw-CD"
+        put_language_alias la, "swe", LanguageAliasReason::Overlong, "sv"
+        put_language_alias la, "swh", LanguageAliasReason::Macrolanguage, "sw"
+        put_language_alias la, "tah", LanguageAliasReason::Overlong, "ty"
+        put_language_alias la, "tam", LanguageAliasReason::Overlong, "ta"
+        put_language_alias la, "tat", LanguageAliasReason::Overlong, "tt"
+        put_language_alias la, "tel", LanguageAliasReason::Overlong, "te"
+        put_language_alias la, "tgk", LanguageAliasReason::Overlong, "tg"
+        put_language_alias la, "tgl", LanguageAliasReason::Overlong, "fil"
+        put_language_alias la, "tha", LanguageAliasReason::Overlong, "th"
+        put_language_alias la, "tib", LanguageAliasReason::Bibliographic, "bo"
+        put_language_alias la, "tir", LanguageAliasReason::Overlong, "ti"
+        put_language_alias la, "tl", LanguageAliasReason::Legacy, "fil"
+        put_language_alias la, "ton", LanguageAliasReason::Overlong, "to"
+        put_language_alias la, "tsn", LanguageAliasReason::Overlong, "tn"
+        put_language_alias la, "tso", LanguageAliasReason::Overlong, "ts"
+        put_language_alias la, "ttq", LanguageAliasReason::Macrolanguage, "tmh"
+        put_language_alias la, "tuk", LanguageAliasReason::Overlong, "tk"
+        put_language_alias la, "tur", LanguageAliasReason::Overlong, "tr"
+        put_language_alias la, "tw", LanguageAliasReason::Macrolanguage, "ak"
+        put_language_alias la, "twi", LanguageAliasReason::Overlong, "ak"
+        put_language_alias la, "tzm-Latn-MA", LanguageAliasReason::Legacy, "tzm-MA"
+        put_language_alias la, "ug-Arab-CN", LanguageAliasReason::Legacy, "ug-CN"
+        put_language_alias la, "uig", LanguageAliasReason::Overlong, "ug"
+        put_language_alias la, "ukr", LanguageAliasReason::Overlong, "uk"
+        put_language_alias la, "umu", LanguageAliasReason::Macrolanguage, "del"
+        put_language_alias la, "urd", LanguageAliasReason::Overlong, "ur"
+        put_language_alias la, "uz-AF", LanguageAliasReason::Legacy, "uz-Arab-AF"
+        put_language_alias la, "uz-UZ", LanguageAliasReason::Legacy, "uz-Latn-UZ"
+        put_language_alias la, "uzb", LanguageAliasReason::Overlong, "uz"
+        put_language_alias la, "uzn", LanguageAliasReason::Macrolanguage, "uz"
+        put_language_alias la, "vai-LR", LanguageAliasReason::Legacy, "vai-Vaii-LR"
+        put_language_alias la, "ven", LanguageAliasReason::Overlong, "ve"
+        put_language_alias la, "vie", LanguageAliasReason::Overlong, "vi"
+        put_language_alias la, "vol", LanguageAliasReason::Overlong, "vo"
+        put_language_alias la, "wel", LanguageAliasReason::Bibliographic, "cy"
+        put_language_alias la, "wln", LanguageAliasReason::Overlong, "wa"
+        put_language_alias la, "wol", LanguageAliasReason::Overlong, "wo"
+        put_language_alias la, "xho", LanguageAliasReason::Overlong, "xh"
+        put_language_alias la, "xpe", LanguageAliasReason::Macrolanguage, "kpe"
+        put_language_alias la, "xsl", LanguageAliasReason::Macrolanguage, "den"
+        put_language_alias la, "ydd", LanguageAliasReason::Macrolanguage, "yi"
+        put_language_alias la, "yid", LanguageAliasReason::Overlong, "yi"
+        put_language_alias la, "yor", LanguageAliasReason::Overlong, "yo"
+        put_language_alias la, "yue-CN", LanguageAliasReason::Legacy, "yue-Hans-CN"
+        put_language_alias la, "yue-HK", LanguageAliasReason::Legacy, "yue-Hant-HK"
+        put_language_alias la, "zai", LanguageAliasReason::Macrolanguage, "zap"
+        put_language_alias la, "zh-CN", LanguageAliasReason::Legacy, "zh-Hans-CN"
+        put_language_alias la, "zh-guoyu", LanguageAliasReason::Deprecated, "zh"
+        put_language_alias la, "zh-hakka", LanguageAliasReason::Deprecated, "hak"
+        put_language_alias la, "zh-HK", LanguageAliasReason::Legacy, "zh-Hant-HK"
+        put_language_alias la, "zh-min-nan", LanguageAliasReason::Deprecated, "nan"
+        put_language_alias la, "zh-MO", LanguageAliasReason::Legacy, "zh-Hant-MO"
+        put_language_alias la, "zh-SG", LanguageAliasReason::Legacy, "zh-Hans-SG"
+        put_language_alias la, "zh-TW", LanguageAliasReason::Legacy, "zh-Hant-TW"
+        put_language_alias la, "zh-xiang", LanguageAliasReason::Deprecated, "hsn"
+        put_language_alias la, "zha", LanguageAliasReason::Overlong, "za"
+        put_language_alias la, "zho", LanguageAliasReason::Overlong, "zh"
+        put_language_alias la, "zsm", LanguageAliasReason::Macrolanguage, "ms"
+        put_language_alias la, "zul", LanguageAliasReason::Overlong, "zu"
+        put_language_alias la, "zyb", LanguageAliasReason::Macrolanguage, "za"
+        la
+      end
+    end
+
+    private def put_language_alias(la, language, reason, replacement) : Nil
+      la[language] = LanguageAliasInfo.new reason, replacement
+    end
   end
 
-  protected def self.put(hash : Hash, key, *values) : Nil
-    hash[key] = values
+  class Metadata
+    getter alias : Alias = Alias.new
+  end
+
+  class CalendarData
+    # TODO: this is needed to avoid generating lots of allocas
+    # in LLVM, which makes LLVM really slow. The compiler should
+    # try to avoid/reuse temporary allocas.
+    # Explanation: https://github.com/crystal-lang/crystal/issues/4516#issuecomment-306226171
+    protected def self.put_era(eras : Array(CalendarDataEra), start : String?, end : String?) : Nil
+      eras << CalendarDataEra.new(start, end)
+    end
+
+    @buddhist : CalendarDataEntry? = nil
+
+    def buddhist : CalendarDataEntry
+      @buddhist ||= begin
+        eras = Array(CalendarDataEra).new(1)
+        CalendarData.put_era(eras, "-542-01-01", nil)
+        CalendarDataEntry.new("buddhist", CalendarSystem::Solar, eras)
+      end
+    end
+
+    @chinese : CalendarDataEntry? = nil
+
+    def chinese : CalendarDataEntry
+      @chinese ||= begin
+        eras = Array(CalendarDataEra).new(1)
+        CalendarData.put_era(eras, "-2636-01-01", nil)
+        CalendarDataEntry.new("chinese", CalendarSystem::Lunisolar, eras)
+      end
+    end
+
+    @coptic : CalendarDataEntry? = nil
+
+    def coptic : CalendarDataEntry
+      @coptic ||= begin
+        eras = Array(CalendarDataEra).new(2)
+        CalendarData.put_era(eras, nil, "284-08-28")
+        CalendarData.put_era(eras, "284-08-29", nil)
+        CalendarDataEntry.new("coptic", CalendarSystem::Other, eras)
+      end
+    end
+
+    @dangi : CalendarDataEntry? = nil
+
+    def dangi : CalendarDataEntry
+      @dangi ||= begin
+        eras = Array(CalendarDataEra).new(1)
+        CalendarData.put_era(eras, "-2332-01-01", nil)
+        CalendarDataEntry.new("dangi", CalendarSystem::Lunisolar, eras)
+      end
+    end
+
+    @ethiopic : CalendarDataEntry? = nil
+
+    def ethiopic : CalendarDataEntry
+      @ethiopic ||= begin
+        eras = Array(CalendarDataEra).new(2)
+        CalendarData.put_era(eras, nil, "8-08-28")
+        CalendarData.put_era(eras, "8-08-29", nil)
+        CalendarDataEntry.new("ethiopic", CalendarSystem::Other, eras)
+      end
+    end
+
+    @ethiopic_amete_alem : CalendarDataEntry? = nil
+
+    def ethiopic_amete_alem : CalendarDataEntry
+      @ethiopic_amete_alem ||= begin
+        eras = Array(CalendarDataEra).new(1)
+        CalendarData.put_era(eras, nil, "-5492-08-29")
+        CalendarDataEntry.new("ethiopic-amete-alem", CalendarSystem::None, eras)
+      end
+    end
+
+    @generic : CalendarDataEntry? = nil
+
+    def generic : CalendarDataEntry
+      @generic ||= begin
+        eras = Array(CalendarDataEra).new(0)
+        CalendarDataEntry.new("generic", CalendarSystem::None, eras)
+      end
+    end
+
+    @gregorian : CalendarDataEntry? = nil
+
+    def gregorian : CalendarDataEntry
+      @gregorian ||= begin
+        eras = Array(CalendarDataEra).new(2)
+        CalendarData.put_era(eras, nil, "0-12-31")
+        CalendarData.put_era(eras, "1-01-01", nil)
+        CalendarDataEntry.new("gregorian", CalendarSystem::Solar, eras)
+      end
+    end
+
+    @hebrew : CalendarDataEntry? = nil
+
+    def hebrew : CalendarDataEntry
+      @hebrew ||= begin
+        eras = Array(CalendarDataEra).new(1)
+        CalendarData.put_era(eras, "-3760-10-7", nil)
+        CalendarDataEntry.new("hebrew", CalendarSystem::Lunisolar, eras)
+      end
+    end
+
+    @indian : CalendarDataEntry? = nil
+
+    def indian : CalendarDataEntry
+      @indian ||= begin
+        eras = Array(CalendarDataEra).new(1)
+        CalendarData.put_era(eras, "79-01-01", nil)
+        CalendarDataEntry.new("indian", CalendarSystem::None, eras)
+      end
+    end
+
+    @islamic : CalendarDataEntry? = nil
+
+    def islamic : CalendarDataEntry
+      @islamic ||= begin
+        eras = Array(CalendarDataEra).new(1)
+        CalendarData.put_era(eras, "622-7-15", nil)
+        CalendarDataEntry.new("islamic", CalendarSystem::Lunar, eras)
+      end
+    end
+
+    @islamic_civil : CalendarDataEntry? = nil
+
+    def islamic_civil : CalendarDataEntry
+      @islamic_civil ||= begin
+        eras = Array(CalendarDataEra).new(1)
+        CalendarData.put_era(eras, "622-7-16", nil)
+        CalendarDataEntry.new("islamic-civil", CalendarSystem::Lunar, eras)
+      end
+    end
+
+    @islamic_rgsa : CalendarDataEntry? = nil
+
+    def islamic_rgsa : CalendarDataEntry
+      @islamic_rgsa ||= begin
+        eras = Array(CalendarDataEra).new(1)
+        CalendarData.put_era(eras, "622-7-15", nil)
+        CalendarDataEntry.new("islamic-rgsa", CalendarSystem::Lunar, eras)
+      end
+    end
+
+    @islamic_tbla : CalendarDataEntry? = nil
+
+    def islamic_tbla : CalendarDataEntry
+      @islamic_tbla ||= begin
+        eras = Array(CalendarDataEra).new(1)
+        CalendarData.put_era(eras, "622-7-15", nil)
+        CalendarDataEntry.new("islamic-tbla", CalendarSystem::Lunar, eras)
+      end
+    end
+
+    @islamic_umalqura : CalendarDataEntry? = nil
+
+    def islamic_umalqura : CalendarDataEntry
+      @islamic_umalqura ||= begin
+        eras = Array(CalendarDataEra).new(1)
+        CalendarData.put_era(eras, "622-7-15", nil)
+        CalendarDataEntry.new("islamic-umalqura", CalendarSystem::Lunar, eras)
+      end
+    end
+
+    @japanese : CalendarDataEntry? = nil
+
+    def japanese : CalendarDataEntry
+      @japanese ||= begin
+        eras = Array(CalendarDataEra).new(236)
+        CalendarData.put_era(eras, "645-6-19", nil)
+        CalendarData.put_era(eras, "650-2-15", nil)
+        CalendarData.put_era(eras, "672-1-1", nil)
+        CalendarData.put_era(eras, "686-7-20", nil)
+        CalendarData.put_era(eras, "701-3-21", nil)
+        CalendarData.put_era(eras, "704-5-10", nil)
+        CalendarData.put_era(eras, "708-1-11", nil)
+        CalendarData.put_era(eras, "715-9-2", nil)
+        CalendarData.put_era(eras, "717-11-17", nil)
+        CalendarData.put_era(eras, "724-2-4", nil)
+        CalendarData.put_era(eras, "729-8-5", nil)
+        CalendarData.put_era(eras, "749-4-14", nil)
+        CalendarData.put_era(eras, "749-7-2", nil)
+        CalendarData.put_era(eras, "757-8-18", nil)
+        CalendarData.put_era(eras, "765-1-7", nil)
+        CalendarData.put_era(eras, "767-8-16", nil)
+        CalendarData.put_era(eras, "770-10-1", nil)
+        CalendarData.put_era(eras, "781-1-1", nil)
+        CalendarData.put_era(eras, "782-8-19", nil)
+        CalendarData.put_era(eras, "806-5-18", nil)
+        CalendarData.put_era(eras, "810-9-19", nil)
+        CalendarData.put_era(eras, "824-1-5", nil)
+        CalendarData.put_era(eras, "834-1-3", nil)
+        CalendarData.put_era(eras, "848-6-13", nil)
+        CalendarData.put_era(eras, "851-4-28", nil)
+        CalendarData.put_era(eras, "854-11-30", nil)
+        CalendarData.put_era(eras, "857-2-21", nil)
+        CalendarData.put_era(eras, "859-4-15", nil)
+        CalendarData.put_era(eras, "877-4-16", nil)
+        CalendarData.put_era(eras, "885-2-21", nil)
+        CalendarData.put_era(eras, "889-4-27", nil)
+        CalendarData.put_era(eras, "898-4-26", nil)
+        CalendarData.put_era(eras, "901-7-15", nil)
+        CalendarData.put_era(eras, "923-4-11", nil)
+        CalendarData.put_era(eras, "931-4-26", nil)
+        CalendarData.put_era(eras, "938-5-22", nil)
+        CalendarData.put_era(eras, "947-4-22", nil)
+        CalendarData.put_era(eras, "957-10-27", nil)
+        CalendarData.put_era(eras, "961-2-16", nil)
+        CalendarData.put_era(eras, "964-7-10", nil)
+        CalendarData.put_era(eras, "968-8-13", nil)
+        CalendarData.put_era(eras, "970-3-25", nil)
+        CalendarData.put_era(eras, "973-12-20", nil)
+        CalendarData.put_era(eras, "976-7-13", nil)
+        CalendarData.put_era(eras, "978-11-29", nil)
+        CalendarData.put_era(eras, "983-4-15", nil)
+        CalendarData.put_era(eras, "985-4-27", nil)
+        CalendarData.put_era(eras, "987-4-5", nil)
+        CalendarData.put_era(eras, "989-8-8", nil)
+        CalendarData.put_era(eras, "990-11-7", nil)
+        CalendarData.put_era(eras, "995-2-22", nil)
+        CalendarData.put_era(eras, "999-1-13", nil)
+        CalendarData.put_era(eras, "1004-7-20", nil)
+        CalendarData.put_era(eras, "1012-12-25", nil)
+        CalendarData.put_era(eras, "1017-4-23", nil)
+        CalendarData.put_era(eras, "1021-2-2", nil)
+        CalendarData.put_era(eras, "1024-7-13", nil)
+        CalendarData.put_era(eras, "1028-7-25", nil)
+        CalendarData.put_era(eras, "1037-4-21", nil)
+        CalendarData.put_era(eras, "1040-11-10", nil)
+        CalendarData.put_era(eras, "1044-11-24", nil)
+        CalendarData.put_era(eras, "1046-4-14", nil)
+        CalendarData.put_era(eras, "1053-1-11", nil)
+        CalendarData.put_era(eras, "1058-8-29", nil)
+        CalendarData.put_era(eras, "1065-8-2", nil)
+        CalendarData.put_era(eras, "1069-4-13", nil)
+        CalendarData.put_era(eras, "1074-8-23", nil)
+        CalendarData.put_era(eras, "1077-11-17", nil)
+        CalendarData.put_era(eras, "1081-2-10", nil)
+        CalendarData.put_era(eras, "1084-2-7", nil)
+        CalendarData.put_era(eras, "1087-4-7", nil)
+        CalendarData.put_era(eras, "1094-12-15", nil)
+        CalendarData.put_era(eras, "1096-12-17", nil)
+        CalendarData.put_era(eras, "1097-11-21", nil)
+        CalendarData.put_era(eras, "1099-8-28", nil)
+        CalendarData.put_era(eras, "1104-2-10", nil)
+        CalendarData.put_era(eras, "1106-4-9", nil)
+        CalendarData.put_era(eras, "1108-8-3", nil)
+        CalendarData.put_era(eras, "1110-7-13", nil)
+        CalendarData.put_era(eras, "1113-7-13", nil)
+        CalendarData.put_era(eras, "1118-4-3", nil)
+        CalendarData.put_era(eras, "1120-4-10", nil)
+        CalendarData.put_era(eras, "1124-4-3", nil)
+        CalendarData.put_era(eras, "1126-1-22", nil)
+        CalendarData.put_era(eras, "1131-1-29", nil)
+        CalendarData.put_era(eras, "1132-8-11", nil)
+        CalendarData.put_era(eras, "1135-4-27", nil)
+        CalendarData.put_era(eras, "1141-7-10", nil)
+        CalendarData.put_era(eras, "1142-4-28", nil)
+        CalendarData.put_era(eras, "1144-2-23", nil)
+        CalendarData.put_era(eras, "1145-7-22", nil)
+        CalendarData.put_era(eras, "1151-1-26", nil)
+        CalendarData.put_era(eras, "1154-10-28", nil)
+        CalendarData.put_era(eras, "1156-4-27", nil)
+        CalendarData.put_era(eras, "1159-4-20", nil)
+        CalendarData.put_era(eras, "1160-1-10", nil)
+        CalendarData.put_era(eras, "1161-9-4", nil)
+        CalendarData.put_era(eras, "1163-3-29", nil)
+        CalendarData.put_era(eras, "1165-6-5", nil)
+        CalendarData.put_era(eras, "1166-8-27", nil)
+        CalendarData.put_era(eras, "1169-4-8", nil)
+        CalendarData.put_era(eras, "1171-4-21", nil)
+        CalendarData.put_era(eras, "1175-7-28", nil)
+        CalendarData.put_era(eras, "1177-8-4", nil)
+        CalendarData.put_era(eras, "1181-7-14", nil)
+        CalendarData.put_era(eras, "1182-5-27", nil)
+        CalendarData.put_era(eras, "1184-4-16", nil)
+        CalendarData.put_era(eras, "1185-8-14", nil)
+        CalendarData.put_era(eras, "1190-4-11", nil)
+        CalendarData.put_era(eras, "1199-4-27", nil)
+        CalendarData.put_era(eras, "1201-2-13", nil)
+        CalendarData.put_era(eras, "1204-2-20", nil)
+        CalendarData.put_era(eras, "1206-4-27", nil)
+        CalendarData.put_era(eras, "1207-10-25", nil)
+        CalendarData.put_era(eras, "1211-3-9", nil)
+        CalendarData.put_era(eras, "1213-12-6", nil)
+        CalendarData.put_era(eras, "1219-4-12", nil)
+        CalendarData.put_era(eras, "1222-4-13", nil)
+        CalendarData.put_era(eras, "1224-11-20", nil)
+        CalendarData.put_era(eras, "1225-4-20", nil)
+        CalendarData.put_era(eras, "1227-12-10", nil)
+        CalendarData.put_era(eras, "1229-3-5", nil)
+        CalendarData.put_era(eras, "1232-4-2", nil)
+        CalendarData.put_era(eras, "1233-4-15", nil)
+        CalendarData.put_era(eras, "1234-11-5", nil)
+        CalendarData.put_era(eras, "1235-9-19", nil)
+        CalendarData.put_era(eras, "1238-11-23", nil)
+        CalendarData.put_era(eras, "1239-2-7", nil)
+        CalendarData.put_era(eras, "1240-7-16", nil)
+        CalendarData.put_era(eras, "1243-2-26", nil)
+        CalendarData.put_era(eras, "1247-2-28", nil)
+        CalendarData.put_era(eras, "1249-3-18", nil)
+        CalendarData.put_era(eras, "1256-10-5", nil)
+        CalendarData.put_era(eras, "1257-3-14", nil)
+        CalendarData.put_era(eras, "1259-3-26", nil)
+        CalendarData.put_era(eras, "1260-4-13", nil)
+        CalendarData.put_era(eras, "1261-2-20", nil)
+        CalendarData.put_era(eras, "1264-2-28", nil)
+        CalendarData.put_era(eras, "1275-4-25", nil)
+        CalendarData.put_era(eras, "1278-2-29", nil)
+        CalendarData.put_era(eras, "1288-4-28", nil)
+        CalendarData.put_era(eras, "1293-8-55", nil)
+        CalendarData.put_era(eras, "1299-4-25", nil)
+        CalendarData.put_era(eras, "1302-11-21", nil)
+        CalendarData.put_era(eras, "1303-8-5", nil)
+        CalendarData.put_era(eras, "1306-12-14", nil)
+        CalendarData.put_era(eras, "1308-10-9", nil)
+        CalendarData.put_era(eras, "1311-4-28", nil)
+        CalendarData.put_era(eras, "1312-3-20", nil)
+        CalendarData.put_era(eras, "1317-2-3", nil)
+        CalendarData.put_era(eras, "1319-4-28", nil)
+        CalendarData.put_era(eras, "1321-2-23", nil)
+        CalendarData.put_era(eras, "1324-12-9", nil)
+        CalendarData.put_era(eras, "1326-4-26", nil)
+        CalendarData.put_era(eras, "1329-8-29", nil)
+        CalendarData.put_era(eras, "1331-8-9", nil)
+        CalendarData.put_era(eras, "1334-1-29", nil)
+        CalendarData.put_era(eras, "1336-2-29", nil)
+        CalendarData.put_era(eras, "1340-4-28", nil)
+        CalendarData.put_era(eras, "1346-12-8", nil)
+        CalendarData.put_era(eras, "1370-7-24", nil)
+        CalendarData.put_era(eras, "1372-4-1", nil)
+        CalendarData.put_era(eras, "1375-5-27", nil)
+        CalendarData.put_era(eras, "1379-3-22", nil)
+        CalendarData.put_era(eras, "1381-2-10", nil)
+        CalendarData.put_era(eras, "1384-4-28", nil)
+        CalendarData.put_era(eras, "1384-2-27", nil)
+        CalendarData.put_era(eras, "1387-8-23", nil)
+        CalendarData.put_era(eras, "1389-2-9", nil)
+        CalendarData.put_era(eras, "1390-3-26", nil)
+        CalendarData.put_era(eras, "1394-7-5", nil)
+        CalendarData.put_era(eras, "1428-4-27", nil)
+        CalendarData.put_era(eras, "1429-9-5", nil)
+        CalendarData.put_era(eras, "1441-2-17", nil)
+        CalendarData.put_era(eras, "1444-2-5", nil)
+        CalendarData.put_era(eras, "1449-7-28", nil)
+        CalendarData.put_era(eras, "1452-7-25", nil)
+        CalendarData.put_era(eras, "1455-7-25", nil)
+        CalendarData.put_era(eras, "1457-9-28", nil)
+        CalendarData.put_era(eras, "1460-12-21", nil)
+        CalendarData.put_era(eras, "1466-2-28", nil)
+        CalendarData.put_era(eras, "1467-3-3", nil)
+        CalendarData.put_era(eras, "1469-4-28", nil)
+        CalendarData.put_era(eras, "1487-7-29", nil)
+        CalendarData.put_era(eras, "1489-8-21", nil)
+        CalendarData.put_era(eras, "1492-7-19", nil)
+        CalendarData.put_era(eras, "1501-2-29", nil)
+        CalendarData.put_era(eras, "1504-2-30", nil)
+        CalendarData.put_era(eras, "1521-8-23", nil)
+        CalendarData.put_era(eras, "1528-8-20", nil)
+        CalendarData.put_era(eras, "1532-7-29", nil)
+        CalendarData.put_era(eras, "1555-10-23", nil)
+        CalendarData.put_era(eras, "1558-2-28", nil)
+        CalendarData.put_era(eras, "1570-4-23", nil)
+        CalendarData.put_era(eras, "1573-7-28", nil)
+        CalendarData.put_era(eras, "1592-12-8", nil)
+        CalendarData.put_era(eras, "1596-10-27", nil)
+        CalendarData.put_era(eras, "1615-7-13", nil)
+        CalendarData.put_era(eras, "1624-2-30", nil)
+        CalendarData.put_era(eras, "1644-12-16", nil)
+        CalendarData.put_era(eras, "1648-2-15", nil)
+        CalendarData.put_era(eras, "1652-9-18", nil)
+        CalendarData.put_era(eras, "1655-4-13", nil)
+        CalendarData.put_era(eras, "1658-7-23", nil)
+        CalendarData.put_era(eras, "1661-4-25", nil)
+        CalendarData.put_era(eras, "1673-9-21", nil)
+        CalendarData.put_era(eras, "1681-9-29", nil)
+        CalendarData.put_era(eras, "1684-2-21", nil)
+        CalendarData.put_era(eras, "1688-9-30", nil)
+        CalendarData.put_era(eras, "1704-3-13", nil)
+        CalendarData.put_era(eras, "1711-4-25", nil)
+        CalendarData.put_era(eras, "1716-6-22", nil)
+        CalendarData.put_era(eras, "1736-4-28", nil)
+        CalendarData.put_era(eras, "1741-2-27", nil)
+        CalendarData.put_era(eras, "1744-2-21", nil)
+        CalendarData.put_era(eras, "1748-7-12", nil)
+        CalendarData.put_era(eras, "1751-10-27", nil)
+        CalendarData.put_era(eras, "1764-6-2", nil)
+        CalendarData.put_era(eras, "1772-11-16", nil)
+        CalendarData.put_era(eras, "1781-4-2", nil)
+        CalendarData.put_era(eras, "1789-1-25", nil)
+        CalendarData.put_era(eras, "1801-2-5", nil)
+        CalendarData.put_era(eras, "1804-2-11", nil)
+        CalendarData.put_era(eras, "1818-4-22", nil)
+        CalendarData.put_era(eras, "1830-12-10", nil)
+        CalendarData.put_era(eras, "1844-12-2", nil)
+        CalendarData.put_era(eras, "1848-2-28", nil)
+        CalendarData.put_era(eras, "1854-11-27", nil)
+        CalendarData.put_era(eras, "1860-3-18", nil)
+        CalendarData.put_era(eras, "1861-2-19", nil)
+        CalendarData.put_era(eras, "1864-2-20", nil)
+        CalendarData.put_era(eras, "1865-4-7", nil)
+        CalendarData.put_era(eras, "1868-9-8", nil)
+        CalendarData.put_era(eras, "1912-7-30", nil)
+        CalendarData.put_era(eras, "1926-12-25", nil)
+        CalendarData.put_era(eras, "1989-1-8", nil)
+        CalendarDataEntry.new("japanese", CalendarSystem::Solar, eras)
+      end
+    end
+
+    @persian : CalendarDataEntry? = nil
+
+    def persian : CalendarDataEntry
+      @persian ||= begin
+        eras = Array(CalendarDataEra).new(1)
+        CalendarData.put_era(eras, "622-01-01", nil)
+        CalendarDataEntry.new("persian", CalendarSystem::Solar, eras)
+      end
+    end
+
+    @roc : CalendarDataEntry? = nil
+
+    def roc : CalendarDataEntry
+      @roc ||= begin
+        eras = Array(CalendarDataEra).new(2)
+        CalendarData.put_era(eras, nil, "1911-12-31")
+        CalendarData.put_era(eras, "1912-01-01", nil)
+        CalendarDataEntry.new("roc", CalendarSystem::None, eras)
+      end
+    end
+  end
+
+  class CurrencyData
+    @fractions : Hash(String, CurrencyDataFraction)? = nil
+
+    def fractions : Hash(String, CurrencyDataFraction)
+      @fractions ||= begin
+        frac = Hash(String, CurrencyDataFraction).new(initial_capacity: 67)
+        put_fractions frac, "ADP", 0, 0
+        put_fractions frac, "AFN", 0, 0
+        put_fractions frac, "ALL", 0, 0
+        put_fractions frac, "AMD", 0, 0
+        put_fractions frac, "BHD", 0, 3
+        put_fractions frac, "BIF", 0, 0
+        put_fractions frac, "BYN", 0, 2
+        put_fractions frac, "BYR", 0, 0
+        put_fractions frac, "CAD", 0, 2
+        put_fractions frac, "CHF", 0, 2
+        put_fractions frac, "CLF", 0, 4
+        put_fractions frac, "CLP", 0, 0
+        put_fractions frac, "COP", 0, 0
+        put_fractions frac, "CRC", 0, 2
+        put_fractions frac, "CZK", 0, 2
+        put_fractions frac, "DEFAULT", 0, 2
+        put_fractions frac, "DJF", 0, 0
+        put_fractions frac, "ESP", 0, 0
+        put_fractions frac, "GNF", 0, 0
+        put_fractions frac, "GYD", 0, 0
+        put_fractions frac, "HUF", 0, 2
+        put_fractions frac, "IDR", 0, 0
+        put_fractions frac, "IQD", 0, 0
+        put_fractions frac, "IRR", 0, 0
+        put_fractions frac, "ISK", 0, 0
+        put_fractions frac, "ITL", 0, 0
+        put_fractions frac, "JOD", 0, 3
+        put_fractions frac, "JPY", 0, 0
+        put_fractions frac, "KMF", 0, 0
+        put_fractions frac, "KPW", 0, 0
+        put_fractions frac, "KRW", 0, 0
+        put_fractions frac, "KWD", 0, 3
+        put_fractions frac, "LAK", 0, 0
+        put_fractions frac, "LBP", 0, 0
+        put_fractions frac, "LUF", 0, 0
+        put_fractions frac, "LYD", 0, 3
+        put_fractions frac, "MGA", 0, 0
+        put_fractions frac, "MGF", 0, 0
+        put_fractions frac, "MMK", 0, 0
+        put_fractions frac, "MNT", 0, 0
+        put_fractions frac, "MRO", 0, 0
+        put_fractions frac, "MUR", 0, 0
+        put_fractions frac, "OMR", 0, 3
+        put_fractions frac, "PKR", 0, 0
+        put_fractions frac, "PYG", 0, 0
+        put_fractions frac, "RSD", 0, 0
+        put_fractions frac, "RWF", 0, 0
+        put_fractions frac, "SLL", 0, 0
+        put_fractions frac, "SOS", 0, 0
+        put_fractions frac, "STD", 0, 0
+        put_fractions frac, "SYP", 0, 0
+        put_fractions frac, "TMM", 0, 0
+        put_fractions frac, "TND", 0, 3
+        put_fractions frac, "TRL", 0, 0
+        put_fractions frac, "TWD", 0, 2
+        put_fractions frac, "TZS", 0, 0
+        put_fractions frac, "UGX", 0, 0
+        put_fractions frac, "UYI", 0, 0
+        put_fractions frac, "UZS", 0, 0
+        put_fractions frac, "VND", 0, 0
+        put_fractions frac, "VUV", 0, 0
+        put_fractions frac, "XAF", 0, 0
+        put_fractions frac, "XOF", 0, 0
+        put_fractions frac, "XPF", 0, 0
+        put_fractions frac, "YER", 0, 0
+        put_fractions frac, "ZMK", 0, 0
+        put_fractions frac, "ZWD", 0, 0
+        frac
+      end
+    end
+
+    private def put_fractions(frac, name, rounding, digits) : Nil
+      frac[name] = CurrencyDataFraction.new rounding, digits
+    end
+  end
+
+  class Gender
+    @person_list : Hash(String, PersonListKind)? = nil
+
+    def person_list : Hash(String, PersonListKind)
+      @person_list ||= begin
+        list = Hash(String, PersonListKind).new(initial_capacity: 54)
+        list["ar"] = PersonListKind::MaleTaints
+        list["ca"] = PersonListKind::MaleTaints
+        list["cs"] = PersonListKind::MaleTaints
+        list["es"] = PersonListKind::MaleTaints
+        list["fr"] = PersonListKind::MaleTaints
+        list["he"] = PersonListKind::MaleTaints
+        list["hi"] = PersonListKind::MaleTaints
+        list["hr"] = PersonListKind::MaleTaints
+        list["it"] = PersonListKind::MaleTaints
+        list["lt"] = PersonListKind::MaleTaints
+        list["lv"] = PersonListKind::MaleTaints
+        list["mr"] = PersonListKind::MaleTaints
+        list["nl"] = PersonListKind::MaleTaints
+        list["pl"] = PersonListKind::MaleTaints
+        list["pt"] = PersonListKind::MaleTaints
+        list["ro"] = PersonListKind::MaleTaints
+        list["ru"] = PersonListKind::MaleTaints
+        list["sk"] = PersonListKind::MaleTaints
+        list["sl"] = PersonListKind::MaleTaints
+        list["sr"] = PersonListKind::MaleTaints
+        list["uk"] = PersonListKind::MaleTaints
+        list["ur"] = PersonListKind::MaleTaints
+        list["zh"] = PersonListKind::MaleTaints
+        list["zh-Hant"] = PersonListKind::MaleTaints
+        list["el"] = PersonListKind::MixedNeutral
+        list["is"] = PersonListKind::MixedNeutral
+        list["af"] = PersonListKind::Neutral
+        list["bg"] = PersonListKind::Neutral
+        list["bn"] = PersonListKind::Neutral
+        list["da"] = PersonListKind::Neutral
+        list["de"] = PersonListKind::Neutral
+        list["en"] = PersonListKind::Neutral
+        list["et"] = PersonListKind::Neutral
+        list["eu"] = PersonListKind::Neutral
+        list["fa"] = PersonListKind::Neutral
+        list["fi"] = PersonListKind::Neutral
+        list["fil"] = PersonListKind::Neutral
+        list["gu"] = PersonListKind::Neutral
+        list["hu"] = PersonListKind::Neutral
+        list["id"] = PersonListKind::Neutral
+        list["ja"] = PersonListKind::Neutral
+        list["kn"] = PersonListKind::Neutral
+        list["ko"] = PersonListKind::Neutral
+        list["ml"] = PersonListKind::Neutral
+        list["ms"] = PersonListKind::Neutral
+        list["no"] = PersonListKind::Neutral
+        list["sv"] = PersonListKind::Neutral
+        list["sw"] = PersonListKind::Neutral
+        list["ta"] = PersonListKind::Neutral
+        list["te"] = PersonListKind::Neutral
+        list["th"] = PersonListKind::Neutral
+        list["tr"] = PersonListKind::Neutral
+        list["vi"] = PersonListKind::Neutral
+        list["zu"] = PersonListKind::Neutral
+        list
+      end
+    end
+  end
+
+  class Supplemental
+    getter metadata : Metadata = Metadata.new
+    getter calendar_data : CalendarData = CalendarData.new
+    @calendar_preference_data : Hash(String, Array(CalendarDataEntry))? = nil
+    getter currency_data : CurrencyData = CurrencyData.new
+    getter gender : Gender = Gender.new
+
+    def calendar_preference_data : Hash(String, Array(CalendarDataEntry))
+      @calendar_preference_data ||= begin
+        data = Hash(String, Array(CalendarDataEntry)).new(initial_capacity: 39)
+        put_calendar_preference_data data, "001", self.calendar_data.gregorian
+        put_calendar_preference_data data, "AE", self.calendar_data.gregorian, self.calendar_data.islamic_umalqura, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "AF", self.calendar_data.persian, self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "BH", self.calendar_data.gregorian, self.calendar_data.islamic_umalqura, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "CN", self.calendar_data.gregorian, self.calendar_data.chinese
+        put_calendar_preference_data data, "CX", self.calendar_data.gregorian, self.calendar_data.chinese
+        put_calendar_preference_data data, "DJ", self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "DZ", self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "EG", self.calendar_data.gregorian, self.calendar_data.coptic, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "EH", self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "ER", self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "ET", self.calendar_data.gregorian, self.calendar_data.ethiopic
+        put_calendar_preference_data data, "HK", self.calendar_data.gregorian, self.calendar_data.chinese
+        put_calendar_preference_data data, "IL", self.calendar_data.gregorian, self.calendar_data.hebrew, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "IN", self.calendar_data.gregorian, self.calendar_data.indian
+        put_calendar_preference_data data, "IQ", self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "IR", self.calendar_data.persian, self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "JO", self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "JP", self.calendar_data.gregorian, self.calendar_data.japanese
+        put_calendar_preference_data data, "KM", self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "KR", self.calendar_data.gregorian, self.calendar_data.dangi
+        put_calendar_preference_data data, "KW", self.calendar_data.gregorian, self.calendar_data.islamic_umalqura, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "LB", self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "LY", self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "MA", self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "MO", self.calendar_data.gregorian, self.calendar_data.chinese
+        put_calendar_preference_data data, "MR", self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "OM", self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "PS", self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "QA", self.calendar_data.gregorian, self.calendar_data.islamic_umalqura, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "SA", self.calendar_data.islamic_umalqura, self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_rgsa
+        put_calendar_preference_data data, "SD", self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "SG", self.calendar_data.gregorian, self.calendar_data.chinese
+        put_calendar_preference_data data, "SY", self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "TD", self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "TH", self.calendar_data.buddhist, self.calendar_data.gregorian
+        put_calendar_preference_data data, "TN", self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        put_calendar_preference_data data, "TW", self.calendar_data.gregorian, self.calendar_data.roc, self.calendar_data.chinese
+        put_calendar_preference_data data, "YE", self.calendar_data.gregorian, self.calendar_data.islamic, self.calendar_data.islamic_civil, self.calendar_data.islamic_tbla
+        data
+      end
+    end
+
+    private def put_calendar_preference_data(data, k : String, *prefs) : Nil
+      ary = Array(CalendarDataEntry).new(prefs.size)
+      prefs.each { |pref| ary << pref }
+      data[k] = ary
+    end
+  end
+
+  # Available locales
+  def self.available_locales : AvailableLocales
+    @@available_locales ||= AvailableLocales.new
+  end
+
+  def self.supplemental : Supplemental
+    @@supplemental ||= Supplemental.new
   end
 end

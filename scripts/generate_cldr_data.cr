@@ -1,41 +1,128 @@
-# This script generates the file src/cldr/data.cr
+# This script generates the files in src/cldr/*
 # that contains CLDR locale data for internationalization.
 
 require "http/client"
 require "json"
 require "ecr"
-require "../src/compiler/crystal/formatter"
+require "compiler/crystal/formatter" # require "../src/compiler/crystal/formatter"
 
-VERSION = "31.0.1"
+require "../src/cldr/version"
+
 CLDR_ROOT = "https://raw.githubusercontent.com/unicode-cldr/"
 
-class AvailableLocales
+class String
+  def to_literal
+    "\"" + gsub(/"\\/) { |char| "\\" + char } + "\""
+  end
+
+  def ucfirst
+    self[0].upcase + self[1..size-1]
+  end
+end
+
+struct Nil
+  def to_literal
+    "nil"
+  end
+end
+
+class JAvailableLocales
   JSON.mapping(
     modern: { type: Array(String) },
     full: { type: Array(String) },
   )
 end
 
+class JLanguageAliasJson
+  JSON.mapping(
+    reason: { type: String, key: "_reason" },
+    replacement: { type: String, key: "_replacement" },
+  )
+end
 
-def get_supplemental(name)
-  url = "#{CLDR_ROOT}cldr-core/#{VERSION}/supplemental/#{name}"
+alias JLanguageAlias = Hash(String, JLanguageAliasJson)
+
+class JAlias
+  JSON.mapping(
+    language_alias: { type: JLanguageAlias, key: "languageAlias" },
+  )
+end
+
+class JMetadataAliases
+  JSON.mapping(
+    alias: { type: JAlias },
+  )
+end
+
+class JSupplementalAliases
+  JSON.mapping(
+    metadata: { type: JMetadataAliases },
+  )
+end
+
+class JCalendarDataEntry
+  JSON.mapping(
+    calendar_system: { type: String, key: "calendarSystem", default: "none" },
+    eras: { type: Hash(String, Hash(String, String)), default: Hash(String, Hash(String, String)).new },
+  )
+end
+
+class JSupplementalCalendarData
+  JSON.mapping(
+    calendar_data: { type: Hash(String, JCalendarDataEntry), key: "calendarData" },
+  )
+end
+
+class JSupplementalCalendarPreferenceData
+  JSON.mapping(
+    calendar_preference_data: { type: Hash(String, String), key: "calendarPreferenceData" },
+  )
+end
+
+class JCurrencyData
+  JSON.mapping(
+    fractions: { type: Hash(String, Hash(String, String)) },
+  )
+end
+
+class JSupplementalCurrencyData
+  JSON.mapping(
+    currency_data: { type: JCurrencyData, key: "currencyData" },
+  )
+end
+
+class JGender
+  JSON.mapping(
+    person_list: { type: Hash(String, String), key: "personList" },
+  )
+end
+
+class JSupplementalGender
+  JSON.mapping(
+    gender: { type: JGender },
+  )
+end
+
+def get_json(repo, path)
+  if File.readable?("datasource/#{repo}/#{path}.json")
+    return File.read("datasource/#{repo}/#{path}.json")
+  end
+  url = "#{CLDR_ROOT}#{repo}/#{Cldr::CLDR_VERSION}/#{path}.json"
   HTTP::Client.get(url).body
 end
 
-def get_available_locales
-  url = "#{CLDR_ROOT}cldr-core/#{VERSION}/availableLocales.json"
-  body = HTTP::Client.get(url).body
-  AvailableLocales.from_json(body, root: "availableLocales")
+def get_supplemental(name)
+  get_json "cldr-core", "supplemental/#{name}"
 end
 
+body = get_json "cldr-core", "availableLocales"
+available_locales = JAvailableLocales.from_json(body, root: "availableLocales")
 
-available_locales = get_available_locales
-
-class String
-  def to_crystal_string_literal
-    "\"" + gsub(/"\\/) { |char| "\\" + char } + "\""
-  end
-end
+language_alias = JSupplementalAliases.from_json(get_supplemental("aliases"), root: "supplemental").metadata.alias.language_alias
+calendar_data = JSupplementalCalendarData.from_json(get_supplemental("calendarData"), root: "supplemental").calendar_data
+calendar_preference_data = JSupplementalCalendarPreferenceData.from_json(get_supplemental("calendarPreferenceData"), root: "supplemental").calendar_preference_data
+currency_data = JSupplementalCurrencyData.from_json(get_supplemental("currencyData"), root: "supplemental").currency_data
+gender = JSupplementalGender.from_json(get_supplemental("gender"), root: "supplemental").gender
 
 output = String.build do |str|
   ECR.embed "#{__DIR__}/core.ecr", str

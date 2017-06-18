@@ -4,39 +4,189 @@
 #
 # DO NOT EDIT
 
-# :nodoc:
-module Cldr
-  module Core
-    class AvailableLocales
-      property modern : Array(String)
-      property full : Array(String)
+# Basic CLDR supplemental data.
+module Cldr::Core
+  enum LanguageAliasReason
+    <%- language_alias.values.map { |data|
+      data.reason
+    }.uniq.sort.each do |reason| -%>
+      <%= reason.capitalize %>,
+    <%- end -%>
+  end
 
-      def initialize
-        @modern = Array(String).new(<%= available_locales.modern.size %>)
-        <%- available_locales.modern.each do |locale| -%>
-        @modern << <%= locale.to_crystal_string_literal %>
+  record LanguageAliasInfo,
+    reason : LanguageAliasReason,
+    replacement : String
+
+  record CalendarDataEra,
+    start : String?,
+    end : String?
+
+  enum CalendarSystem
+    <%- calendar_data.values.map { |entry|
+      entry.calendar_system
+    }.uniq.sort.each do |calendar_system| -%>
+    <%= calendar_system.capitalize %>,
+    <%- end -%>
+  end
+
+  record CalendarDataEntry,
+    name : String, 
+    calendar_system : CalendarSystem,
+    eras : Array(CalendarDataEra)
+
+  record CurrencyDataFraction,
+    rounding : Int32,
+    digits : Int32
+
+  enum PersonListKind
+    <%- gender.person_list.values.uniq.sort.each do |person_list_kind| -%>
+      <%= person_list_kind.ucfirst %>,
+    <%- end -%>
+  end
+
+  # Available locales
+  class AvailableLocales
+    @modern : Array(String)? = nil
+    @full : Array(String)? = nil
+
+    # Sorted list of modern locales
+    def modern : Array(String)
+      @modern ||= begin
+        list = Array(String).new(<%= available_locales.modern.size %>)
+        <%- available_locales.modern.sort.each do |locale| -%>
+          list << <%= locale.to_literal %>
         <%- end -%>
-        @full = Array(String).new(<%= available_locales.full.size %>)
-        <%- available_locales.full.each do |locale| -%>
-        @full << <%= locale.to_crystal_string_literal %>
-        <%- end -%>
+        list
       end
     end
 
-    def self.available_locales : AvailableLocales
-      @@available_locales ||= AvailableLocales.new
+    # Sorted list of all locales
+    def full : Array(String)
+      @full ||= begin
+        list = Array(String).new(<%= available_locales.full.size %>)
+        <%- available_locales.full.sort.each do |locale| -%>
+          list << <%= locale.to_literal %>
+        <%- end -%>
+        list
+      end
     end
   end
 
-  # TODO: this is needed to avoid generating lots of allocas
-  # in LLVM, which makes LLVM really slow. The compiler should
-  # try to avoid/reuse temporary allocas.
-  # Explanation: https://github.com/crystal-lang/crystal/issues/4516#issuecomment-306226171
-  protected def self.put(array : Array, *values) : Nil
-    array << values
+  class Alias
+    @language_alias : Hash(String, LanguageAliasInfo)? = nil
+
+    # Language aliases
+    def language_alias : Hash(String, LanguageAliasInfo)
+      @language_alias ||= begin
+        la = Hash(String, LanguageAliasInfo).new(initial_capacity: <%= language_alias.size %>)
+        <%- language_alias.each do |language, data| -%>
+          put_language_alias la, <%= language.to_literal %>, LanguageAliasReason::<%= data.reason.capitalize %>, <%= data.replacement.to_literal %>
+        <%- end -%>
+        la
+      end
+    end
+
+    private def put_language_alias(la, language, reason, replacement) : Nil
+      la[language] = LanguageAliasInfo.new reason, replacement
+    end
   end
 
-  protected def self.put(hash : Hash, key, *values) : Nil
-    hash[key] = values
+  class Metadata
+      getter alias : Alias = Alias.new       
+  end
+
+  class CalendarData
+    # TODO: this is needed to avoid generating lots of allocas
+    # in LLVM, which makes LLVM really slow. The compiler should
+    # try to avoid/reuse temporary allocas.
+    # Explanation: https://github.com/crystal-lang/crystal/issues/4516#issuecomment-306226171
+    protected def self.put_era(eras : Array(CalendarDataEra), start : String?, end : String?) : Nil
+      eras << CalendarDataEra.new(start, end)
+    end
+
+    <%- calendar_data.each do |name, entry| -%>
+    @<%= name.gsub("-", "_") %> : CalendarDataEntry? = nil
+
+    <%- name_literal = name.gsub("-", "_") -%>
+    def <%= name.gsub("-", "_") %> : CalendarDataEntry
+      @<%= name.gsub("-", "_") %> ||= begin
+        eras = Array(CalendarDataEra).new(<%= entry.eras.size %>)
+        <%- entry.eras.keys.each do |index|
+            era = entry.eras[index]
+        -%>
+          CalendarData.put_era(eras, <%= era["_start"]?.to_literal %>, <%= era["_end"]?.to_literal %>)
+        <%- end -%>
+        CalendarDataEntry.new(<%= name.to_literal %>, CalendarSystem::<%= entry.calendar_system.capitalize %>, eras)
+      end
+    end
+    <%- end -%>
+  end
+
+  class CurrencyData
+    @fractions : Hash(String, CurrencyDataFraction)? = nil
+
+    def fractions : Hash(String, CurrencyDataFraction)
+      @fractions ||= begin
+        frac = Hash(String, CurrencyDataFraction).new(initial_capacity: <%= currency_data.fractions.size %>)
+        <%- currency_data.fractions.each do |name, entry| -%>
+          put_fractions frac, <%= name.to_literal %>, <%= entry["_rounding"] %>, <%= entry["_digits"] %>
+        <%- end -%>
+        frac
+      end
+    end
+
+    private def put_fractions(frac, name, rounding, digits) : Nil
+      frac[name] = CurrencyDataFraction.new rounding, digits
+    end
+  end
+
+  class Gender
+    @person_list : Hash(String, PersonListKind)? = nil
+
+    def person_list : Hash(String, PersonListKind)
+      @person_list ||= begin
+        list = Hash(String, PersonListKind).new(initial_capacity: <%= gender.person_list.size %>)
+        <%- gender.person_list.each do |locale, person_list_kind| -%>
+          list[<%= locale.to_literal %>] = PersonListKind::<%= person_list_kind.ucfirst %>
+        <%- end -%>
+        list
+      end
+    end
+  end
+
+  class Supplemental
+    getter metadata : Metadata = Metadata.new
+    getter calendar_data : CalendarData = CalendarData.new
+    @calendar_preference_data : Hash(String, Array(CalendarDataEntry))? = nil
+    getter currency_data : CurrencyData = CurrencyData.new
+    getter gender : Gender = Gender.new
+
+    def calendar_preference_data : Hash(String, Array(CalendarDataEntry))
+      @calendar_preference_data ||= begin
+        data = Hash(String, Array(CalendarDataEntry)).new(initial_capacity: <%= calendar_preference_data.size %>)
+        <%- calendar_preference_data.each do |k, v| -%>
+          put_calendar_preference_data data, <%= k.to_literal %>, <%=
+            v.gsub("-", "_").split(/\s+/).map { |d| "self.calendar_data.#{d}" }.join(", ")
+        %>
+        <%- end -%>
+        data
+      end
+    end
+
+    private def put_calendar_preference_data(data, k : String, *prefs) : Nil
+      ary = Array(CalendarDataEntry).new(prefs.size)
+      prefs.each { |pref| ary << pref }
+      data[k] = ary
+    end 
+  end
+
+  # Available locales
+  def self.available_locales : AvailableLocales
+    @@available_locales ||= AvailableLocales.new
+  end
+
+  def self.supplemental : Supplemental
+    @@supplemental ||= Supplemental.new
   end
 end
