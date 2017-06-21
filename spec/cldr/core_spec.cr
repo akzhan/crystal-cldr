@@ -28,4 +28,9 @@ describe Cldr::Core do
   it "should have supplemental.gender.person_list[\"ar\"]" do
     Cldr::Core.supplemental.gender.person_list["ar"].male_taints?.should be_true
   end
+
+  it "should have supplemental.numbering_systems[\"latn\"]" do
+    Cldr::Core.supplemental.numbering_systems["latn"].type.numeric?.should be_true
+    Cldr::Core.supplemental.numbering_systems["latn"].digits.should eq("0123456789")
+  end
 end

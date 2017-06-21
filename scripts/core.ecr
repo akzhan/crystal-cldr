@@ -45,6 +45,17 @@ module Cldr::Core
     <%- end -%>
   end
 
+  enum NumberingSystemType
+    <%- numbering_systems.values.map { |ns| ns["_type"] }.uniq.sort.each do |t| -%>
+    <%= t.capitalize %>,
+    <%- end -%>
+  end
+
+  record NumberingSystem,
+    type : NumberingSystemType,
+    digits : String?,
+    rules : String?
+
   # Available locales
   class AvailableLocales
     @modern : Array(String)? = nil
@@ -161,6 +172,7 @@ module Cldr::Core
     @calendar_preference_data : Hash(String, Array(CalendarDataEntry))? = nil
     getter currency_data : CurrencyData = CurrencyData.new
     getter gender : Gender = Gender.new
+    @numbering_systems : Hash(String, NumberingSystem)? = nil
 
     def calendar_preference_data : Hash(String, Array(CalendarDataEntry))
       @calendar_preference_data ||= begin
@@ -178,6 +190,23 @@ module Cldr::Core
       ary = Array(CalendarDataEntry).new(prefs.size)
       prefs.each { |pref| ary << pref }
       data[k] = ary
+    end
+
+    private def put_numbering_system(data, name : String, _type : NumberingSystemType, _digits : String? = nil, _rules : String? = nil) : Nil
+      data[name] = NumberingSystem.new(_type, _digits, _rules)
+    end
+
+    def numbering_systems
+      @numbering_systems ||= begin
+        data = Hash(String, NumberingSystem).new(initial_capacity: <%= numbering_systems.size %>)
+        <%- numbering_systems.each do |name, info| -%>
+          put_numbering_system data, <%- info.each do |key, value| -%>
+            <%= key %>: <%= key == "_type" ? "NumberingSystemType::#{value.ucfirst}" : value.to_literal %>,
+          <%- end -%>
+          name: <%= name.to_literal %>
+        <%- end -%>
+        data
+      end
     end 
   end
 

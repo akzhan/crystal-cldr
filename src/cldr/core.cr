@@ -45,6 +45,16 @@ module Cldr::Core
     Neutral,
   end
 
+  enum NumberingSystemType
+    Algorithmic,
+    Numeric,
+  end
+
+  record NumberingSystem,
+    type : NumberingSystemType,
+    digits : String?,
+    rules : String?
+
   # Available locales
   class AvailableLocales
     @modern : Array(String)? = nil
@@ -1880,6 +1890,7 @@ module Cldr::Core
     @calendar_preference_data : Hash(String, Array(CalendarDataEntry))? = nil
     getter currency_data : CurrencyData = CurrencyData.new
     getter gender : Gender = Gender.new
+    @numbering_systems : Hash(String, NumberingSystem)? = nil
 
     def calendar_preference_data : Hash(String, Array(CalendarDataEntry))
       @calendar_preference_data ||= begin
@@ -1931,6 +1942,248 @@ module Cldr::Core
       ary = Array(CalendarDataEntry).new(prefs.size)
       prefs.each { |pref| ary << pref }
       data[k] = ary
+    end
+
+    private def put_numbering_system(data, name : String, _type : NumberingSystemType, _digits : String? = nil, _rules : String? = nil) : Nil
+      data[name] = NumberingSystem.new(_type, _digits, _rules)
+    end
+
+    def numbering_systems
+      @numbering_systems ||= begin
+        data = Hash(String, NumberingSystem).new(initial_capacity: 77)
+        put_numbering_system data, _digits: "𞥐𞥑𞥒𞥓𞥔𞥕𞥖𞥗𞥘𞥙",
+          _type: NumberingSystemType::Numeric,
+          name: "adlm"
+        put_numbering_system data, _digits: "𑜰𑜱𑜲𑜳𑜴𑜵𑜶𑜷𑜸𑜹",
+          _type: NumberingSystemType::Numeric,
+          name: "ahom"
+        put_numbering_system data, _digits: "٠١٢٣٤٥٦٧٨٩",
+          _type: NumberingSystemType::Numeric,
+          name: "arab"
+        put_numbering_system data, _digits: "۰۱۲۳۴۵۶۷۸۹",
+          _type: NumberingSystemType::Numeric,
+          name: "arabext"
+        put_numbering_system data, _rules: "armenian-upper",
+          _type: NumberingSystemType::Algorithmic,
+          name: "armn"
+        put_numbering_system data, _rules: "armenian-lower",
+          _type: NumberingSystemType::Algorithmic,
+          name: "armnlow"
+        put_numbering_system data, _digits: "᭐᭑᭒᭓᭔᭕᭖᭗᭘᭙",
+          _type: NumberingSystemType::Numeric,
+          name: "bali"
+        put_numbering_system data, _digits: "০১২৩৪৫৬৭৮৯",
+          _type: NumberingSystemType::Numeric,
+          name: "beng"
+        put_numbering_system data, _digits: "𑱐𑱑𑱒𑱓𑱔𑱕𑱖𑱗𑱘𑱙",
+          _type: NumberingSystemType::Numeric,
+          name: "bhks"
+        put_numbering_system data, _digits: "𑁦𑁧𑁨𑁩𑁪𑁫𑁬𑁭𑁮𑁯",
+          _type: NumberingSystemType::Numeric,
+          name: "brah"
+        put_numbering_system data, _digits: "𑄶𑄷𑄸𑄹𑄺𑄻𑄼𑄽𑄾𑄿",
+          _type: NumberingSystemType::Numeric,
+          name: "cakm"
+        put_numbering_system data, _digits: "꩐꩑꩒꩓꩔꩕꩖꩗꩘꩙",
+          _type: NumberingSystemType::Numeric,
+          name: "cham"
+        put_numbering_system data, _rules: "cyrillic-lower",
+          _type: NumberingSystemType::Algorithmic,
+          name: "cyrl"
+        put_numbering_system data, _digits: "०१२३४५६७८९",
+          _type: NumberingSystemType::Numeric,
+          name: "deva"
+        put_numbering_system data, _rules: "ethiopic",
+          _type: NumberingSystemType::Algorithmic,
+          name: "ethi"
+        put_numbering_system data, _digits: "０１２３４５６７８９",
+          _type: NumberingSystemType::Numeric,
+          name: "fullwide"
+        put_numbering_system data, _rules: "georgian",
+          _type: NumberingSystemType::Algorithmic,
+          name: "geor"
+        put_numbering_system data, _rules: "greek-upper",
+          _type: NumberingSystemType::Algorithmic,
+          name: "grek"
+        put_numbering_system data, _rules: "greek-lower",
+          _type: NumberingSystemType::Algorithmic,
+          name: "greklow"
+        put_numbering_system data, _digits: "૦૧૨૩૪૫૬૭૮૯",
+          _type: NumberingSystemType::Numeric,
+          name: "gujr"
+        put_numbering_system data, _digits: "੦੧੨੩੪੫੬੭੮੯",
+          _type: NumberingSystemType::Numeric,
+          name: "guru"
+        put_numbering_system data, _rules: "zh/SpelloutRules/spellout-numbering-days",
+          _type: NumberingSystemType::Algorithmic,
+          name: "hanidays"
+        put_numbering_system data, _digits: "〇一二三四五六七八九",
+          _type: NumberingSystemType::Numeric,
+          name: "hanidec"
+        put_numbering_system data, _rules: "zh/SpelloutRules/spellout-cardinal",
+          _type: NumberingSystemType::Algorithmic,
+          name: "hans"
+        put_numbering_system data, _rules: "zh/SpelloutRules/spellout-cardinal-financial",
+          _type: NumberingSystemType::Algorithmic,
+          name: "hansfin"
+        put_numbering_system data, _rules: "zh_Hant/SpelloutRules/spellout-cardinal",
+          _type: NumberingSystemType::Algorithmic,
+          name: "hant"
+        put_numbering_system data, _rules: "zh_Hant/SpelloutRules/spellout-cardinal-financial",
+          _type: NumberingSystemType::Algorithmic,
+          name: "hantfin"
+        put_numbering_system data, _rules: "hebrew",
+          _type: NumberingSystemType::Algorithmic,
+          name: "hebr"
+        put_numbering_system data, _digits: "𖭐𖭑𖭒𖭓𖭔𖭕𖭖𖭗𖭘𖭙",
+          _type: NumberingSystemType::Numeric,
+          name: "hmng"
+        put_numbering_system data, _digits: "꧐꧑꧒꧓꧔꧕꧖꧗꧘꧙",
+          _type: NumberingSystemType::Numeric,
+          name: "java"
+        put_numbering_system data, _rules: "ja/SpelloutRules/spellout-cardinal",
+          _type: NumberingSystemType::Algorithmic,
+          name: "jpan"
+        put_numbering_system data, _rules: "ja/SpelloutRules/spellout-cardinal-financial",
+          _type: NumberingSystemType::Algorithmic,
+          name: "jpanfin"
+        put_numbering_system data, _digits: "꤀꤁꤂꤃꤄꤅꤆꤇꤈꤉",
+          _type: NumberingSystemType::Numeric,
+          name: "kali"
+        put_numbering_system data, _digits: "០១២៣៤៥៦៧៨៩",
+          _type: NumberingSystemType::Numeric,
+          name: "khmr"
+        put_numbering_system data, _digits: "೦೧೨೩೪೫೬೭೮೯",
+          _type: NumberingSystemType::Numeric,
+          name: "knda"
+        put_numbering_system data, _digits: "᪀᪁᪂᪃᪄᪅᪆᪇᪈᪉",
+          _type: NumberingSystemType::Numeric,
+          name: "lana"
+        put_numbering_system data, _digits: "᪐᪑᪒᪓᪔᪕᪖᪗᪘᪙",
+          _type: NumberingSystemType::Numeric,
+          name: "lanatham"
+        put_numbering_system data, _digits: "໐໑໒໓໔໕໖໗໘໙",
+          _type: NumberingSystemType::Numeric,
+          name: "laoo"
+        put_numbering_system data, _digits: "0123456789",
+          _type: NumberingSystemType::Numeric,
+          name: "latn"
+        put_numbering_system data, _digits: "᱀᱁᱂᱃᱄᱅᱆᱇᱈᱉",
+          _type: NumberingSystemType::Numeric,
+          name: "lepc"
+        put_numbering_system data, _digits: "᥆᥇᥈᥉᥊᥋᥌᥍᥎᥏",
+          _type: NumberingSystemType::Numeric,
+          name: "limb"
+        put_numbering_system data, _digits: "𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗",
+          _type: NumberingSystemType::Numeric,
+          name: "mathbold"
+        put_numbering_system data, _digits: "𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡",
+          _type: NumberingSystemType::Numeric,
+          name: "mathdbl"
+        put_numbering_system data, _digits: "𝟶𝟷𝟸𝟹𝟺𝟻𝟼𝟽𝟾𝟿",
+          _type: NumberingSystemType::Numeric,
+          name: "mathmono"
+        put_numbering_system data, _digits: "𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵",
+          _type: NumberingSystemType::Numeric,
+          name: "mathsanb"
+        put_numbering_system data, _digits: "𝟢𝟣𝟤𝟥𝟦𝟧𝟨𝟩𝟪𝟫",
+          _type: NumberingSystemType::Numeric,
+          name: "mathsans"
+        put_numbering_system data, _digits: "൦൧൨൩൪൫൬൭൮൯",
+          _type: NumberingSystemType::Numeric,
+          name: "mlym"
+        put_numbering_system data, _digits: "𑙐𑙑𑙒𑙓𑙔𑙕𑙖𑙗𑙘𑙙",
+          _type: NumberingSystemType::Numeric,
+          name: "modi"
+        put_numbering_system data, _digits: "᠐᠑᠒᠓᠔᠕᠖᠗᠘᠙",
+          _type: NumberingSystemType::Numeric,
+          name: "mong"
+        put_numbering_system data, _digits: "𖩠𖩡𖩢𖩣𖩤𖩥𖩦𖩧𖩨𖩩",
+          _type: NumberingSystemType::Numeric,
+          name: "mroo"
+        put_numbering_system data, _digits: "꯰꯱꯲꯳꯴꯵꯶꯷꯸꯹",
+          _type: NumberingSystemType::Numeric,
+          name: "mtei"
+        put_numbering_system data, _digits: "၀၁၂၃၄၅၆၇၈၉",
+          _type: NumberingSystemType::Numeric,
+          name: "mymr"
+        put_numbering_system data, _digits: "႐႑႒႓႔႕႖႗႘႙",
+          _type: NumberingSystemType::Numeric,
+          name: "mymrshan"
+        put_numbering_system data, _digits: "꧰꧱꧲꧳꧴꧵꧶꧷꧸꧹",
+          _type: NumberingSystemType::Numeric,
+          name: "mymrtlng"
+        put_numbering_system data, _digits: "𑑐𑑑𑑒𑑓𑑔𑑕𑑖𑑗𑑘𑑙",
+          _type: NumberingSystemType::Numeric,
+          name: "newa"
+        put_numbering_system data, _digits: "߀߁߂߃߄߅߆߇߈߉",
+          _type: NumberingSystemType::Numeric,
+          name: "nkoo"
+        put_numbering_system data, _digits: "᱐᱑᱒᱓᱔᱕᱖᱗᱘᱙",
+          _type: NumberingSystemType::Numeric,
+          name: "olck"
+        put_numbering_system data, _digits: "୦୧୨୩୪୫୬୭୮୯",
+          _type: NumberingSystemType::Numeric,
+          name: "orya"
+        put_numbering_system data, _digits: "𐒠𐒡𐒢𐒣𐒤𐒥𐒦𐒧𐒨𐒩",
+          _type: NumberingSystemType::Numeric,
+          name: "osma"
+        put_numbering_system data, _rules: "roman-upper",
+          _type: NumberingSystemType::Algorithmic,
+          name: "roman"
+        put_numbering_system data, _rules: "roman-lower",
+          _type: NumberingSystemType::Algorithmic,
+          name: "romanlow"
+        put_numbering_system data, _digits: "꣐꣑꣒꣓꣔꣕꣖꣗꣘꣙",
+          _type: NumberingSystemType::Numeric,
+          name: "saur"
+        put_numbering_system data, _digits: "𑇐𑇑𑇒𑇓𑇔𑇕𑇖𑇗𑇘𑇙",
+          _type: NumberingSystemType::Numeric,
+          name: "shrd"
+        put_numbering_system data, _digits: "𑋰𑋱𑋲𑋳𑋴𑋵𑋶𑋷𑋸𑋹",
+          _type: NumberingSystemType::Numeric,
+          name: "sind"
+        put_numbering_system data, _digits: "෦෧෨෩෪෫෬෭෮෯",
+          _type: NumberingSystemType::Numeric,
+          name: "sinh"
+        put_numbering_system data, _digits: "𑃰𑃱𑃲𑃳𑃴𑃵𑃶𑃷𑃸𑃹",
+          _type: NumberingSystemType::Numeric,
+          name: "sora"
+        put_numbering_system data, _digits: "᮰᮱᮲᮳᮴᮵᮶᮷᮸᮹",
+          _type: NumberingSystemType::Numeric,
+          name: "sund"
+        put_numbering_system data, _digits: "𑛀𑛁𑛂𑛃𑛄𑛅𑛆𑛇𑛈𑛉",
+          _type: NumberingSystemType::Numeric,
+          name: "takr"
+        put_numbering_system data, _digits: "᧐᧑᧒᧓᧔᧕᧖᧗᧘᧙",
+          _type: NumberingSystemType::Numeric,
+          name: "talu"
+        put_numbering_system data, _rules: "tamil",
+          _type: NumberingSystemType::Algorithmic,
+          name: "taml"
+        put_numbering_system data, _digits: "௦௧௨௩௪௫௬௭௮௯",
+          _type: NumberingSystemType::Numeric,
+          name: "tamldec"
+        put_numbering_system data, _digits: "౦౧౨౩౪౫౬౭౮౯",
+          _type: NumberingSystemType::Numeric,
+          name: "telu"
+        put_numbering_system data, _digits: "๐๑๒๓๔๕๖๗๘๙",
+          _type: NumberingSystemType::Numeric,
+          name: "thai"
+        put_numbering_system data, _digits: "༠༡༢༣༤༥༦༧༨༩",
+          _type: NumberingSystemType::Numeric,
+          name: "tibt"
+        put_numbering_system data, _digits: "𑓐𑓑𑓒𑓓𑓔𑓕𑓖𑓗𑓘𑓙",
+          _type: NumberingSystemType::Numeric,
+          name: "tirh"
+        put_numbering_system data, _digits: "꘠꘡꘢꘣꘤꘥꘦꘧꘨꘩",
+          _type: NumberingSystemType::Numeric,
+          name: "vaii"
+        put_numbering_system data, _digits: "𑣠𑣡𑣢𑣣𑣤𑣥𑣦𑣧𑣨𑣩",
+          _type: NumberingSystemType::Numeric,
+          name: "wara"
+        data
+      end
     end
   end
 

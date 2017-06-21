@@ -103,6 +103,12 @@ class JSupplementalGender
   )
 end
 
+class JSupplementalNumberingSystems
+  JSON.mapping(
+    numbering_systems: { type: Hash(String, Hash(String, String)), key: "numberingSystems" },
+  )
+end
+
 def get_json(repo, path)
   if File.readable?("datasource/#{repo}/#{path}.json")
     return File.read("datasource/#{repo}/#{path}.json")
@@ -123,7 +129,7 @@ calendar_data = JSupplementalCalendarData.from_json(get_supplemental("calendarDa
 calendar_preference_data = JSupplementalCalendarPreferenceData.from_json(get_supplemental("calendarPreferenceData"), root: "supplemental").calendar_preference_data
 currency_data = JSupplementalCurrencyData.from_json(get_supplemental("currencyData"), root: "supplemental").currency_data
 gender = JSupplementalGender.from_json(get_supplemental("gender"), root: "supplemental").gender
-
+numbering_systems = JSupplementalNumberingSystems.from_json(get_supplemental("numberingSystems"), root: "supplemental").numbering_systems
 output = String.build do |str|
   ECR.embed "#{__DIR__}/core.ecr", str
 end
