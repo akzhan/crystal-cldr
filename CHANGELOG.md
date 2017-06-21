@@ -7,4 +7,4 @@
 * `Cldr::Core.supplemental.currency_data.fractions` added.
 * `Cldr::Core.supplemental.gender.person_list` added.
 * `Cldr::Core.supplemental.numbering_systems` added.
-
+* `Cldr::Core.supplemental.day_period_rule_set` added.

@@ -56,6 +56,11 @@ module Cldr::Core
     digits : String?,
     rules : String?
 
+  record DayPeriodRule,
+    before : Time::Span?,
+    from : Time::Span?,
+    at : Time::Span?
+
   # Available locales
   class AvailableLocales
     @modern : Array(String)? = nil
@@ -173,27 +178,32 @@ module Cldr::Core
     getter currency_data : CurrencyData = CurrencyData.new
     getter gender : Gender = Gender.new
     @numbering_systems : Hash(String, NumberingSystem)? = nil
+    @day_period_rule_set : Hash(String, Hash(String, DayPeriodRule))? = nil
 
     def calendar_preference_data : Hash(String, Array(CalendarDataEntry))
       @calendar_preference_data ||= begin
         data = Hash(String, Array(CalendarDataEntry)).new(initial_capacity: <%= calendar_preference_data.size %>)
         <%- calendar_preference_data.each do |k, v| -%>
           put_calendar_preference_data data, <%= k.to_literal %>, <%=
-            v.gsub("-", "_").split(/\s+/).map { |d| "self.calendar_data.#{d}" }.join(", ")
-        %>
+            v.gsub("-", "_").split(/\s+/).map { |d| "self.calendar_data.#{d}" }.join(", ") %>
         <%- end -%>
         data
       end
     end
 
-    private def put_calendar_preference_data(data, k : String, *prefs) : Nil
-      ary = Array(CalendarDataEntry).new(prefs.size)
-      prefs.each { |pref| ary << pref }
-      data[k] = ary
-    end
-
-    private def put_numbering_system(data, name : String, _type : NumberingSystemType, _digits : String? = nil, _rules : String? = nil) : Nil
-      data[name] = NumberingSystem.new(_type, _digits, _rules)
+    def day_period_rule_set: Hash(String, Hash(String, DayPeriodRule))
+      @day_period_rule_set ||= begin
+        data = Hash(String, Hash(String, DayPeriodRule)).new(initial_capacity: <%= day_periods.size %>)
+        <%- day_periods.each do |k, v| -%>
+          ldata = Hash(String, DayPeriodRule).new(initial_capacity: <%= v.size %>)
+          <%- v.each do |name, rule| -%>
+            put_day_period_rules( ldata, name: <%= name.to_literal %>, <%- rule.each do |span_name, span_value| -%>
+              <%= span_name %>_hours: <%= span_value.to_hours %>, <%= span_name %>_minutes: <%= span_value.to_minutes %>, <% end %>)
+          <% end -%>
+          data[<%= k.to_literal %>] = ldata
+        <%- end -%>
+        data
+      end
     end
 
     def numbering_systems
@@ -207,6 +217,27 @@ module Cldr::Core
         <%- end -%>
         data
       end
+    end 
+
+    private def put_calendar_preference_data(data, k : String, *prefs) : Nil
+      ary = Array(CalendarDataEntry).new(prefs.size)
+      prefs.each { |pref| ary << pref }
+      data[k] = ary
+    end
+
+    private def put_numbering_system(data, name : String, _type : NumberingSystemType, _digits : String? = nil, _rules : String? = nil) : Nil
+      data[name] = NumberingSystem.new(_type, _digits, _rules)
+    end
+
+    private def put_day_period_rules(data, name,
+      _before_hours : Int32? = nil, _before_minutes : Int32? = nil,
+      _from_hours : Int32? = nil, _from_minutes : Int32? = nil,
+      _at_hours : Int32? = nil, _at_minutes : Int32? = nil
+    ) : Nil
+      before = _before_hours ? Time::Span.new(_before_hours, _before_minutes, 0) : nil
+      from = _from_hours ? Time::Span.new(_from_hours, _from_minutes, 0) : nil
+      at = _at_hours ? Time::Span.new(_at_hours, _at_minutes, 0) : nil
+      data[name] = DayPeriodRule.new before, from, at
     end 
   end
 

@@ -33,4 +33,8 @@ describe Cldr::Core do
     Cldr::Core.supplemental.numbering_systems["latn"].type.numeric?.should be_true
     Cldr::Core.supplemental.numbering_systems["latn"].digits.should eq("0123456789")
   end
+
+  it "should have supplemental.day_period_rule_set[\"ru\"]" do
+    Cldr::Core.supplemental.day_period_rule_set["ru"]["noon"].at.should eq( Time::Span.new(12, 0, 0) )
+  end
 end
