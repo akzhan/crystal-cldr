@@ -60,6 +60,16 @@ module Cldr::Core
     from : Time::Span?,
     at : Time::Span?
 
+  class LanguageData
+    getter scripts : Array(String)
+    getter territories : Array(String)
+
+    def initialize(scripts : Array(String)? = nil, territories : Array(String)? = nil)
+      @scripts = scripts.nil? ? [] of String : scripts
+      @territories = territories.nil? ? [] of String : territories
+    end
+  end
+
   # Available locales
   class AvailableLocales
     @modern : Array(String)? = nil
@@ -1897,6 +1907,7 @@ module Cldr::Core
     getter gender : Gender = Gender.new
     @numbering_systems : Hash(String, NumberingSystem)? = nil
     @day_period_rule_set : Hash(String, Hash(String, DayPeriodRule))? = nil
+    @language_data : Hash(String, LanguageData)? = nil
 
     def calendar_preference_data : Hash(String, Array(CalendarDataEntry))
       @calendar_preference_data ||= begin
@@ -2817,6 +2828,6017 @@ module Cldr::Core
         put_numbering_system data, _digits: "𑣠𑣡𑣢𑣣𑣤𑣥𑣦𑣧𑣨𑣩",
           _type: NumberingSystemType::Numeric,
           name: "wara"
+        data
+      end
+    end
+
+    def language_data
+      @language_data ||= begin
+        data = Hash(String, LanguageData).new(initial_capacity: 1103)
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["aa"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "DJ" << "ET"
+        data["aa-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["ab"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "GE"
+        data["ab-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["abq"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["abr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "GH"
+        data["abr-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ace"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ID"
+        data["ace-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ach"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "UG"
+        data["ach-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ada"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["ady"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RU"
+        data["ady-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Avst"
+        data["ae-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["aeb"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "TN"
+        data["aeb-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["af"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "NA" << "ZA"
+        data["af-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["agq"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["aii"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Syrc"
+        data["aii-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Kana" << "Latn"
+        data["ain-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ak"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "GH"
+        data["ak-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Xsux"
+        data["akk-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["akz"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ale"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["aln"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "XK"
+        data["aln-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["alt"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ET"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Ethi"
+        data["am"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["amo"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["an"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ang-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["anp"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["aoz"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(26)
+        ar_territories << "AE" << "BH" << "DJ" << "DZ" << "EG" << "EH" << "ER" << "IL" << "IQ" << "JO" << "KM" << "KW" << "LB" << "LY" << "MA" << "MR" << "OM" << "PS" << "QA" << "SA" << "SD" << "SO" << "SY" << "TD" << "TN" << "YE"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["ar"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "IR" << "SS"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Syrc"
+        data["ar-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(3)
+        ar_scripts << "Armi" << "Nbat" << "Palm"
+        data["arc-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["arn"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["aro"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["arp"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["arq"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "DZ"
+        data["arq-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["arw-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["ary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MA"
+        data["ary-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["arz"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "EG"
+        data["arz-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Beng"
+        data["as"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["as-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["asa"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ast"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ES"
+        data["ast-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["atj"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["av"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RU"
+        data["av-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["avk-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["awa"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["awa-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "BO"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ay"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "AZ"
+        ar_scripts = Array(String).new(3)
+        ar_scripts << "Arab" << "Cyrl" << "Latn"
+        data["az"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(3)
+        ar_territories << "IQ" << "IR" << "RU"
+        data["az-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["ba"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RU"
+        data["ba-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["bal"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(3)
+        ar_territories << "AF" << "IR" << "PK"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bal-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ban"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ID"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Bali"
+        data["ban-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["bap"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bar"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "AT" << "DE"
+        data["bar-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bas"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Bamu"
+        data["bax"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bbc"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ID"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Batk"
+        data["bbc-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bbj"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bci"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CI"
+        data["bci-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "BY"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["be"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["bej"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SD"
+        data["bej-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bem"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ZM"
+        data["bem-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bew"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ID"
+        data["bew-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bez"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bfd"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Taml"
+        data["bfq"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["bft"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Tibt"
+        data["bft-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["bfy"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "BG"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["bg"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["bgc"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["bgc-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["bgn"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PK"
+        data["bgn-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Grek"
+        data["bgx"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["bhb"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["bhb-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["bhi"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["bhi-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bhk"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PH"
+        data["bhk-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["bho"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(3)
+        ar_territories << "IN" << "MU" << "NP"
+        data["bho-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "VU"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bi"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bik"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PH"
+        data["bik-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bin"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "NG"
+        data["bin-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["bjj"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["bjj-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bjn"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ID"
+        data["bjn-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SN"
+        data["bjt-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bkm"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bku"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Buhd"
+        data["bku-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bla"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Tavt"
+        data["blt"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Latn" << "Nkoo"
+        data["bm"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ML"
+        data["bm-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bmq"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "BD"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Beng"
+        data["bn"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["bn-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Tibt"
+        data["bo"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CN"
+        data["bo-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Beng"
+        data["bpy"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["bqi"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IR"
+        data["bqi-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bqv"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["br"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["bra"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["brh"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PK"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["brh-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["brx"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["brx-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "BA"
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Cyrl" << "Latn"
+        data["bs"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SN"
+        data["bsc-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bss"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bto"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["btv"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["bua"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["buc"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "YT"
+        data["buc-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bug"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ID"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Bugi"
+        data["bug-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bum"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CM"
+        data["bum-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bvb"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Ethi"
+        data["byn"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["byv"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bze"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["bzx"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "AD"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ca"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ES"
+        data["ca-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["cad"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["car"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["cay"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["cch"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Beng" << "Cakm"
+        data["ccp"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["ce"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RU"
+        data["ce-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ceb"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PH"
+        data["ceb-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["cgg"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "UG"
+        data["cgg-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "GU"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ch"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["chk"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "FM"
+        data["chk-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["chm"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["chn-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["cho"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["chp"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cans"
+        data["chp-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cher"
+        data["chr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["chy"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["cja"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cham"
+        data["cja-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cham"
+        data["cjm"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["cjm-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["cjs"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["ckb"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "IQ" << "IR"
+        data["ckb-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["ckt"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["co"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(3)
+        ar_scripts << "Arab" << "Copt" << "Grek"
+        data["cop-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["cps"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Cans" << "Latn"
+        data["cr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["crh"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cans"
+        data["crj"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["crj-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cans"
+        data["crk"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cans"
+        data["crl"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["crl-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cans"
+        data["crm"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["crs"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SC"
+        data["crs-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CZ"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["cs"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SK"
+        data["cs-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PL"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["csb-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cans"
+        data["csw"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ctd"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["cu-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["cv"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RU"
+        data["cv-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["cy"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "GB"
+        data["cy-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "DK"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["da"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "DE"
+        data["da-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["dak"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["dar"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["dav"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["dcc"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["dcc-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(6)
+        ar_territories << "AT" << "BE" << "CH" << "DE" << "LI" << "LU"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["de"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(12)
+        ar_territories << "BR" << "CZ" << "DK" << "FR" << "GB" << "HU" << "KZ" << "NL" << "PL" << "SI" << "SK" << "US"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Runr"
+        data["de-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["del"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["den"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cans"
+        data["den-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["dgr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["din"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["dje"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "NE"
+        data["dje-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["dng"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["dnj"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["doi"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Takr"
+        data["doi-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["dsb"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["dtm"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["dtp"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["dty"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["dua"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["dum-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MV"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Thaa"
+        data["dv"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["dyo"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SN"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["dyo-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["dyu"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "BF"
+        data["dyu-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "BT"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Tibt"
+        data["dz"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ebu"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ee"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "GH" << "TG"
+        data["ee-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["efi"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "NG"
+        data["efi-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["egl"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Egyp"
+        data["egy-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["eka"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Kali"
+        data["eky"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "CY" << "GR"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Grek"
+        data["el"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(89)
+        ar_territories << "AG" << "AI" << "AS" << "AU" << "BB" << "BI" << "BM" << "BS" << "BW" << "BZ" << "CA" << "CC" << "CK" << "CM" << "CX" << "DG" << "DM" << "ER" << "FJ" << "FK" << "FM" << "GB" << "GD" << "GG" << "GH" << "GI" << "GM" << "GU" << "GY" << "HK" << "IE" << "IM" << "IN" << "IO" << "JE" << "JM" << "KE" << "KI" << "KN" << "KY" << "LC" << "LR" << "LS" << "MG" << "MH" << "MP" << "MS" << "MT" << "MU" << "MW" << "NA" << "NF" << "NG" << "NR" << "NU" << "NZ" << "PG" << "PH" << "PK" << "PN" << "PR" << "PW" << "RW" << "SB" << "SC" << "SD" << "SG" << "SH" << "SL" << "SS" << "SX" << "SZ" << "TC" << "TK" << "TO" << "TT" << "TV" << "TZ" << "UG" << "UM" << "US" << "VC" << "VG" << "VI" << "VU" << "WS" << "ZA" << "ZM" << "ZW"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["en"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(48)
+        ar_territories << "AC" << "AR" << "AT" << "BA" << "BD" << "BE" << "BG" << "BR" << "CH" << "CL" << "CY" << "CZ" << "DE" << "DK" << "DZ" << "EE" << "EG" << "ES" << "ET" << "FI" << "FR" << "GR" << "HR" << "HU" << "IL" << "IQ" << "IT" << "JO" << "KZ" << "LB" << "LK" << "LT" << "LU" << "LV" << "MA" << "MX" << "MY" << "NL" << "PL" << "PT" << "RO" << "SE" << "SI" << "SK" << "TA" << "TH" << "TR" << "YE"
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Dsrt" << "Shaw"
+        data["en-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["enm-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["eo"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(23)
+        ar_territories << "AR" << "BO" << "CL" << "CO" << "CR" << "CU" << "DO" << "EA" << "EC" << "ES" << "GQ" << "GT" << "HN" << "IC" << "MX" << "NI" << "PA" << "PE" << "PR" << "PY" << "SV" << "UY" << "VE"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["es"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(9)
+        ar_territories << "AD" << "BZ" << "DE" << "FR" << "GI" << "PH" << "PT" << "RO" << "US"
+        data["es-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["esu"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "EE"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["et"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Ital" << "Latn"
+        data["ett-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["eu"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ES"
+        data["eu-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["evn"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ewo"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ext"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "AF" << "IR"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["fa"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PK"
+        data["fa-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["fan"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "GQ"
+        data["fan-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ff"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "GN" << "SN"
+        data["ff-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ffm"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ML"
+        data["ffm-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "FI"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["fi"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "EE" << "SE"
+        data["fi-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["fia"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PH"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["fil"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "US"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Tglg"
+        data["fil-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["fit"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "FJ"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["fj"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "FO"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["fo"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["fon"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "BJ"
+        data["fon-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(45)
+        ar_territories << "BE" << "BF" << "BI" << "BJ" << "BL" << "CA" << "CD" << "CF" << "CG" << "CH" << "CI" << "CM" << "DJ" << "DZ" << "FR" << "GA" << "GF" << "GN" << "GP" << "GQ" << "HT" << "KM" << "LU" << "MA" << "MC" << "MF" << "MG" << "ML" << "MQ" << "MU" << "NC" << "NE" << "PF" << "PM" << "RE" << "RW" << "SC" << "SN" << "SY" << "TD" << "TG" << "TN" << "VU" << "WF" << "YT"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["fr"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(8)
+        ar_territories << "DE" << "GB" << "IT" << "NL" << "PT" << "RO" << "TF" << "US"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Dupl"
+        data["fr-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["frc"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["frm-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["fro-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["frp"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["frr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["frs"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["fud"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "WF"
+        data["fud-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["fuq"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "NE"
+        data["fuq-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["fur"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["fuv"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "NG"
+        data["fuv-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["fvr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["fy"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "NL"
+        data["fy-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IE"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ga"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "GB"
+        data["ga-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["gaa"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "GH"
+        data["gaa-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["gag"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["gag-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Hans"
+        data["gan"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CN"
+        data["gan-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["gay"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["gba"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["gbm"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["gbm-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["gbz"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["gcr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "GF"
+        data["gcr-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["gd"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "GB"
+        data["gd-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Ethi"
+        data["gez-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["ggn"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ggn-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "KI"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["gil"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["gjk"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["gju"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["gl"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ES"
+        data["gl-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["gld"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["glk"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IR"
+        data["glk-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["gmh-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PY"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["gn"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["goh-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["gom"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["gom-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Deva" << "Telu"
+        data["gon"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["gon-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["gor"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ID"
+        data["gor-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["gos"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Goth"
+        data["got-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["grb"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(3)
+        ar_scripts << "Cprt" << "Grek" << "Linb"
+        data["grc-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Beng"
+        data["grt"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "CH" << "LI"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["gsw"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "DE"
+        data["gsw-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Gujr"
+        data["gu"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["gu-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["gub"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["guc"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["gur"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["guz"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "KE"
+        data["guz-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IM"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["gv"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["gvr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["gwi"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Arab" << "Latn"
+        data["ha"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "NE" << "NG"
+        data["ha-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["hai"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Hans"
+        data["hak"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CN"
+        data["hak-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["haw"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "US"
+        data["haw-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["haz"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "AF"
+        data["haz-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IL"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Hebr"
+        data["he"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["hi"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "FJ" << "ZA"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Mahj"
+        data["hi-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "FJ"
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Deva" << "Latn"
+        data["hif"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["hil"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PH"
+        data["hil-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Xsux"
+        data["hit-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Plrd"
+        data["hmd"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["hmn"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Hmng"
+        data["hmn-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["hnd"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["hne"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["hne-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Laoo"
+        data["hnj"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["hnn"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Hano"
+        data["hnn-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["hno"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PK"
+        data["hno-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PG"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ho"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["hoc"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Wara"
+        data["hoc-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["hoj"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["hoj-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["hop"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "BA" << "HR"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["hr"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(3)
+        ar_territories << "AT" << "RS" << "SI"
+        data["hr-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["hsb"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Hans"
+        data["hsn"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CN"
+        data["hsn-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "HT"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ht"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "HU"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["hu"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(3)
+        ar_territories << "AT" << "RO" << "RS"
+        data["hu-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["hup"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "AM"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Armn"
+        data["hy"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RU"
+        data["hy-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["hz"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ia-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["iba"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ibb"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "NG"
+        data["ibb-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ID"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["id"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["id-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ife"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ig"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "NG"
+        data["ig-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Yiii"
+        data["ii"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CN"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ii-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ik"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ikt"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CA"
+        data["ikt-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ilo"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PH"
+        data["ilo-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["inh"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RU"
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Arab" << "Latn"
+        data["inh-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IS"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["is"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(4)
+        ar_territories << "CH" << "IT" << "SM" << "VA"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["it"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(5)
+        ar_territories << "DE" << "FR" << "HR" << "MT" << "US"
+        data["it-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Cans" << "Latn"
+        data["iu"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CA"
+        data["iu-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["izh"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "JP"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Jpan"
+        data["ja"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["jam"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "JM"
+        data["jam-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["jgo"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["jmc"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["jml"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Hebr"
+        data["jpr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Hebr"
+        data["jrb"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["jut-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["jv"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ID"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Java"
+        data["jv-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "GE"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Geor"
+        data["ka"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["kaa"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kab"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "DZ"
+        data["kab-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kac"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kaj"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kam"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "KE"
+        data["kam-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kao"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["kbd"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RU"
+        data["kbd-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["kca"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kcg"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kck"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kde"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "TZ"
+        data["kde-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Thai"
+        data["kdt"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kea"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CV"
+        data["kea-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kfo"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["kfr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["kfy"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["kfy-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kg"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CD"
+        data["kg-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kge"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kgp"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kha"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Beng"
+        data["kha-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Talu"
+        data["khb"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["khn"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["khn-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["khq"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Mymr"
+        data["kht"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["khw"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ki"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "KE"
+        data["ki-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kiu"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kj"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "NA"
+        data["kj-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Laoo"
+        data["kjg"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kjg-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["kjh"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "KZ"
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Arab" << "Cyrl"
+        data["kk"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CN"
+        data["kk-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kkj"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "GL"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kl"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "DK"
+        data["kl-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kln"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "KE"
+        data["kln-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "KH"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Khmr"
+        data["km"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kmb"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "AO"
+        data["kmb-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Knda"
+        data["kn"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["kn-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SN"
+        data["knf-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "KP" << "KR"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Kore"
+        data["ko"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CN"
+        data["ko-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["koi"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RU"
+        data["koi-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["kok"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["kok-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kos"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kpe"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["kpy"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["krc"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RU"
+        data["krc-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kri"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SL"
+        data["kri-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["krj"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["krl"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["kru"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["kru-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Arab" << "Deva"
+        data["ks"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["ks-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ksb"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ksf"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ksh"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(3)
+        ar_scripts << "Arab" << "Cyrl" << "Latn"
+        data["ku"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "SY" << "TR"
+        data["ku-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["kum"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RU"
+        data["kum-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kut"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["kv"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RU"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Perm"
+        data["kv-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kvr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["kvx"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["kw"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Thai"
+        data["kxm"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "TH"
+        data["kxm-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["kxp"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "KG"
+        ar_scripts = Array(String).new(3)
+        ar_scripts << "Arab" << "Cyrl" << "Latn"
+        data["ky"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Kali"
+        data["kyu"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "VA"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["la-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Lina"
+        data["lab-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Hebr"
+        data["lad"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["lag"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["lah"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PK"
+        data["lah-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["laj"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "UG"
+        data["laj-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["lam"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "LU"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["lb"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["lbe"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RU"
+        data["lbe-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["lbw"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Thai"
+        data["lcp"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Lepc"
+        data["lep"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["lez"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RU"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Aghb"
+        data["lez-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Cyrl" << "Latn"
+        data["lfn-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["lg"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "UG"
+        data["lg-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["li"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Deva" << "Limb"
+        data["lif"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["lij"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Lisu"
+        data["lis"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["liv-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ljp"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ID"
+        data["ljp-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["lki"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["lkt"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Telu"
+        data["lmn"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["lmn-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["lmo"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ln"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CD"
+        data["ln-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "LA"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Laoo"
+        data["lo"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["lol"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["loz"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["lrc"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IR"
+        data["lrc-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "LT"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["lt"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PL"
+        data["lt-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ltg"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["lu"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CD"
+        data["lu-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["lua"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CD"
+        data["lua-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["lui"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["lun"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["luo"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "KE"
+        data["luo-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Beng"
+        data["lus"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["lut-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["luy"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "KE"
+        data["luy-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["luz"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IR"
+        data["luz-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "LV"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["lv"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Thai"
+        data["lwl"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Hans"
+        data["lzh-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Geor" << "Latn"
+        data["lzz"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mad"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ID"
+        data["mad-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["maf"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["mag"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["mag-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["mai"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "IN" << "NP"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Tirh"
+        data["mai-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mak"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ID"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Bugi"
+        data["mak-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Latn" << "Nkoo"
+        data["man"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "GM" << "GN"
+        data["man-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mas"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["maz"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["mdf"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RU"
+        data["mdf-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mdh"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PH"
+        data["mdh-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mdr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Bugi"
+        data["mdr-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mdt"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["men"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SL"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Mend"
+        data["men-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mer"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "KE"
+        data["mer-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SN"
+        data["mey-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["mfa"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "TH"
+        data["mfa-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mfe"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MU"
+        data["mfe-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SN"
+        data["mfv-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MG"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mg"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mgh"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MZ"
+        data["mgh-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mgo"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["mgp"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mgy"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MH"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mh"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "NZ"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mi"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mic"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["min"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ID"
+        data["min-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MK"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["mk"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Mlym"
+        data["ml"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["ml-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mls"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MN"
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Cyrl" << "Mong"
+        data["mn"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CN"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Phag"
+        data["mn-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Mong"
+        data["mnc-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Beng"
+        data["mni"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Mtei"
+        data["mni-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["mns"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Mymr"
+        data["mnw"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["moe"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["moh"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mos"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "BF"
+        data["mos-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["mr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Modi"
+        data["mr-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["mrd"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["mrj"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mro"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Mroo"
+        data["mro-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(3)
+        ar_territories << "BN" << "MY" << "SG"
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Arab" << "Latn"
+        data["ms"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "CC" << "ID"
+        data["ms-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MT"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mt"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["mtr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["mtr-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mua"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mus"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["mvy"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mwk"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mwl"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["mwr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["mwr-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mwv"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["mxc"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MM"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Mymr"
+        data["my"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["myv"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RU"
+        data["myv-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["myx"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "UG"
+        data["myx-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Mand"
+        data["myz-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["mzn"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IR"
+        data["mzn-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "NR"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["na"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Hans"
+        data["nan"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CN"
+        data["nan-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nap"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["naq"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "NO" << "SJ"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nb"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nch"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ZW"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nd"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ndc"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MZ"
+        data["ndc-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nds"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "DE" << "NL"
+        data["nds-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "NP"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["ne"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["ne-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["new"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ng"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "NA"
+        data["ng-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ngl"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MZ"
+        data["ngl-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nhe"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nhw"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nia"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nij"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "NU"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["niu"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["njo"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(7)
+        ar_territories << "AW" << "BE" << "BQ" << "CW" << "NL" << "SR" << "SX"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nl"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "DE"
+        data["nl-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nmg"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "NO"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nn"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nnh"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Lana"
+        data["nod"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "TH"
+        data["nod-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["noe"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["noe-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["nog"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Runr"
+        data["non-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nov-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Nkoo"
+        data["nqo"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ZA"
+        data["nr-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cans"
+        data["nsk"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nsk-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nso"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ZA"
+        data["nso-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nus"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nv"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nxq"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MW"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ny"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ZM"
+        data["ny-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nym"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "TZ"
+        data["nym-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nyn"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "UG"
+        data["nyn-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nyo"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["nzi"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["oc"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "FR"
+        data["oc-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cans"
+        data["oj"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["oj-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["om"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ET"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Ethi"
+        data["om-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Orya"
+        data["or"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["or-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["os"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "GE"
+        data["os-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["osa"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Ital" << "Latn"
+        data["osc-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Orkh"
+        data["otk-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Arab" << "Guru"
+        data["pa"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "IN" << "PK"
+        data["pa-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["pag"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PH"
+        data["pag-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Phli" << "Phlp"
+        data["pal-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["pam"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PH"
+        data["pam-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "AW" << "CW"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["pap"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "BQ"
+        data["pap-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PW"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["pau"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["pcd"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["pcm"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "NG"
+        data["pcm-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["pdc"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["pdt"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Xpeo"
+        data["peo-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["pfl"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Phnx"
+        data["phn-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(3)
+        ar_scripts << "Deva" << "Sinh" << "Thai"
+        data["pi-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["pko"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PL"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["pl"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "UA"
+        data["pl-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["pms"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(3)
+        ar_scripts << "Cyrl" << "Grek" << "Latn"
+        data["pnt"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["pon"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "FM"
+        data["pon-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["prd"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["prg-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["pro-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "AF"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["ps"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PK"
+        data["ps-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(10)
+        ar_territories << "AO" << "BR" << "CV" << "GQ" << "GW" << "MO" << "MZ" << "PT" << "ST" << "TL"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["pt"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["puu"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(3)
+        ar_territories << "BO" << "EC" << "PE"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["qu"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["quc"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "GT"
+        data["quc-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["qug"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["raj"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["raj-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["rap"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["rar"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["rcf"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RE"
+        data["rcf-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["rej"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ID"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Rjng"
+        data["rej-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["rgn"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ria"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Latn" << "Tfng"
+        data["rif"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MA"
+        data["rif-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["rjs"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Beng"
+        data["rkt"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "BD" << "IN"
+        data["rkt-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["rm"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CH"
+        data["rm-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["rmf"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["rmo"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["rmt"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IR"
+        data["rmt-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["rmu"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "BI"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["rn"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["rng"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "MD" << "RO"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ro"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RS"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["ro-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["rob"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["rof"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["rom"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["rom-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["rtm"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(5)
+        ar_territories << "BY" << "KG" << "KZ" << "RU" << "UA"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["ru"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(8)
+        ar_territories << "BG" << "DE" << "EE" << "LT" << "LV" << "PL" << "SJ" << "UZ"
+        data["ru-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["rue"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["rug"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["rup"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RW"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["rw"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["rwk"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Kana"
+        data["ryu"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        ar_scripts = Array(String).new(5)
+        ar_scripts << "Deva" << "Gran" << "Shrd" << "Sidd" << "Sinh"
+        data["sa-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sad"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["saf"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["sah"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RU"
+        data["sah-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Hebr" << "Samr"
+        data["sam-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["saq"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sas"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ID"
+        data["sas-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sat"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        ar_scripts = Array(String).new(4)
+        ar_scripts << "Beng" << "Deva" << "Olck" << "Orya"
+        data["sat-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SN"
+        data["sav-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Saur"
+        data["saz"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sbp"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sc"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IT"
+        data["sc-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["sck"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["sck-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["scn"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sco"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "GB"
+        data["sco-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["scs"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Arab" << "Deva"
+        data["sd"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "IN" << "PK"
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Khoj" << "Sind"
+        data["sd-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sdc"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["sdh"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IR"
+        data["sdh-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["se"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "NO"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["se-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["see"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sef"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CI"
+        data["sef-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["seh"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MZ"
+        data["seh-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sei"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["sel-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ses"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CF"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sg"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Latn" << "Ogam"
+        data["sga-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sgs"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(3)
+        ar_scripts << "Arab" << "Latn" << "Tfng"
+        data["shi"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MA"
+        data["shi-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Mymr"
+        data["shn"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MM"
+        data["shn-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "LK"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Sinh"
+        data["si"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sid"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ET"
+        data["sid-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SK"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sk"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "CZ" << "RS"
+        data["sk-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["skr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PK"
+        data["skr-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SI"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sl"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "AT"
+        data["sl-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sli"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sly"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "AS" << "WS"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sm"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sma"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["smj"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["smn"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Samr"
+        data["smp-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sms"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ZW"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sn"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SN"
+        data["snf-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["snk"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ML"
+        data["snk-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SO"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["so"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "DJ" << "ET"
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Arab" << "Osma"
+        data["so-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Thai"
+        data["sou"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "TH"
+        data["sou-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "AL" << "XK"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sq"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "MK" << "RS"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Elba"
+        data["sq-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(4)
+        ar_territories << "BA" << "ME" << "RS" << "XK"
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Cyrl" << "Latn"
+        data["sr"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["srb"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Sora"
+        data["srb-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["srn"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SR"
+        data["srn-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["srr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SN"
+        data["srr-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["srx"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SZ"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ss"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ZA"
+        data["ss-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ssy"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "LS"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["st"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ZA"
+        data["st-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["stq"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["su"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ID"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Sund"
+        data["su-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["suk"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "TZ"
+        data["suk-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sus"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "GN"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["sus-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(3)
+        ar_territories << "AX" << "FI" << "SE"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sv"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(3)
+        ar_territories << "KE" << "TZ" << "UG"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sw"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CD"
+        data["sw-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["swb"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "YT"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["swb-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["swg"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["swv"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["swv-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["sxn"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["syi"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Beng"
+        data["syl"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "BD"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Sylo"
+        data["syl-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Syrc"
+        data["syr-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["szl"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "LK" << "SG"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Taml"
+        data["ta"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "IN" << "MY"
+        data["ta-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["tab"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["taj"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Tibt"
+        data["taj-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["tbw"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Tagb"
+        data["tbw-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Knda"
+        data["tcy"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["tcy-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Tale"
+        data["tdd"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["tdg"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Tibt"
+        data["tdg-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["tdh"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Telu"
+        data["te"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["te-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["tem"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SL"
+        data["tem-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["teo"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "UG"
+        data["teo-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ter"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "TL"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["tet"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "TJ"
+        ar_scripts = Array(String).new(3)
+        ar_scripts << "Arab" << "Cyrl" << "Latn"
+        data["tg"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "TH"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Thai"
+        data["th"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["thl"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["thq"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["thr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ER"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Ethi"
+        data["ti"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ET"
+        data["ti-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Ethi"
+        data["tig"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ER"
+        data["tig-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["tiv"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "NG"
+        data["tiv-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "TM"
+        ar_scripts = Array(String).new(3)
+        ar_scripts << "Arab" << "Cyrl" << "Latn"
+        data["tk"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "AF" << "IR"
+        data["tk-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "TK"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["tkl"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Cyrl" << "Latn"
+        data["tkr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["tkt"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["tli"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(3)
+        ar_scripts << "Arab" << "Cyrl" << "Latn"
+        data["tly"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["tmh"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "NE"
+        data["tmh-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "BW"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["tn"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ZA"
+        data["tn-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SN"
+        data["tnr-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "TO"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["to"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["tog"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PG"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["tpi"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "CY" << "TR"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["tr"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "DE"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["tr-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["tru"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Syrc"
+        data["tru-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["trv"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ts"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "MZ" << "ZA"
+        data["ts-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Grek"
+        data["tsd"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["tsf"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["tsg"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PH"
+        data["tsg-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["tsi"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Tibt"
+        data["tsj"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["tt"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RU"
+        data["tt-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ttj"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Thai"
+        data["tts"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "TH"
+        data["tts-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Cyrl" << "Latn"
+        data["ttt"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["ttt-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["tum"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MW"
+        data["tum-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "TV"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["tvl"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["twq"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PF"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ty"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["tyv"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RU"
+        data["tyv-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MA"
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Latn" << "Tfng"
+        data["tzm"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["ude"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["udm"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RU"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["udm-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Arab" << "Cyrl"
+        data["ug"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CN"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ug-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Ugar"
+        data["uga-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "UA"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["uk"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "RS"
+        data["uk-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["uli"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["umb"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "AO"
+        data["umb-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(5)
+        ar_territories << "AQ" << "BV" << "CP" << "GS" << "HM"
+        data["und-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Beng" << "Deva"
+        data["unr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["unr-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Beng" << "Deva"
+        data["unx"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PK"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["ur"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["ur-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "UZ"
+        ar_scripts = Array(String).new(3)
+        ar_scripts << "Arab" << "Cyrl" << "Latn"
+        data["uz"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "AF"
+        data["uz-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Latn" << "Vaii"
+        data["vai"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ve"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ZA"
+        data["ve-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["vec"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["vep"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "VN"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["vi"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "US"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Hani"
+        data["vi-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["vic"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["vls"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "BE"
+        data["vls-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["vmf"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "DE"
+        data["vmf-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["vmw"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MZ"
+        data["vmw-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["vo-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["vot-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["vro"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["vun"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["wa"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["wae"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Ethi"
+        data["wal"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ET"
+        data["wal-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["war"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "PH"
+        data["war-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["was"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["wbp"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Telu"
+        data["wbq"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["wbq-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["wbr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["wbr-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["wls"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "WF"
+        data["wls-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "KM"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["wni"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "SN"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["wo"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["wo-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["wtm"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["wtm-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Hans"
+        data["wuu"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CN"
+        data["wuu-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["xal"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["xav"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cari"
+        data["xcr-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["xh"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ZA"
+        data["xh-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Lyci"
+        data["xlc-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Lydi"
+        data["xld-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Geor"
+        data["xmf"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Mani"
+        data["xmn-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Merc"
+        data["xmr-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Narb"
+        data["xna-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["xnr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "IN"
+        data["xnr-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["xog"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "UG"
+        data["xog-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Prti"
+        data["xpr-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Sarb"
+        data["xsa-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Deva"
+        data["xsr"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Ital" << "Latn"
+        data["xum-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["yao"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["yap"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["yav"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["ybb"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Hebr"
+        data["yi"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "NG"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["yo"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Cyrl"
+        data["yrk"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["yrl"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["yua"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Hant"
+        data["yue"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(2)
+        ar_territories << "CN" << "HK"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Hans"
+        data["yue-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["za"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "CN"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Hans"
+        data["za-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["zag"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["zap"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "KM"
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Arab"
+        data["zdj"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["zea"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Tfng"
+        data["zen-alt-secondary"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Tfng"
+        data["zgh"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "MA"
+        data["zgh-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_territories = Array(String).new(5)
+        ar_territories << "CN" << "HK" << "MO" << "SG" << "TW"
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Hans" << "Hant"
+        data["zh"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(4)
+        ar_territories << "ID" << "MY" << "TH" << "US"
+        ar_scripts = Array(String).new(2)
+        ar_scripts << "Bopo" << "Phag"
+        data["zh-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["zmi"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["zu"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "ZA"
+        data["zu-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["zun"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_scripts = Array(String).new(1)
+        ar_scripts << "Latn"
+        data["zza"] = LanguageData.new(
+          scripts: ar_scripts,
+        )
+        ar_territories = Array(String).new(1)
+        ar_territories << "TR"
+        data["zza-alt-secondary"] = LanguageData.new(
+          territories: ar_territories,
+        )
         data
       end
     end

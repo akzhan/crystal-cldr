@@ -18,7 +18,7 @@ describe Cldr::Core do
   end
 
   it "should have supplemental.calendar_data.japanese.calendar_system" do
-    Cldr::Core.supplemental.calendar_preference_data["001"].should eq [ Cldr::Core.supplemental.calendar_data.gregorian ]
+    Cldr::Core.supplemental.calendar_preference_data["001"].should eq [Cldr::Core.supplemental.calendar_data.gregorian]
   end
 
   it "should have supplemental.currency_data[\"DEFAULT\"]" do
@@ -35,6 +35,10 @@ describe Cldr::Core do
   end
 
   it "should have supplemental.day_period_rule_set[\"ru\"]" do
-    Cldr::Core.supplemental.day_period_rule_set["ru"]["noon"].at.should eq( Time::Span.new(12, 0, 0) )
+    Cldr::Core.supplemental.day_period_rule_set["ru"]["noon"].at.should eq(Time::Span.new(12, 0, 0))
+  end
+
+  it "should have supplemental.language_data[\"ru\"].territories" do
+    Cldr::Core.supplemental.language_data["ru"].territories.should eq(["BY", "KG", "KZ", "RU", "UA"])
   end
 end

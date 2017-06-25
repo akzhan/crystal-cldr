@@ -61,6 +61,16 @@ module Cldr::Core
     from : Time::Span?,
     at : Time::Span?
 
+  class LanguageData
+    getter scripts : Array(String)
+    getter territories : Array(String)
+
+    def initialize(scripts : Array(String)? = nil, territories : Array(String)? = nil)
+      @scripts = scripts.nil? ? [] of String : scripts
+      @territories = territories.nil? ? [] of String : territories
+    end
+  end
+
   # Available locales
   class AvailableLocales
     @modern : Array(String)? = nil
@@ -179,6 +189,7 @@ module Cldr::Core
     getter gender : Gender = Gender.new
     @numbering_systems : Hash(String, NumberingSystem)? = nil
     @day_period_rule_set : Hash(String, Hash(String, DayPeriodRule))? = nil
+    @language_data : Hash(String, LanguageData)? = nil
 
     def calendar_preference_data : Hash(String, Array(CalendarDataEntry))
       @calendar_preference_data ||= begin
@@ -214,6 +225,24 @@ module Cldr::Core
             <%= key %>: <%= key == "_type" ? "NumberingSystemType::#{value.ucfirst}" : value.to_literal %>,
           <%- end -%>
           name: <%= name.to_literal %>
+        <%- end -%>
+        data
+      end
+    end 
+
+    def language_data
+      @language_data ||= begin
+        data = Hash(String, LanguageData).new(initial_capacity: <%= language_data.size %>)
+        <%- language_data.each do |name, data| -%>
+          <%- data.each do |key, values| -%>
+            ar_<%= key.sub(/^_/, "") %> = Array(String).new(<%= values.size %>)
+            ar_<%= key.sub(/^_/, "") %> << <%= values.sort.map { |v| v.to_literal }.join(" << ") %>
+          <%- end -%>
+          data[<%= name.to_literal %>] = LanguageData.new(
+            <%- data.each do |key, values| -%>
+              <%= key.sub(/^_/, "") %>: ar_<%= key.sub(/^_/, "") %>,
+            <%- end -%>
+          )
         <%- end -%>
         data
       end

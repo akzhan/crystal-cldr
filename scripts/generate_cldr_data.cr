@@ -125,6 +125,12 @@ class JSupplementalDayPeriods
   )
 end
 
+class JSupplementalLanguageData
+  JSON.mapping(
+    language_data: {type: Hash(String, Hash(String, Array(String))), key: "languageData"},
+  )
+end
+
 def get_json(repo, path)
   if File.readable?("datasource/#{repo}/#{path}.json")
     return File.read("datasource/#{repo}/#{path}.json")
@@ -147,6 +153,7 @@ currency_data = JSupplementalCurrencyData.from_json(get_supplemental("currencyDa
 gender = JSupplementalGender.from_json(get_supplemental("gender"), root: "supplemental").gender
 numbering_systems = JSupplementalNumberingSystems.from_json(get_supplemental("numberingSystems"), root: "supplemental").numbering_systems
 day_periods = JSupplementalDayPeriods.from_json(get_supplemental("dayPeriods"), root: "supplemental").day_periods
+language_data = JSupplementalLanguageData.from_json(get_supplemental("languageData"), root: "supplemental").language_data
 
 output = String.build do |str|
   ECR.embed "#{__DIR__}/core.ecr", str
