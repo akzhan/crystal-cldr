@@ -41,4 +41,8 @@ describe Cldr::Core do
   it "should have supplemental.language_data[\"ru\"].territories" do
     Cldr::Core.supplemental.language_data["ru"].territories.should eq(["BY", "KG", "KZ", "RU", "UA"])
   end
+
+  it "should have supplemental.likely_subtags[\"en\"]" do
+    Cldr::Core.supplemental.likely_subtags["en"].should eq("en-Latn-US")
+  end
 end

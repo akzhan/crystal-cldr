@@ -190,6 +190,7 @@ module Cldr::Core
     @numbering_systems : Hash(String, NumberingSystem)? = nil
     @day_period_rule_set : Hash(String, Hash(String, DayPeriodRule))? = nil
     @language_data : Hash(String, LanguageData)? = nil
+    @likely_subtags : Hash(String, String)? = nil
 
     def calendar_preference_data : Hash(String, Array(CalendarDataEntry))
       @calendar_preference_data ||= begin
@@ -202,7 +203,7 @@ module Cldr::Core
       end
     end
 
-    def day_period_rule_set: Hash(String, Hash(String, DayPeriodRule))
+    def day_period_rule_set : Hash(String, Hash(String, DayPeriodRule))
       @day_period_rule_set ||= begin
         data = Hash(String, Hash(String, DayPeriodRule)).new(initial_capacity: <%= day_periods.size %>)
         <%- day_periods.each do |k, v| -%>
@@ -230,7 +231,7 @@ module Cldr::Core
       end
     end 
 
-    def language_data
+    def language_data : Hash(String, LanguageData)
       @language_data ||= begin
         data = Hash(String, LanguageData).new(initial_capacity: <%= language_data.size %>)
         <%- language_data.each do |name, data| -%>
@@ -243,6 +244,16 @@ module Cldr::Core
               <%= key.sub(/^_/, "") %>: ar_<%= key.sub(/^_/, "") %>,
             <%- end -%>
           )
+        <%- end -%>
+        data
+      end
+    end 
+
+    def likely_subtags : Hash(String, String)
+      @likely_subtags ||= begin
+        data = Hash(String, String).new(initial_capacity: <%= likely_subtags.size %>)
+        <%- likely_subtags.each do |name, value| -%>
+          data[<%= name.to_literal %>] = <%= value.to_literal %>
         <%- end -%>
         data
       end

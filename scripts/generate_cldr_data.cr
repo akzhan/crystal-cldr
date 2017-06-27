@@ -131,6 +131,12 @@ class JSupplementalLanguageData
   )
 end
 
+class JSupplementalLikelySubtags
+  JSON.mapping(
+    likely_subtags: {type: Hash(String, String), key: "likelySubtags"},
+  )
+end
+
 def get_json(repo, path)
   if File.readable?("datasource/#{repo}/#{path}.json")
     return File.read("datasource/#{repo}/#{path}.json")
@@ -154,6 +160,7 @@ gender = JSupplementalGender.from_json(get_supplemental("gender"), root: "supple
 numbering_systems = JSupplementalNumberingSystems.from_json(get_supplemental("numberingSystems"), root: "supplemental").numbering_systems
 day_periods = JSupplementalDayPeriods.from_json(get_supplemental("dayPeriods"), root: "supplemental").day_periods
 language_data = JSupplementalLanguageData.from_json(get_supplemental("languageData"), root: "supplemental").language_data
+likely_subtags = JSupplementalLikelySubtags.from_json(get_supplemental("likelySubtags"), root: "supplemental").likely_subtags
 
 output = String.build do |str|
   ECR.embed "#{__DIR__}/core.ecr", str
