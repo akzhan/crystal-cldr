@@ -1910,6 +1910,7 @@ module Cldr::Core
     @language_data : Hash(String, LanguageData)? = nil
     @likely_subtags : Hash(String, String)? = nil
     @plurals_type_cardinal : Hash(String, Hash(String, String))? = nil
+    @plurals_type_ordinal : Hash(String, Hash(String, String))? = nil
 
     def calendar_preference_data : Hash(String, Array(CalendarDataEntry))
       @calendar_preference_data ||= begin
@@ -11902,6 +11903,510 @@ module Cldr::Core
           rules = Hash(String, String).new(initial_capacity: 2)
           rules["pluralRule-count-one"] = "i = 0 or n = 1 @integer 0, 1 @decimal 0.0~1.0, 0.00~0.04"
           rules["pluralRule-count-other"] = " @integer 2~17, 100, 1000, 10000, 100000, 1000000, … @decimal 1.1~2.6, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0, …"
+          rules
+        end
+        data
+      end
+    end
+
+    def plurals_type_ordinal : Hash(String, Hash(String, String))
+      @plurals_type_ordinal ||= begin
+        data = Hash(String, Hash(String, String)).new(initial_capacity: 88)
+        data["af"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["am"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["ar"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["as"] = begin
+          rules = Hash(String, String).new(initial_capacity: 5)
+          rules["pluralRule-count-one"] = "n = 1,5,7,8,9,10 @integer 1, 5, 7~10"
+          rules["pluralRule-count-two"] = "n = 2,3 @integer 2, 3"
+          rules["pluralRule-count-few"] = "n = 4 @integer 4"
+          rules["pluralRule-count-many"] = "n = 6 @integer 6"
+          rules["pluralRule-count-other"] = " @integer 0, 11~25, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["az"] = begin
+          rules = Hash(String, String).new(initial_capacity: 4)
+          rules["pluralRule-count-one"] = "i % 10 = 1,2,5,7,8 or i % 100 = 20,50,70,80 @integer 1, 2, 5, 7, 8, 11, 12, 15, 17, 18, 20~22, 25, 101, 1001, …"
+          rules["pluralRule-count-few"] = "i % 10 = 3,4 or i % 1000 = 100,200,300,400,500,600,700,800,900 @integer 3, 4, 13, 14, 23, 24, 33, 34, 43, 44, 53, 54, 63, 64, 73, 74, 100, 1003, …"
+          rules["pluralRule-count-many"] = "i = 0 or i % 10 = 6 or i % 100 = 40,60,90 @integer 0, 6, 16, 26, 36, 40, 46, 56, 106, 1006, …"
+          rules["pluralRule-count-other"] = " @integer 9, 10, 19, 29, 30, 39, 49, 59, 69, 79, 109, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["be"] = begin
+          rules = Hash(String, String).new(initial_capacity: 2)
+          rules["pluralRule-count-few"] = "n % 10 = 2,3 and n % 100 != 12,13 @integer 2, 3, 22, 23, 32, 33, 42, 43, 52, 53, 62, 63, 72, 73, 82, 83, 102, 1002, …"
+          rules["pluralRule-count-other"] = " @integer 0, 1, 4~17, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["bg"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["bn"] = begin
+          rules = Hash(String, String).new(initial_capacity: 5)
+          rules["pluralRule-count-one"] = "n = 1,5,7,8,9,10 @integer 1, 5, 7~10"
+          rules["pluralRule-count-two"] = "n = 2,3 @integer 2, 3"
+          rules["pluralRule-count-few"] = "n = 4 @integer 4"
+          rules["pluralRule-count-many"] = "n = 6 @integer 6"
+          rules["pluralRule-count-other"] = " @integer 0, 11~25, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["bs"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["ca"] = begin
+          rules = Hash(String, String).new(initial_capacity: 4)
+          rules["pluralRule-count-one"] = "n = 1,3 @integer 1, 3"
+          rules["pluralRule-count-two"] = "n = 2 @integer 2"
+          rules["pluralRule-count-few"] = "n = 4 @integer 4"
+          rules["pluralRule-count-other"] = " @integer 0, 5~19, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["ce"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["cs"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["cy"] = begin
+          rules = Hash(String, String).new(initial_capacity: 6)
+          rules["pluralRule-count-zero"] = "n = 0,7,8,9 @integer 0, 7~9"
+          rules["pluralRule-count-one"] = "n = 1 @integer 1"
+          rules["pluralRule-count-two"] = "n = 2 @integer 2"
+          rules["pluralRule-count-few"] = "n = 3,4 @integer 3, 4"
+          rules["pluralRule-count-many"] = "n = 5,6 @integer 5, 6"
+          rules["pluralRule-count-other"] = " @integer 10~25, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["da"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["de"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["dsb"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["el"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["en"] = begin
+          rules = Hash(String, String).new(initial_capacity: 4)
+          rules["pluralRule-count-one"] = "n % 10 = 1 and n % 100 != 11 @integer 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …"
+          rules["pluralRule-count-two"] = "n % 10 = 2 and n % 100 != 12 @integer 2, 22, 32, 42, 52, 62, 72, 82, 102, 1002, …"
+          rules["pluralRule-count-few"] = "n % 10 = 3 and n % 100 != 13 @integer 3, 23, 33, 43, 53, 63, 73, 83, 103, 1003, …"
+          rules["pluralRule-count-other"] = " @integer 0, 4~18, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["es"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["et"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["eu"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["fa"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["fi"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["fil"] = begin
+          rules = Hash(String, String).new(initial_capacity: 2)
+          rules["pluralRule-count-one"] = "n = 1 @integer 1"
+          rules["pluralRule-count-other"] = " @integer 0, 2~16, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["fr"] = begin
+          rules = Hash(String, String).new(initial_capacity: 2)
+          rules["pluralRule-count-one"] = "n = 1 @integer 1"
+          rules["pluralRule-count-other"] = " @integer 0, 2~16, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["fy"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["ga"] = begin
+          rules = Hash(String, String).new(initial_capacity: 2)
+          rules["pluralRule-count-one"] = "n = 1 @integer 1"
+          rules["pluralRule-count-other"] = " @integer 0, 2~16, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["gl"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["gsw"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["gu"] = begin
+          rules = Hash(String, String).new(initial_capacity: 5)
+          rules["pluralRule-count-one"] = "n = 1 @integer 1"
+          rules["pluralRule-count-two"] = "n = 2,3 @integer 2, 3"
+          rules["pluralRule-count-few"] = "n = 4 @integer 4"
+          rules["pluralRule-count-many"] = "n = 6 @integer 6"
+          rules["pluralRule-count-other"] = " @integer 0, 5, 7~20, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["he"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["hi"] = begin
+          rules = Hash(String, String).new(initial_capacity: 5)
+          rules["pluralRule-count-one"] = "n = 1 @integer 1"
+          rules["pluralRule-count-two"] = "n = 2,3 @integer 2, 3"
+          rules["pluralRule-count-few"] = "n = 4 @integer 4"
+          rules["pluralRule-count-many"] = "n = 6 @integer 6"
+          rules["pluralRule-count-other"] = " @integer 0, 5, 7~20, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["hr"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["hsb"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["hu"] = begin
+          rules = Hash(String, String).new(initial_capacity: 2)
+          rules["pluralRule-count-one"] = "n = 1,5 @integer 1, 5"
+          rules["pluralRule-count-other"] = " @integer 0, 2~4, 6~17, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["hy"] = begin
+          rules = Hash(String, String).new(initial_capacity: 2)
+          rules["pluralRule-count-one"] = "n = 1 @integer 1"
+          rules["pluralRule-count-other"] = " @integer 0, 2~16, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["id"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["in"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["is"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["it"] = begin
+          rules = Hash(String, String).new(initial_capacity: 2)
+          rules["pluralRule-count-many"] = "n = 11,8,80,800 @integer 8, 11, 80, 800"
+          rules["pluralRule-count-other"] = " @integer 0~7, 9, 10, 12~17, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["iw"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["ja"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["ka"] = begin
+          rules = Hash(String, String).new(initial_capacity: 3)
+          rules["pluralRule-count-one"] = "i = 1 @integer 1"
+          rules["pluralRule-count-many"] = "i = 0 or i % 100 = 2..20,40,60,80 @integer 0, 2~16, 102, 1002, …"
+          rules["pluralRule-count-other"] = " @integer 21~36, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["kk"] = begin
+          rules = Hash(String, String).new(initial_capacity: 2)
+          rules["pluralRule-count-many"] = "n % 10 = 6 or n % 10 = 9 or n % 10 = 0 and n != 0 @integer 6, 9, 10, 16, 19, 20, 26, 29, 30, 36, 39, 40, 100, 1000, 10000, 100000, 1000000, …"
+          rules["pluralRule-count-other"] = " @integer 0~5, 7, 8, 11~15, 17, 18, 21, 101, 1001, …"
+          rules
+        end
+        data["km"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["kn"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["ko"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["ky"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["lo"] = begin
+          rules = Hash(String, String).new(initial_capacity: 2)
+          rules["pluralRule-count-one"] = "n = 1 @integer 1"
+          rules["pluralRule-count-other"] = " @integer 0, 2~16, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["lt"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["lv"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["mk"] = begin
+          rules = Hash(String, String).new(initial_capacity: 4)
+          rules["pluralRule-count-one"] = "i % 10 = 1 and i % 100 != 11 @integer 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …"
+          rules["pluralRule-count-two"] = "i % 10 = 2 and i % 100 != 12 @integer 2, 22, 32, 42, 52, 62, 72, 82, 102, 1002, …"
+          rules["pluralRule-count-many"] = "i % 10 = 7,8 and i % 100 != 17,18 @integer 7, 8, 27, 28, 37, 38, 47, 48, 57, 58, 67, 68, 77, 78, 87, 88, 107, 1007, …"
+          rules["pluralRule-count-other"] = " @integer 0, 3~6, 9~19, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["ml"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["mn"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["mo"] = begin
+          rules = Hash(String, String).new(initial_capacity: 2)
+          rules["pluralRule-count-one"] = "n = 1 @integer 1"
+          rules["pluralRule-count-other"] = " @integer 0, 2~16, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["mr"] = begin
+          rules = Hash(String, String).new(initial_capacity: 4)
+          rules["pluralRule-count-one"] = "n = 1 @integer 1"
+          rules["pluralRule-count-two"] = "n = 2,3 @integer 2, 3"
+          rules["pluralRule-count-few"] = "n = 4 @integer 4"
+          rules["pluralRule-count-other"] = " @integer 0, 5~19, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["ms"] = begin
+          rules = Hash(String, String).new(initial_capacity: 2)
+          rules["pluralRule-count-one"] = "n = 1 @integer 1"
+          rules["pluralRule-count-other"] = " @integer 0, 2~16, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["my"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["nb"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["ne"] = begin
+          rules = Hash(String, String).new(initial_capacity: 2)
+          rules["pluralRule-count-one"] = "n = 1..4 @integer 1~4"
+          rules["pluralRule-count-other"] = " @integer 0, 5~19, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["nl"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["pa"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["pl"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["prg"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["pt"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["ro"] = begin
+          rules = Hash(String, String).new(initial_capacity: 2)
+          rules["pluralRule-count-one"] = "n = 1 @integer 1"
+          rules["pluralRule-count-other"] = " @integer 0, 2~16, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["root"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["ru"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["sh"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["si"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["sk"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["sl"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["sq"] = begin
+          rules = Hash(String, String).new(initial_capacity: 3)
+          rules["pluralRule-count-one"] = "n = 1 @integer 1"
+          rules["pluralRule-count-many"] = "n % 10 = 4 and n % 100 != 14 @integer 4, 24, 34, 44, 54, 64, 74, 84, 104, 1004, …"
+          rules["pluralRule-count-other"] = " @integer 0, 2, 3, 5~17, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["sr"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["sv"] = begin
+          rules = Hash(String, String).new(initial_capacity: 2)
+          rules["pluralRule-count-one"] = "n % 10 = 1,2 and n % 100 != 11,12 @integer 1, 2, 21, 22, 31, 32, 41, 42, 51, 52, 61, 62, 71, 72, 81, 82, 101, 1001, …"
+          rules["pluralRule-count-other"] = " @integer 0, 3~17, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["sw"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["ta"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["te"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["th"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["tl"] = begin
+          rules = Hash(String, String).new(initial_capacity: 2)
+          rules["pluralRule-count-one"] = "n = 1 @integer 1"
+          rules["pluralRule-count-other"] = " @integer 0, 2~16, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["tr"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["uk"] = begin
+          rules = Hash(String, String).new(initial_capacity: 2)
+          rules["pluralRule-count-few"] = "n % 10 = 3 and n % 100 != 13 @integer 3, 23, 33, 43, 53, 63, 73, 83, 103, 1003, …"
+          rules["pluralRule-count-other"] = " @integer 0~2, 4~16, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["ur"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["uz"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["vi"] = begin
+          rules = Hash(String, String).new(initial_capacity: 2)
+          rules["pluralRule-count-one"] = "n = 1 @integer 1"
+          rules["pluralRule-count-other"] = " @integer 0, 2~16, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["yue"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["zh"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
+          rules
+        end
+        data["zu"] = begin
+          rules = Hash(String, String).new(initial_capacity: 1)
+          rules["pluralRule-count-other"] = " @integer 0~15, 100, 1000, 10000, 100000, 1000000, …"
           rules
         end
         data

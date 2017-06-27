@@ -192,6 +192,7 @@ module Cldr::Core
     @language_data : Hash(String, LanguageData)? = nil
     @likely_subtags : Hash(String, String)? = nil
     @plurals_type_cardinal : Hash(String, Hash(String, String))? = nil
+    @plurals_type_ordinal : Hash(String, Hash(String, String))? = nil
 
     def calendar_preference_data : Hash(String, Array(CalendarDataEntry))
       @calendar_preference_data ||= begin
@@ -264,6 +265,22 @@ module Cldr::Core
       @plurals_type_cardinal ||= begin
         data = Hash(String, Hash(String, String)).new(initial_capacity: <%= plurals_type_cardinal.size %>)
         <%- plurals_type_cardinal.each do |name, data| -%>
+        data[<%= name.to_literal %>] = begin
+          rules = Hash(String, String).new(initial_capacity: <%= data.size %>)
+          <%- data.each do |key, value| -%>
+            rules[<%= key.to_literal %>] = <%= value.to_literal %>
+          <%- end -%>
+          rules
+        end
+        <%- end -%>
+        data
+      end
+    end 
+
+    def plurals_type_ordinal : Hash(String, Hash(String, String))
+      @plurals_type_ordinal ||= begin
+        data = Hash(String, Hash(String, String)).new(initial_capacity: <%= plurals_type_ordinal.size %>)
+        <%- plurals_type_ordinal.each do |name, data| -%>
         data[<%= name.to_literal %>] = begin
           rules = Hash(String, String).new(initial_capacity: <%= data.size %>)
           <%- data.each do |key, value| -%>

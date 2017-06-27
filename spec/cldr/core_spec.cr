@@ -49,4 +49,8 @@ describe Cldr::Core do
   it "should have supplemental.plurals_type_cardinal[\"en\"]" do
     Cldr::Core.supplemental.plurals_type_cardinal["en"]["pluralRule-count-one"]?.should_not be_nil
   end
+
+  it "should have supplemental.plurals_type_ordinal[\"en\"]" do
+    Cldr::Core.supplemental.plurals_type_ordinal["en"]["pluralRule-count-one"]?.should_not be_nil
+  end
 end
