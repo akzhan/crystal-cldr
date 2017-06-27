@@ -45,4 +45,8 @@ describe Cldr::Core do
   it "should have supplemental.likely_subtags[\"en\"]" do
     Cldr::Core.supplemental.likely_subtags["en"].should eq("en-Latn-US")
   end
+
+  it "should have supplemental.plurals_type_cardinal[\"en\"]" do
+    Cldr::Core.supplemental.plurals_type_cardinal["en"]["pluralRule-count-one"]?.should_not be_nil
+  end
 end
