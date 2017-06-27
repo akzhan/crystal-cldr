@@ -22,6 +22,8 @@ require "cldr"
 
 This module based on [JSON Data from the Unicode CLDR Project](https://github.com/unicode-cldr/cldr-json).
 
+Generated code built way to avoid generating lots of allocas in LLVM, which makes LLVM really slow ([see details](https://github.com/crystal-lang/crystal/issues/4516#issuecomment-306226171)).
+ 
 ## Contributing
 
 1. Fork it ( https://github.com/akzhan/crystal-cldr/fork )
