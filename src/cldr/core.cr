@@ -2595,7 +2595,7 @@ module Cldr::Core
       end
     end
 
-    def numbering_systems
+    def numbering_systems : Hash(String, NumberingSystem)
       @numbering_systems ||= begin
         data = Hash(String, NumberingSystem).new(initial_capacity: 77)
         put_numbering_system data, _digits: "𞥐𞥑𞥒𞥓𞥔𞥕𞥖𞥗𞥘𞥙",

@@ -218,7 +218,7 @@ module Cldr::Core
       end
     end
 
-    def numbering_systems
+    def numbering_systems : Hash(String, NumberingSystem)
       @numbering_systems ||= begin
         data = Hash(String, NumberingSystem).new(initial_capacity: <%= numbering_systems.size %>)
         <%- numbering_systems.each do |name, info| -%>
